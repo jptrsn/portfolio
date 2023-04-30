@@ -4,9 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "pre-build": "echo 'export default {' > assets.ts; ls src/assets ' { print \"\\\"\"$0\"\\\",\"}' >> assets.ts; echo '}' >> assets.ts;",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng deploy --base-href=/portfolio/"
   },
   "private": true,
   "dependencies": {

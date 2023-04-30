@@ -1,4 +1,7 @@
-<mat-card>
-  <mat-card-header>{{skill.title}}</mat-card-header>
-  <mat-card-content>{{skill.description}}</mat-card-content>
-</mat-card>
+<div #scrollElement>
+  <mat-card [@flyInOutRight]="(isVisible$ | async) ? 'show' : 'hide'">
+    <mat-card-header>{{skill.title}}</mat-card-header>
+    <mat-card-content>{{skill.description}}</mat-card-content>
+  </mat-card>
+</div>
+

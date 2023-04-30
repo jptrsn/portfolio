@@ -1,10 +1,13 @@
 export interface Summary {
   title: string;
   description: string;
+  imageFolderName?: string;
   images?: string[];
 }
 
-export const Skills: Summary[] = [
+export const Skills: Summary[] = [];
+
+export const Principles: Summary[] = [
   {
     title: 'Google Cloud Platform',
     description: 'James has leveraged Google Cloud Platform to develop and deploy full stack micro-service architecture web applications for customers'
@@ -16,6 +19,10 @@ export const Skills: Summary[] = [
   {
     title: 'Material Design',
     description: 'Design rules and approach follow the Material Design specification, but are extended or modified where appropriate.'
+  },
+  {
+    title: 'Scalability',
+    description: 'James writes code to be performant, both for at-keyboard interactions, and performing mass operations at scale.'
   }
 ]
 

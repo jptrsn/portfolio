@@ -1,4 +1,6 @@
 <div class="scroll-container padded" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px" fxFlex="100">
   <app-general-description fxFlexOffset="24px"></app-general-description>
   <app-skill *ngFor="let skill of skills" [skill]="skill"></app-skill>
+  <app-skill *ngFor="let p of principles" [skill]="p"></app-skill>
+  <app-skill *ngFor="let interest of interests" [skill]="interest"></app-skill>
 </div>
