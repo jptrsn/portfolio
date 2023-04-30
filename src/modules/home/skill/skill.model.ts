@@ -5,24 +5,41 @@ export interface Summary {
   images?: string[];
 }
 
-export const Skills: Summary[] = [];
-
-export const Principles: Summary[] = [
+export const Skills: Summary[] = [
   {
     title: 'Google Cloud Platform',
-    description: 'James has leveraged Google Cloud Platform to develop and deploy full stack micro-service architecture web applications for customers'
+    description: 'James has experience using Google Cloud Platform to develop and deploy full stack micro-service architecture web applications for customers'
   },
   {
-    title: 'Responsive Design',
-    description: 'Applications are built to work across all devices and view ports'
+    title: 'Full Stack Development',
+    description: 'James has experience working as a full stack developer in the Angular/NestJS frameworks within Javascript and NodeJS.'
   },
   {
     title: 'Material Design',
     description: 'Design rules and approach follow the Material Design specification, but are extended or modified where appropriate.'
   },
   {
+    title: 'Browser Extensions',
+    description: 'James has developed, deployed, debugged, and maintained a large-scale browser extension product integration.'
+  },
+  {
+    title: 'Redis',
+    description: 'James has architected applications that implement a Redis caching layer to improve performance and reduce server load.'
+  }
+];
+
+export const Principles: Summary[] = [
+  {
+    title: 'Responsive Design',
+    description: 'Applications are built to work across all devices and view ports'
+  },
+  {
     title: 'Scalability',
     description: 'James writes code to be performant, both for at-keyboard interactions, and performing mass operations at scale.'
+  },
+  {
+    title: 'Communication',
+    description: 'As a former educator, James is a skilled communicator and facilitator of communication, both synchronous and asynchronous.'
   }
 ]
 
@@ -37,6 +54,6 @@ export const Interests: Summary[] = [
   },
   {
     title: 'Electronics',
-    description: 'Using his knowledge of hobby electronics, James has designed and built several devices to augment his smart home. He has also retrofit existing consumer devices such as window air conditioners to connect to his home automation server.'
+    description: 'James designs and builds devices to augment his smart home. He has also retrofit existing consumer devices such as window air conditioners to connect to his home automation server.'
   }
 ]
