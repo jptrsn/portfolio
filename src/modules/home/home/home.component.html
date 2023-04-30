@@ -1,6 +1,6 @@
 <div class="scroll-container padded" fxLayout="row" fxFlexFill>
   <div fxFlex></div>
-  <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="24px" fxFlex="500px">
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="24px" fxFlex="552px" fxFlex.lt-sm="100">
     <app-general-description fxFlexOffset="24px"></app-general-description>
     <app-skill *ngFor="let skill of skills" [skill]="skill"></app-skill>
     <app-skill *ngFor="let p of principles" [skill]="p"></app-skill>

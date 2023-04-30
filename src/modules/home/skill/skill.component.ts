@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
-import { Observable, Subject, map, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, filter, map, takeUntil, tap } from 'rxjs';
 import { AnimationService } from 'src/modules/common-ui/animation.service';
 import { Summary } from './skill.model';
 
@@ -10,22 +10,34 @@ import { Summary } from './skill.model';
   animations: [AnimationService.fadeInOut]
 })
 export class SkillComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('scrollElement', {read: ElementRef}) card!: ElementRef;
+  @ViewChild('triggerVisible', {read: ElementRef}) triggerVisible!: ElementRef;
+  @ViewChild('triggerHidden', {read: ElementRef}) triggerHidden!: ElementRef;
   @Input() skill!: Summary;
 
-  public isVisible$?: Observable<boolean>;
+  public animate$: BehaviorSubject<'show' | 'hide'> = new BehaviorSubject<'show' | 'hide'>('hide');
   private OnDestroy$: Subject<void> = new Subject<void>();
   constructor(private animation: AnimationService) {
     
   }
 
   ngAfterViewInit(): void {
-    this.isVisible$ = this.animation.observeElement(this.card.nativeElement, 500)
+    this.animation.observeElement(this.triggerVisible.nativeElement, 500)
     .pipe(
       takeUntil(this.OnDestroy$),
-      map((value) => this.animation.isIntersecting(value.entry))
-    );
-    this.isVisible$.subscribe((visible) => console.log(`${this.skill.title} visible: ${visible}`))
+      filter((value) => this.animation.isIntersecting(value.entry))
+    ).subscribe((value) => {
+      console.log(`${this.skill.title} show`);
+      this.animate$.next('show');
+    });
+    this.animation.observeElement(this.triggerHidden.nativeElement, 500)
+    .pipe(
+      takeUntil(this.OnDestroy$),
+      // tap((value) => console.log(`${this.skill.title} triggerHidden`, this.animation.isIntersecting(value.entry))),
+      filter((value) => !this.animation.isIntersecting(value.entry))
+    ).subscribe((value) => {
+      console.log(`${this.skill.title} hide`);
+      this.animate$.next('hide');
+    });
   }
 
   ngOnDestroy(): void {
