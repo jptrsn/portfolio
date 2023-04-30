@@ -7,7 +7,7 @@ import { Summary } from './skill.model';
   selector: 'app-skill',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.scss'],
-  animations: [AnimationService.flyInOutRight]
+  animations: [AnimationService.fadeInOut]
 })
 export class SkillComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scrollElement', {read: ElementRef}) card!: ElementRef;

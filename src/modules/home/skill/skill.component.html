@@ -1,5 +1,6 @@
-<div #scrollElement>
-  <mat-card [@flyInOutRight]="(isVisible$ | async) ? 'show' : 'hide'">
+<div #scrollElement></div>
+<div class="skill-container" fxLayout="column" fxFlex="1 0 100">
+  <mat-card [@fadeInOut]="(isVisible$ | async) ? 'show' : 'hide'">
     <mat-card-header>{{skill.title}}</mat-card-header>
     <mat-card-content>{{skill.description}}</mat-card-content>
   </mat-card>
