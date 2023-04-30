@@ -5,6 +5,7 @@
       <mat-card-title>
         {{skill.title}}
       </mat-card-title>
+      <img mat-card-avatar *ngIf="skill.icon" class="header-image" [src]="skill.icon">
     </mat-card-header>
     <mat-card-content>{{skill.description}}</mat-card-content>
   </mat-card>

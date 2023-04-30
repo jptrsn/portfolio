@@ -2,5 +2,13 @@
   padding: 15% 0;
   mat-card {
     color: #CCC;
+    mat-card-header {
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .header-image {
+      border-radius: unset;
+      margin-bottom: unset;
+    }
   }
 }

@@ -1,6 +1,7 @@
 export interface Summary {
   title: string;
   description: string;
+  icon?: string;
   imageFolderName?: string;
   images?: string[];
 }
@@ -8,23 +9,28 @@ export interface Summary {
 export const Skills: Summary[] = [
   {
     title: 'Google Cloud Platform',
-    description: 'James has experience using Google Cloud Platform to develop and deploy full stack micro-service architecture web applications for customers'
+    description: 'James has experience using Google Cloud Platform to develop and deploy full stack micro-service architecture web applications for customers',
+    icon: 'assets/icons/cloud_generic.svg'
   },
   {
     title: 'Full Stack Development',
-    description: 'James has experience working as a full stack developer in the Angular/NestJS frameworks within Javascript and NodeJS.'
+    description: 'James has experience working as a full stack developer in the Angular/NestJS frameworks within Javascript and NodeJS.',
+    icon: 'assets/icons/stack.svg'
   },
   {
     title: 'Material Design',
-    description: 'Design rules and approach follow the Material Design specification, but are extended or modified where appropriate.'
+    description: 'Design rules and approach follow the Material Design specification, but are extended or modified where appropriate.',
+    icon: 'assets/icons/material.svg'
   },
   {
-    title: 'Browser Extensions',
-    description: 'James has developed, deployed, debugged, and maintained a large-scale browser extension product integration.'
+    title: 'Chrome Browser Extensions',
+    description: 'James has developed, deployed, debugged, and maintained a large-scale browser extension product integration.',
+    icon: 'assets/icons/chrome.svg'
   },
   {
     title: 'Redis',
-    description: 'James has architected applications that implement a Redis caching layer to improve performance and reduce server load.'
+    description: 'James has architected applications that implement a Redis caching layer to improve performance and reduce server load.',
+    icon: 'assets/icons/redis-cube.svg'
   }
 ];
 
@@ -40,6 +46,11 @@ export const Principles: Summary[] = [
   {
     title: 'Communication',
     description: 'As a former educator, James is a skilled communicator and facilitator of communication, both synchronous and asynchronous.'
+  },
+  {
+    title: 'Collaboration',
+    description: `In addition to his extensive experience collaborating with colleagues remotely on both sides of the Atlantic, James has 
+    a keen understanding of the nature of group dynamics and interpersonal relationship management.`
   }
 ]
 
