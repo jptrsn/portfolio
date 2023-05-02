@@ -21,21 +21,19 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.animation.observeElement(this.triggerVisible.nativeElement, 500)
+    this.animation.observeElements([this.triggerVisible.nativeElement], 500)
     .pipe(
       takeUntil(this.OnDestroy$),
       filter((value) => this.animation.isIntersecting(value.entry))
     ).subscribe((value) => {
-      console.log(`${this.skill.title} show`);
       this.animate$.next('show');
     });
-    this.animation.observeElement(this.triggerHidden.nativeElement, 500)
+    this.animation.observeElements([this.triggerHidden.nativeElement], 500)
     .pipe(
       takeUntil(this.OnDestroy$),
       // tap((value) => console.log(`${this.skill.title} triggerHidden`, this.animation.isIntersecting(value.entry))),
       filter((value) => !this.animation.isIntersecting(value.entry))
     ).subscribe((value) => {
-      console.log(`${this.skill.title} hide`);
       this.animate$.next('hide');
     });
   }

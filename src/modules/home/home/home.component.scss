@@ -4,3 +4,43 @@
   flex: 1 1 100%;
   overflow-y: hidden;
 }
+
+.wrapper {
+  overflow-x: hidden;
+  perspective: 10px;
+
+  .parallax {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    // height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+
+    :not(img) {
+      max-width: 552px;
+    }
+
+    .foreground,
+    .background {
+      position: absolute;
+      display: flex;
+      flex-grow: 1;
+      min-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .background {
+      height: 200%;
+      transform: translateZ(-10px) scale(2);
+    }
+
+    .foreground {
+      transform: translateZ(-5px) scale(1.5);
+    }
+  }
+}

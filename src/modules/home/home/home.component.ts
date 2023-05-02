@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { AnimationService } from 'src/modules/common-ui/animation.service';
 import { Interests, Principles, Skills, Summary } from '../skill/skill.model';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +10,26 @@ import { Subject } from 'rxjs';
   animations: [AnimationService.fadeInOut]
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('generalDescriptionTrigger', { read: ElementRef}) animateDescription!: ElementRef;
+  @ViewChild('generalDescriptionBackground', { read: ElementRef}) gdBackground!: ElementRef;
   public readonly skills: Summary[] = Skills;
   public readonly interests: Summary[] = Interests;
   public readonly principles: Summary[] = Principles;
   
+  public descriptionTrigger$: BehaviorSubject<'show' | 'hide'> = new BehaviorSubject<'show' | 'hide'>('show');
   private readonly onDestroy$: Subject<void> = new Subject<void>();
-  constructor() {}
+  constructor(private animation: AnimationService,
+              private viewContainer: ViewContainerRef) {}
 
   ngOnInit(): void {
-      
+    
   }
 
   ngAfterViewInit(): void {
-      
+    this.animation.observeScrollIntersection(this.animateDescription.nativeElement, this.viewContainer.element.nativeElement, 0.01).subscribe((value) => {
+      this.gdBackground.nativeElement.style.opacity = value;
+      console.log(this.gdBackground.nativeElement.style.opacity)
+    })
   }
 
   ngOnDestroy(): void {

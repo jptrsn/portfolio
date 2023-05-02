@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, debounceTime } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, debounceTime, lastValueFrom, map, shareReplay, startWith, switchMap, tap } from 'rxjs';
 
 const duration: number = 500;
 
@@ -8,7 +8,8 @@ const duration: number = 500;
   providedIn: 'root'
 })
 export class AnimationService {
-  constructor() { }
+  constructor() { 
+  }
 
   public static fadeInOut = trigger('fadeInOut', [
     state('show', style({
@@ -60,15 +61,31 @@ export class AnimationService {
     transition('hide => show', animate(`${duration}ms ease-in`)),
   ])
 
-  public observeElement(el: HTMLElement, debounce = 0): Observable<{ entry: IntersectionObserverEntry, observer: IntersectionObserver}> {
+  public observeElements(elements: HTMLElement[], debounce = 0, config = {}): Observable<{ entry: IntersectionObserverEntry, observer: IntersectionObserver}> {
     const sub$: Subject<any> = new Subject<any>();
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         sub$.next({ entry, observer});
       })
-    });
-    observer.observe(el);
+    }, config);
+    elements.forEach((el) => observer.observe(el));
     return sub$.asObservable().pipe(debounceTime(debounce));
+  }
+
+  public observeScrollIntersection(el: HTMLElement, parent: HTMLElement, stepSize: number = 0.1): Observable<number> {
+    const threshold: number[] = [];
+    for (let i = 0; i <= 1; i += stepSize) {
+      threshold.push(i);
+    }
+    const config: IntersectionObserverInit = {root: parent, threshold}
+    const intersect$: Subject<number> = new Subject<number>();
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        intersect$.next(entry.intersectionRatio);
+      });
+    }, config)
+    observer.observe(el);
+    return intersect$.asObservable();
   }
 
   public isIntersecting(entry: IntersectionObserverEntry): boolean {
