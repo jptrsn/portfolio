@@ -1,7 +1,12 @@
 <mat-toolbar color="background" class="mat-elevation-z10">
   <mat-toolbar-row>
-    <span class="space-after">James Petersen</span>
-    <span class="hide-narrow space-after">(EduCoder)</span>
-    <span>Portfolio</span>
+    <span class="space-after">EduCoder</span>
+    <span class="hide-narrow space-after">(James Petersen)</span>
+    <span *ngIf="(title$ | async) as title; else defaultTitle">
+      {{title}}
+    </span>
+    <ng-template #defaultTitle>
+      <span>Portfolio</span>
+    </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>

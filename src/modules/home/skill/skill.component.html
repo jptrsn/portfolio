@@ -1,6 +1,5 @@
 <div class="skill-container" fxLayout="column" fxFlex="1 0 100">
-  <div #triggerHidden></div>
-  <mat-card>
+  <mat-card #card>
     <mat-card-header>
       <mat-card-title>
         {{skill.title}}
@@ -9,5 +8,4 @@
     </mat-card-header>
     <mat-card-content>{{skill.description}}</mat-card-content>
   </mat-card>
-  <div #triggerVisible></div>
 </div>

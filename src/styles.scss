@@ -9,8 +9,17 @@ body { margin: 0;}
   padding: 24px;
 }
 
-@media (max-width: 639.98px) {
+.narrow {
+  width: 100%;
+  max-width: 532px;
+}
+
+@media (max-width: 531.98px) {
   .hide-narrow {
     display: none;
+  }
+
+  .narrow {
+    max-width: 90%;
   }
 }

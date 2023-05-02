@@ -1,14 +1,11 @@
-<div class="scroll-container wrapper" fxLayout="column" fxLayoutAlign="start center">
-  <div class="parallax" fxLayout="center stretch" fxFlex="1 0 100" #generalDescriptionTrigger>
+<div class="scroll-container wrapper" fxLayout="column" fxLayoutAlign="start center" fxFlex="100" fxLayoutGap="96px">
+  <div class="parallax" fxLayout="row" fxLayoutAlign="center start" fxFlex="1 0 100" #generalDescriptionTrigger>
     <img #generalDescriptionBackground src="assets/portraits/portrait-headphones.png" class="background">
-    <app-general-description fxFlexOffset="48px"></app-general-description>
-  </div>
-  <div class="parallax">
-    <app-skill *ngFor="let skill of skills" [skill]="skill"></app-skill>
-    <app-skill *ngFor="let p of principles" [skill]="p"></app-skill>
-    <app-skill *ngFor="let interest of interests" [skill]="interest"></app-skill>
+    <app-general-description class="narrow" fxFlexAlign="center"></app-general-description>
   </div>
   
-  
-  
+  <app-skill class="narrow" *ngFor="let skill of skills" [skill]="skill"></app-skill>
+  <app-skill class="narrow" *ngFor="let p of principles" [skill]="p"></app-skill>
+  <app-skill class="narrow" *ngFor="let interest of interests" [skill]="interest"></app-skill>
+    
 </div>

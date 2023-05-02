@@ -18,10 +18,6 @@
     transform-style: preserve-3d;
     z-index: -1;
 
-    :not(img) {
-      max-width: 552px;
-    }
-
     .foreground,
     .background {
       position: absolute;

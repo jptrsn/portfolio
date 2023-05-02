@@ -61,18 +61,18 @@ export class AnimationService {
     transition('hide => show', animate(`${duration}ms ease-in`)),
   ])
 
-  public observeElements(elements: HTMLElement[], debounce = 0, config = {}): Observable<{ entry: IntersectionObserverEntry, observer: IntersectionObserver}> {
+  public observeElement(el: HTMLElement, debounce = 0, config: IntersectionObserverInit = {}): Observable<{ entry: IntersectionObserverEntry, observer: IntersectionObserver}> {
     const sub$: Subject<any> = new Subject<any>();
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         sub$.next({ entry, observer});
       })
     }, config);
-    elements.forEach((el) => observer.observe(el));
+    observer.observe(el);
     return sub$.asObservable().pipe(debounceTime(debounce));
   }
 
-  public observeScrollIntersection(el: HTMLElement, parent: HTMLElement, stepSize: number = 0.1): Observable<number> {
+  public observeScrollIntersection(el: HTMLElement, parent?: HTMLElement, stepSize: number = 0.1): Observable<number> {
     const threshold: number[] = [];
     for (let i = 0; i <= 1; i += stepSize) {
       threshold.push(i);

@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   public readonly interests: Summary[] = Interests;
   public readonly principles: Summary[] = Principles;
   
-  public descriptionTrigger$: BehaviorSubject<'show' | 'hide'> = new BehaviorSubject<'show' | 'hide'>('show');
   private readonly onDestroy$: Subject<void> = new Subject<void>();
   constructor(private animation: AnimationService,
               private viewContainer: ViewContainerRef) {}
@@ -28,7 +27,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.animation.observeScrollIntersection(this.animateDescription.nativeElement, this.viewContainer.element.nativeElement, 0.01).subscribe((value) => {
       this.gdBackground.nativeElement.style.opacity = value;
-      console.log(this.gdBackground.nativeElement.style.opacity)
     })
   }
 

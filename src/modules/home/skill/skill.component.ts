@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, filter, map, takeUntil, tap } from 'rxjs';
 import { AnimationService } from 'src/modules/common-ui/animation.service';
 import { Summary } from './skill.model';
+import { MatCard } from '@angular/material/card';
 
 @Component({
   selector: 'app-skill',
@@ -10,36 +11,31 @@ import { Summary } from './skill.model';
   animations: [AnimationService.fadeInOut]
 })
 export class SkillComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('triggerVisible', {read: ElementRef}) triggerVisible!: ElementRef;
-  @ViewChild('triggerHidden', {read: ElementRef}) triggerHidden!: ElementRef;
   @Input() skill!: Summary;
-
+  @ViewChild('card', {read: ElementRef}) card!: ElementRef;
   public animate$: BehaviorSubject<'show' | 'hide'> = new BehaviorSubject<'show' | 'hide'>('hide');
-  private OnDestroy$: Subject<void> = new Subject<void>();
-  constructor(private animation: AnimationService) {
+  private onDestroy$: Subject<void> = new Subject<void>();
+  constructor(private animation: AnimationService,
+              private viewContainer: ViewContainerRef) {
     
   }
 
   ngAfterViewInit(): void {
-    this.animation.observeElements([this.triggerVisible.nativeElement], 500)
-    .pipe(
-      takeUntil(this.OnDestroy$),
-      filter((value) => this.animation.isIntersecting(value.entry))
+    const threshold: number[] = [];
+    for (let i = 0; i <= 1; i += 0.01) {
+      threshold.push(i);
+    }
+    this.animation.observeElement(this.viewContainer.element.nativeElement, 0, {threshold, rootMargin: '-15%'}).pipe(
+      takeUntil(this.onDestroy$),
+      map(({entry, observer}) => entry.intersectionRatio)
     ).subscribe((value) => {
-      this.animate$.next('show');
-    });
-    this.animation.observeElements([this.triggerHidden.nativeElement], 500)
-    .pipe(
-      takeUntil(this.OnDestroy$),
-      // tap((value) => console.log(`${this.skill.title} triggerHidden`, this.animation.isIntersecting(value.entry))),
-      filter((value) => !this.animation.isIntersecting(value.entry))
-    ).subscribe((value) => {
-      this.animate$.next('hide');
-    });
+      console.log(`${this.skill.title}: ${value}`);
+      this.card.nativeElement.style.opacity = value;
+    })
   }
 
   ngOnDestroy(): void {
-      
+    this.onDestroy$.next();
   }
 
 }
