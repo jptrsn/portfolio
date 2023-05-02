@@ -25,11 +25,11 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
     for (let i = 0; i <= 1; i += 0.01) {
       threshold.push(i);
     }
-    this.animation.observeElement(this.viewContainer.element.nativeElement, 0, {threshold, rootMargin: '-15%'}).pipe(
+    this.animation.observeElements([this.viewContainer.element.nativeElement], 0, {threshold, rootMargin: '-15%'}).pipe(
       takeUntil(this.onDestroy$),
       map(({entry, observer}) => entry.intersectionRatio)
     ).subscribe((value) => {
-      console.log(`${this.skill.title}: ${value}`);
+      // console.log(`${this.skill.title}: ${value}`);
       this.card.nativeElement.style.opacity = value;
     })
   }

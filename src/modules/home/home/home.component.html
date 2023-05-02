@@ -4,8 +4,8 @@
     <app-general-description class="narrow" fxFlexAlign="center"></app-general-description>
   </div>
   
-  <app-skill class="narrow" *ngFor="let skill of skills" [skill]="skill"></app-skill>
-  <app-skill class="narrow" *ngFor="let p of principles" [skill]="p"></app-skill>
-  <app-skill class="narrow" *ngFor="let interest of interests" [skill]="interest"></app-skill>
+  <app-skill header="Skills" #skillList class="narrow" *ngFor="let skill of skills" [skill]="skill"></app-skill>
+  <app-skill header="Principles" #principleList class="narrow" *ngFor="let p of principles" [skill]="p"></app-skill>
+  <app-skill header="Interests" #interestList class="narrow" *ngFor="let interest of interests" [skill]="interest"></app-skill>
     
 </div>

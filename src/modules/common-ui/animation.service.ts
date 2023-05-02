@@ -61,14 +61,14 @@ export class AnimationService {
     transition('hide => show', animate(`${duration}ms ease-in`)),
   ])
 
-  public observeElement(el: HTMLElement, debounce = 0, config: IntersectionObserverInit = {}): Observable<{ entry: IntersectionObserverEntry, observer: IntersectionObserver}> {
+  public observeElements(elements: HTMLElement[], debounce = 0, config: IntersectionObserverInit = {}): Observable<{ entry: IntersectionObserverEntry, observer: IntersectionObserver}> {
     const sub$: Subject<any> = new Subject<any>();
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         sub$.next({ entry, observer});
       })
     }, config);
-    observer.observe(el);
+    elements.forEach((el) => observer.observe(el));
     return sub$.asObservable().pipe(debounceTime(debounce));
   }
 
