@@ -8,18 +8,14 @@ const duration: number = 500;
   providedIn: 'root'
 })
 export class AnimationService {
+
+  public scrollToComponent$: Subject<string> = new Subject<string>();
   constructor() { 
   }
 
   public static fadeInOut = trigger('fadeInOut', [
-    state('show', style({
-      opacity: 1
-    })),
-    state('hide', style({
-      opacity: 0
-    })),
-    transition('show => hide', animate(`${duration}ms ease-out`)),
-    transition('hide => show', animate(`${duration}ms ease-in`)),
+    transition(':enter', [style({ opacity: 1 }), animate(`${duration}ms ease-in-out`)]),
+    transition(':leave', [style({opacity: 0}), animate(`${duration}ms ease-in-out`)]),
   ]);
 
   public static flyInOutLeft = trigger('flyInOutLeft', [
@@ -90,5 +86,9 @@ export class AnimationService {
 
   public isIntersecting(entry: IntersectionObserverEntry): boolean {
     return entry.isIntersecting || entry.intersectionRatio > 0;
+  }
+
+  public animateToComponent(scrollableComponentName: string): void {
+    this.scrollToComponent$.next(scrollableComponentName);
   }
 }

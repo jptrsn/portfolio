@@ -25,7 +25,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
     for (let i = 0; i <= 1; i += 0.01) {
       threshold.push(i);
     }
-    this.animation.observeElements([this.viewContainer.element.nativeElement], 0, {threshold, rootMargin: '-15%'}).pipe(
+    this.animation.observeElements([this.viewContainer.element.nativeElement], 0, {threshold, rootMargin: '-10% 0% -5% 0%'}).pipe(
       takeUntil(this.onDestroy$),
       map(({entry, observer}) => entry.intersectionRatio)
     ).subscribe((value) => {

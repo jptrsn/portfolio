@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { AnimationService } from 'src/modules/common-ui/animation.service';
-import { Interests, Principles, Skills, Summary } from '../skill/skill.model';
-import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { TitleService } from 'src/modules/common-ui/title.service';
+import { Interests, Principles, Skills, Summary } from '../skill/skill.model';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   public readonly skills: Summary[] = Skills;
   public readonly interests: Summary[] = Interests;
   public readonly principles: Summary[] = Principles;
+
+  private componentElements: Map<string, ElementRef> = new Map();
   
   private readonly onDestroy$: Subject<void> = new Subject<void>();
   constructor(private animation: AnimationService,
@@ -28,7 +30,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
               private viewContainer: ViewContainerRef) {}
 
   ngOnInit(): void {
-    
+    this.animation.scrollToComponent$.pipe(
+      takeUntil(this.onDestroy$)
+    ).subscribe((componentName) => {
+      const el = this.componentElements.get(componentName);
+      if (el) {
+        el.nativeElement.scrollIntoView({block: "center", inline: "nearest"});
+      }
+    })
   }
 
   ngAfterViewInit(): void {
@@ -50,9 +59,23 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.title.setTitle(headerValue);
       }
     })
+    this._initComponentMap();
   }
 
   ngOnDestroy(): void {
       this.onDestroy$.next();
+  }
+
+  private _initComponentMap(): void {
+    for (let entry of [
+      ['skillList', this.skillList],
+      ['principleList', this.principleList],
+      ['interestList', this.interestList]
+    ]) {
+      
+    }
+    this.componentElements.set('skillList', this.skillList);
+    this.componentElements.set('principleList', this.principleList);
+    this.componentElements.set('interestList', this.interestList);
   }
 }

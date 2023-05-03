@@ -2,11 +2,24 @@
   <mat-toolbar-row>
     <span class="space-after">EduCoder</span>
     <span class="hide-narrow space-after">(James Petersen)</span>
-    <span *ngIf="(title$ | async) as title; else defaultTitle">
-      {{title}}
-    </span>
+    <ng-container *ngIf="(title$ | async) as title; else defaultTitle">
+      <span>
+        {{title}}
+      </span>
+    </ng-container>
     <ng-template #defaultTitle>
       <span>Portfolio</span>
     </ng-template>
+    <span fxFlex></span>
+    <button mat-icon-button [matMenuTriggerFor]="navMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #navMenu="matMenu">
+      <button mat-menu-item (click)="scrollToComponent('skillList')">Skills</button>
+      <button mat-menu-item (click)="scrollToComponent('principleList')">Principles</button>
+      <button mat-menu-item (click)="scrollToComponent('interestList')">Interests</button>
+      <button mat-menu-item (click)="scrollToComponent('experienceList')">Experience</button>
+      <button mat-menu-item (click)="scrollToComponent('contact')">Contact</button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
