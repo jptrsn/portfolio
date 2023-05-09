@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "nx serve",
     "pre-build": "echo 'export default {' > assets.ts; ls src/assets ' { print \"\\\"\"$0\"\\\",\"}' >> assets.ts; echo '}' >> assets.ts;",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "ng deploy --base-href=/portfolio/"
+    "build": "nx build",
+    "watch": "nx build --watch --configuration development",
+    "test": "nx test",
+    "deploy": "nx deploy --base-href=/portfolio/"
   },
   "private": true,
   "dependencies": {
@@ -29,8 +29,13 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.6",
+    "@angular-devkit/core": "~15.2.6",
+    "@angular-devkit/schematics": "~15.2.6",
     "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "^15.2.0",
+    "@nx/angular": "16.1.3",
+    "@nx/workspace": "16.1.3",
+    "@schematics/angular": "~15.2.6",
     "@types/jasmine": "~4.3.0",
     "angular-cli-ghpages": "^1.0.5",
     "jasmine-core": "~4.5.0",
@@ -39,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "nx": "16.1.3",
     "typescript": "~4.9.4"
   }
 }
