@@ -112,7 +112,11 @@
   --color-info: var(--secondary-400);
 }
 
-/* Remove the media query - dark mode is now the default for everyone */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 
 body {
   background: var(--background);
