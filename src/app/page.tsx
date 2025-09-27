@@ -1,9 +1,11 @@
 import { BrandIcon } from '@/components/BrandIcon';
+import Navigation from '@/components/Navigation';
 import ScrollToTop from '@/components/ScrollToTop';
+import { Typewriter } from '@/components/Typewriter';
 import { contactInfo } from '@/data/contactInfo';
-import { featuredProjects } from '@/data/projectInfo';
+import { sideProjects } from '@/data/projectInfo';
 import { skills } from '@/data/skills';
-import { ArrowRight, ChevronDown, Code } from 'lucide-react';
+import { ArrowRight, ChevronDown, Code, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,61 +13,51 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-neutral-800">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-xl font-bold text-gradient">EduCoder.dev</div>
-          <div className="hidden md:flex space-x-8">
-            <Link href="/about" className="hover:text-primary-500 transition-colors">About</Link>
-            <Link href="/projects" className="hover:text-primary-500 transition-colors">Projects</Link>
-            <Link href="/experience" className="hover:text-primary-500 transition-colors">Experience</Link>
-            <Link href="/blog" className="hover:text-primary-500 transition-colors">Blog</Link>
-            <Link href="/contact" className="hover:text-primary-500 transition-colors">Contact</Link>
-          </div>
-          <button className="md:hidden">
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className="w-full h-0.5 bg-foreground"></div>
-              <div className="w-full h-0.5 bg-foreground"></div>
-              <div className="w-full h-0.5 bg-foreground"></div>
-            </div>
-          </button>
-        </div>
-      </nav>
 
-      <section id="top" className="pt-24 pb-16 px-6">
+      <Navigation />
+
+      <section id="top" className="pt-24 pb-16 px-6 min-h-screen flex flex-col items-center justify-center">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <div className="mb-8">
-              <div className="w-32 h-32 mx-auto mb-8 rounded-full gradient-primary flex items-center justify-center">
-                <div className="w-28 h-28 rounded-full bg-background flex items-center justify-center">
 
-                  <Code className="w-12 h-12 text-primary-500" />
-                </div>
-              </div>
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6">
-                <span className="text-gradient">Software Engineer & Educator</span>
-              </h1>
-              <p className="text-md sm:text-xl md:text-2xl text-neutral-400 mb-8 max-w-3xl mx-auto">
-                Building human-centric applications and guiding engineering teams to deliver
-                exceptional digital experiences that solve real-world problems.
-              </p>
-              <div className="flex justify-center space-x-4 mb-12">
-                <Link href="/contact" className="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
-                  Get In Touch
-                </Link>
-                <Link href="/projects" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all">
-                  View Projects
-                </Link>
-              </div>
-
-              <div className="flex justify-center space-x-6">
-                { contactInfo.map((info, index) => (
-                  <Link href={info.href} key={index} className="text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
-                    {info.icon}
-                  </Link>
-                ))}
+            <div className="w-20 sm:w-32 h-20 sm:h-32 mx-auto mb-8 rounded-full gradient-primary flex items-center justify-center">
+              <div className="w-16 sm:w-28 h-16 sm:h-28 rounded-full bg-background flex items-center justify-center">
+                <Code className="w-12 h-12 text-primary-500" />
               </div>
             </div>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6">
+              <Typewriter
+                text="Software Engineer & Educator"
+                className="text-gradient"
+                speed={100}
+                delay={500}
+                showCursor={true}
+              />
+            </h1>
+            <p className="text-md sm:text-xl md:text-2xl text-neutral-400 mb-8 max-w-3xl mx-auto">
+              Building human-centric applications and guiding engineering teams to deliver
+              exceptional digital experiences that solve real-world problems.
+            </p>
+            {/* <div className="text-sm sm:text-md flex flex-col sm:flex-row justify-center gap-3 mb-12">
+              <Link href="/blog" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all sm:w-48">
+                Blog
+              </Link>
+              <Link href="/contact" className="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 sm:w-48">
+                Get In Touch
+              </Link>
+              <Link href="/projects" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all sm:w-48">
+                View Projects
+              </Link>
+            </div> */}
+
+            <div className="flex justify-center space-x-6">
+              { contactInfo.map((info, index) => (
+                <Link href={info.href} key={index} className="text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
+                  {info.icon}
+                </Link>
+              ))}
+            </div>
+
           </div>
 
           {/* Scroll indicator */}
@@ -78,7 +70,7 @@ export default function HomePage() {
       <section id="skills" className="py-20 px-6">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">Core Expertise</span>
+            <span className="text-gradient">Expertise</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skills.map((skill, index) => (
@@ -102,18 +94,18 @@ export default function HomePage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-gradient">Featured Projects</span>
+              <span className="text-gradient">Side Projects</span>
             </h2>
             <p className="text-neutral-400 max-w-2xl mx-auto">
-              A selection of recent work showcasing full-stack development,
+              A selection of recent work and play showcasing full-stack development,
               system design, and problem-solving capabilities.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project, index) => (
+            {sideProjects.map((project, index) => (
               <div key={index} className="group">
-                <div className="relative bg-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden hover:border-primary-500/50 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="relative h-full bg-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden hover:border-primary-500/50 transition-all duration-300 hover:transform hover:scale-105">
                   {/* Background image for entire card */}
                   {project.cover && (
                     <Image
@@ -127,10 +119,10 @@ export default function HomePage() {
                   )}
 
                   {/* Overlay to ensure content readability */}
-                  <div className="absolute inset-0 bg-neutral-900/80 group-hover:bg-neutral-900/70 transition-all duration-300" />
+                  <div className="absolute inset-0 bg-neutral-900/80 group-hover:bg-neutral-900/70 transition-all duration-300"/>
 
                   {/* Content container - now positioned relative to stay above background */}
-                  <div className="relative z-10">
+                  <div className="relative z-10 min-h-[500] flex items-end">
                     {/* Your existing header section */}
                     <div className="h-48 gradient-secondary opacity-20 group-hover:opacity-30 transition-opacity">
                       {/* This can now be empty or contain other overlay content */}
@@ -153,10 +145,19 @@ export default function HomePage() {
                         <Link href={project.link} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center">
                           View Details <ArrowRight className="w-3 h-3 ml-1" />
                         </Link>
-                        <Link href={project.github} className="text-neutral-400 hover:text-neutral-300">
-                          <BrandIcon name='github'></BrandIcon>
-                        </Link>
+                        { project.github && (
+                          <Link href={project.github} className="text-neutral-400 hover:text-neutral-300">
+                            <BrandIcon name='github'></BrandIcon>
+                          </Link>
+                        )}
                       </div>
+                      { project.liveUrl && (
+                        <div className="flex justify-between items-center">
+                          <Link href={project.liveUrl} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center" target="_blank">
+                            Visit the Project <ExternalLink className="w-3 h-3 ml-1" />
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

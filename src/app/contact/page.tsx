@@ -1,5 +1,6 @@
 'use client';
 
+import Navigation from '@/components/Navigation';
 import { contactInfo } from '@/data/contactInfo';
 import { AlertCircle, CheckCircle, Send } from 'lucide-react';
 import Link from 'next/link';
@@ -67,20 +68,8 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-neutral-800">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold text-gradient">EduCoder.dev</Link>
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className="hover:text-primary-500 transition-colors">Home</Link>
-            <Link href="/about" className="hover:text-primary-500 transition-colors">About</Link>
-            <Link href="/projects" className="hover:text-primary-500 transition-colors">Projects</Link>
-            <Link href="/experience" className="hover:text-primary-500 transition-colors">Experience</Link>
-            <Link href="/blog" className="hover:text-primary-500 transition-colors">Blog</Link>
-            <Link href="/contact" className="text-primary-500">Contact</Link>
-          </div>
-        </div>
-      </nav>
+
+      <Navigation />
 
       <div className="pt-24 pb-16 px-6">
         <div className="container mx-auto max-w-6xl">
@@ -136,7 +125,7 @@ export default function ContactPage() {
                 ) : (
                   <>
                     <p className="text-sm text-neutral-300 mb-3">
-                      I am not currently accepting new projects and consulting opportunities.
+                      I am not currently available for full-time projects.
                     </p>
                   </>
                 )}

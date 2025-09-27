@@ -28,5 +28,6 @@ export interface FeaturedProject {
   description: string;
   tech: string[];
   link: string;
-  github: string;
+  github?: string;
+  liveUrl?: string;
 }
