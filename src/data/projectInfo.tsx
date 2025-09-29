@@ -13,7 +13,7 @@ export const sideProjects: FeaturedProject[] = [
   {
     title: "Quaid Dot Army",
     cover: "/projects/quaidarmy/qa_banner.png",
-    description: "A fully-accessible podcast fan website and player, with AI-generated transcriptions synced to remote audio",
+    description: "A fully-accessible podcast fan website and player, with AI-generated transcriptions synced to remote audio. Because no one had bought the domain yet.",
     tech: ["Next.js", "Python", "Docker", "Whisper"],
     link: "/projects/quaid-army",
     liveUrl: "https://quaid.army"
@@ -21,7 +21,7 @@ export const sideProjects: FeaturedProject[] = [
   {
     title: "S-G-H",
     cover: "/projects/sushigloryhole/icon_512.png",
-    description: "Cross-Platform codebase with location and map interactivity, inspired by the music of The Lonely Island",
+    description: "Cross-Platform codebase with location and map interactivity, inspired by the music of The Lonely Island. They pitched the app idea in their music video, so I had to build it.",
     tech: ["Angular", "Ionic", "GitHub Actions"],
     link: "/projects/sushi-glory-hole",
     liveUrl: "https://sushigloryhole.app"

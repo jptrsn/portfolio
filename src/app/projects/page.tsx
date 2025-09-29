@@ -42,12 +42,6 @@ export default function ProjectsPage() {
             <div className="text-sm text-gray-600 dark:text-gray-300">Total Projects</div>
           </div>
           <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
-            <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-              {allProjects.filter(p => p.featured).length}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Featured</div>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
             <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
               {allProjects.filter(p => p.hasCustomHardware).length}
             </div>

@@ -1,0 +1,55 @@
+{
+  "id": "zip-captions",
+  "title": "Zip Captions",
+  "slug": "zip-captions",
+  "shortDescription": "Simple, free, easy speech-to-text for everyone, because accessibility should be free.",
+  "longDescription": "A free, open-source, and browser-based captioning application built with a modern TypeScript-driven stack and a commitment to accessibility, allowing users to generate captions directly in their browser at no cost.",
+  "year": "2023",
+  "startDate": "2023-04-01",
+  "images": [
+    {
+      "url": "/projects/zipcaptions/screenshot.png",
+      "alt": "Screen shot of the Zip Captions landing page",
+      "caption": "The landing page of the web application",
+      "isHero": true
+    }
+  ],
+  "tags": [
+    { "name": "Angular", "category": "framework" },
+    { "name": "NodeJS", "category": "framework" },
+    { "name": "Web (PWA)", "category": "platform" },
+    { "name": "Android", "category": "platform" },
+    { "name": "Windows", "category": "platform" },
+    { "name": "TypeScript", "category": "language" }
+  ],
+  "technologies": ["Angular", "Progressive Web App (PWA)"],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/zip-captions",
+      "label": "View Source",
+      "isAvailable": true,
+      "note": "Fully open source under GPLv3"
+    },
+    {
+      "type": "demo",
+      "url": "https://zipcaptions.app",
+      "label": "Visit Site",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "active",
+    "deploymentStatus": "live",
+    "maintenanceLevel": "maintanined"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 2,
+    "duration": "on-going",
+    "role": "CTO & Engineer"
+  },
+  "challenged": "Real-time speech to text at low- to no-cost across all devices",
+  "keywords": ["accessibility", "speech-to-text", "web", "open-source"],
+  "isOpenSource": true
+}

@@ -69,7 +69,6 @@ export interface Project {
 
   // SEO and discovery
   keywords?: string[]; // For search functionality
-  featured?: boolean; // Highlight on main projects page
 
   // Content flags
   hasCustomHardware?: boolean;

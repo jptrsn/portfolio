@@ -206,7 +206,7 @@ export default function ProjectImageGallery({ project }: ProjectImageGalleryProp
               alt={allImages[currentIndex].alt}
               width={1200}
               height={800}
-              className="max-w-full max-h-full object-contain rounded-lg"
+              className="max-w-[90vh] max-h-[90vh] object-contain rounded-lg"
               priority
             />
           </div>
