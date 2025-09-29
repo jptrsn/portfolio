@@ -53,12 +53,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </blockquote>
     ),
     code: ({ children }) => (
-      <code className="bg-gray-100 text-red-600 px-2 py-1 rounded text-sm font-mono">
+      <code className="bg-neutral-100 text-red-600 px-2 py-1 rounded text-sm font-mono">
         {children}
       </code>
     ),
     pre: ({ children }) => (
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6 text-sm">
+      <pre className="bg-neutral-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6 text-sm">
         {children}
       </pre>
     ),
@@ -78,7 +78,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     // Custom Callout component
     Callout: ({ children, emoji = '💡' }: { children: React.ReactNode; emoji?: string }) => (
-      <div className="flex p-4 mb-6 bg-gray-50 border border-gray-200 rounded-lg">
+      <div className="flex p-4 mb-6 bg-neutral-50 border border-gray-200 rounded-lg">
         <div className="flex-shrink-0 mr-3 text-xl">
           {emoji}
         </div>

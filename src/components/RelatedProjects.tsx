@@ -23,7 +23,7 @@ export default function RelatedProjects({ currentProject }: RelatedProjectsProps
           <Link
             key={project.id}
             href={`/projects/${project.slug}`}
-            className="group block bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 hover:shadow-lg"
+            className="group block bg-neutral-700 dark:bg-neutral-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 hover:shadow-lg"
           >
             <div className="overflow-hidden rounded-t-lg">
               {project.images.length > 0 ? (
@@ -49,7 +49,7 @@ export default function RelatedProjects({ currentProject }: RelatedProjectsProps
                 {project.tags.slice(0, 2).map((tag, index) => (
                   <span
                     key={`${tag.name}-${tag.category}-${index}`}
-                    className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded"
+                    className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-700 text-gray-600 dark:text-gray-300 rounded"
                   >
                     {tag.name}
                   </span>

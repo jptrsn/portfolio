@@ -53,7 +53,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
-        <Link href="/projects" className="hover:text-gray-700 dark:hover:text-gray-200">
+        <Link href="/projects" className="hover:text-gray-200 dark:hover:text-gray-200">
           Projects
         </Link>
         <span>/</span>
@@ -90,7 +90,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
               : project.status.current === 'completed'
               ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-              : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+              : 'bg-neutral-100 text-gray-800 dark:bg-neutral-700 dark:text-gray-200'
           }`}>
             {project.status.current.charAt(0).toUpperCase() + project.status.current.slice(1)}
           </span>
@@ -155,14 +155,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             }, {} as Record<string, typeof project.tags>)
           ).map(([category, tags]) => (
             <div key={category}>
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3 capitalize">
+              <h3 className="text-lg font-semibold text-gray-200 dark:text-gray-300 mb-3 capitalize">
                 {category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {tags.map((tag, index) => (
                   <span
                     key={`${tag.name}-${index}`}
-                    className="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium"
+                    className="px-3 py-2 bg-neutral-100 dark:bg-neutral-700 text-gray-200 dark:text-gray-300 rounded-lg text-sm font-medium"
                     style={tag.color ? { backgroundColor: tag.color + '20', color: tag.color } : undefined}
                   >
                     {tag.name}
@@ -212,7 +212,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
       {/* Project Metadata */}
       {project.metadata && (
-        <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-12">
+        <div className="bg-neutral-50 dark:bg-neutral-800 p-6 rounded-lg mb-12">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Project Details
           </h3>

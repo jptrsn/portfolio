@@ -37,14 +37,14 @@ export default async function PostsPage() {
             {posts.map((post) => (
               <article
                 key={post.slug}
-                className="bg-secondary-200/10 rounded-xl shadow-sm border border-primary-900 overflow-hidden hover:shadow-md transition-shadow duration-300"
+                className="bg-primary-300/10 rounded-xl shadow-sm border border-primary-700 overflow-hidden hover:shadow-md transition-shadow duration-300"
               >
                 <Link href={`/posts/${post.slug}`} className="block">
                   <div className="p-8">
                     {/* Post Header */}
                     <div className="flex items-center justify-between mb-4">
                       <time
-                        className="text-sm font-medium text-secondary-600 bg-secondary-50 px-3 py-1 rounded-full"
+                        className="text-sm font-medium text-secondary-200 bg-secondary-800 px-3 py-1 rounded-full"
                         dateTime={post.date}
                       >
                         {formatDate(post.date)}
@@ -85,7 +85,7 @@ export default async function PostsPage() {
                           {post.tags.map(tag => (
                             <span
                               key={tag}
-                              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-primary-700 transition-colors"
+                              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium text-secondary-200 bg-secondary-800 hover:bg-secondary-600 hover:text-primary-900 transition-colors"
                             >
                               #{tag}
                             </span>

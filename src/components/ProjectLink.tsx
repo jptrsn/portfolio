@@ -45,7 +45,7 @@ export default function ProjectLinkButton({ link }: ProjectLinkButtonProps) {
 
   if (!link.isAvailable) {
     return (
-      <div className={`${baseClasses} bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed`}>
+      <div className={`${baseClasses} bg-neutral-100 dark:bg-neutral-700 text-gray-400 dark:text-gray-500 cursor-not-allowed`}>
         {getIcon(link.type)}
         {link.label}
         {link.note && (
@@ -56,7 +56,7 @@ export default function ProjectLinkButton({ link }: ProjectLinkButtonProps) {
   }
 
   const linkClasses = link.type === 'github'
-    ? `${baseClasses} bg-gray-900 dark:bg-gray-700 text-white hover:bg-gray-800 dark:hover:bg-gray-600`
+    ? `${baseClasses} bg-neutral-900 dark:bg-neutral-700 text-white hover:bg-neutral-800 dark:hover:bg-neutral-600`
     : `${baseClasses} bg-blue-600 text-white hover:bg-blue-700`;
 
   return (

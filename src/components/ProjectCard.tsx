@@ -62,7 +62,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                 : project.status.current === 'completed'
                 ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+                : 'bg-neutral-100 text-gray-800 dark:bg-neutral-700 dark:text-gray-200'
             }`}>
               {project.status.current}
             </span>
@@ -79,14 +79,14 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.tags.slice(0, 4).map((tag, index) => (
               <span
                 key={`${tag.name}-${tag.category}-${index}`}
-                className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded"
+                className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-700 text-gray-200 dark:text-gray-300 rounded"
                 style={tag.color ? { backgroundColor: tag.color + '20', color: tag.color } : undefined}
               >
                 {tag.name}
               </span>
             ))}
             {project.tags.length > 4 && (
-              <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded">
+              <span className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-700 text-gray-500 dark:text-gray-400 rounded">
                 +{project.tags.length - 4} more
               </span>
             )}

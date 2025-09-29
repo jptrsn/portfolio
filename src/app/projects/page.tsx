@@ -35,19 +35,19 @@ export default function ProjectsPage() {
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+          <div className="bg-neutral-700 dark:bg-neutral-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {allProjects.length}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">Total Projects</div>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+          <div className="bg-neutral-700 dark:bg-neutral-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
             <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
               {allProjects.filter(p => p.hasCustomHardware).length}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-300">Hardware Projects</div>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+          <div className="bg-neutral-700 dark:bg-neutral-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
             <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {getAllTechnologies().length}
             </div>
