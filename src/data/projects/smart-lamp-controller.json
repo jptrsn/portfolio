@@ -9,10 +9,20 @@
   "endDate": "2022-07-15",
   "images": [
     {
-      "url": "/images/projects/smart-lamp/hero.jpg",
+      "url": "/projects/smart-lamp/hero.jpg",
       "alt": "3D printed smart lamp in operation",
       "caption": "The completed lamp system with custom housing",
       "isHero": true
+    },
+    {
+      "url": "/projects/smart-lamp/daylight_off.jpg",
+      "alt": "3D printed smart lamp in daylight",
+      "caption": "The completed lamp system with custom housing, as it appears unlit"
+    },
+    {
+      "url": "/projects/smart-lamp/daylight_on.jpg",
+      "alt": "3D printed smart lamp in operation",
+      "caption": "The completed lamp system with custom housing, as it appears lit in full sunlight"
     }
   ],
   "tags": [
@@ -26,16 +36,10 @@
   "links": [
     {
       "type": "github",
-      "url": "https://github.com/username/smart-lamp",
+      "url": "https://github.com/jptrsn/meet-cute",
       "label": "View Source",
-      "isAvailable": false,
-      "note": "Private repository due to custom hardware specifications"
-    },
-    {
-      "type": "video",
-      "url": "https://youtube.com/watch?v=example",
-      "label": "Demo Video",
-      "isAvailable": true
+      "isAvailable": true,
+      "note": "No longer supported by Chrome Browser"
     }
   ],
   "status": {
@@ -47,7 +51,7 @@
     "difficulty": "advanced",
     "teamSize": 1,
     "duration": "4 months",
-    "role": "Full Stack Developer & Hardware Designer"
+    "role": "Hardware Designer & Tinkerer"
   },
   "challenges": "Integrating hardware control with browser extension communication while maintaining reliable connectivity.",
   "learnings": "Gained experience with IoT protocols, 3D modeling, and cross-platform mobile development.",
