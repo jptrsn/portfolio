@@ -10,25 +10,6 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={`/projects/${project.slug}`}
       className="group block rounded-lg overflow-hidden border border-neutral-700 hover:border-neutral-600 transition-all duration-200 hover:shadow-lg hover:scale-[1.05]"
     >
-      {/* <div className="relative min-h-64 overflow-hidden rounded-t-lg">
-        {heroImage ? (
-          <Image
-            src={heroImage.url}
-            alt={heroImage.alt}
-            fill={true}
-            className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-200"
-          />
-        ) : (
-          <div className="w-full h-48 bg-gradient-to-br from-primary-900 to-secondary-900 flex items-center justify-center">
-            <div className="text-blue-600 dark:text-blue-300">
-              <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-          </div>
-        )}
-      </div> */}
-
       <div className="min-h-[350] h-full relative flex flex-col">
         { heroImage && (
           <>
@@ -43,15 +24,15 @@ export default function ProjectCard({ project }: { project: Project }) {
         )}
         <div className="p-6 bg-neutral-700/80 hover:bg-neutral-700/95 relative flex flex-col basis-full justify-between">
           <div className="flex items-start justify-between mb-2">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-xl font-semibold text-neutral-300 group-hover:text-blue-600 transition-colors">
               {project.title}
             </h3>
-            <span className="text-sm text-gray-500 dark:text-gray-400 ml-2 flex-shrink-0">
+            <span className="text-sm ml-2 flex-shrink-0">
               {project.year}
             </span>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+          <p className="text-neutral-200 text-sm mb-4 line-clamp-3">
             {project.shortDescription}
           </p>
 
@@ -59,16 +40,16 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div className="flex items-center gap-2 mb-4">
             <span className={`px-2 py-1 text-xs rounded-full ${
               project.status.current === 'active'
-                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                ? 'bg-secondary-100 text-secondary-800'
                 : project.status.current === 'completed'
-                ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                : 'bg-neutral-100 text-gray-800 dark:bg-neutral-700 dark:text-gray-200'
+                ? 'bg-primary-100 text-primary-800 '
+                : 'bg-neutral-100 text-neutral-800 '
             }`}>
               {project.status.current}
             </span>
 
             {project.hasCustomHardware && (
-              <span className="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+              <span className="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800 ">
                 Hardware
               </span>
             )}
@@ -79,14 +60,14 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.tags.slice(0, 4).map((tag, index) => (
               <span
                 key={`${tag.name}-${tag.category}-${index}`}
-                className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-700 text-gray-200 dark:text-gray-300 rounded"
+                className="px-2 py-1 text-xs bg-secondary-900 text-secondary-200 rounded"
                 style={tag.color ? { backgroundColor: tag.color + '20', color: tag.color } : undefined}
               >
                 {tag.name}
               </span>
             ))}
             {project.tags.length > 4 && (
-              <span className="px-2 py-1 text-xs bg-neutral-100 dark:bg-neutral-700 text-gray-500 dark:text-gray-400 rounded">
+              <span className="px-2 py-1 text-xs bg-neutral-100 text-neutral-500 rounded">
                 +{project.tags.length - 4} more
               </span>
             )}

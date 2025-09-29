@@ -175,11 +175,11 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* <div className="text-center mt-12">
+          <div className="text-center mt-12">
             <Link href="/projects" className="border border-accent-500 text-accent-400 hover:bg-accent-500/10 px-8 py-3 rounded-lg font-semibold transition-all inline-flex items-center">
               View All Projects <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-          </div> */}
+          </div>
         </div>
       </section>
 

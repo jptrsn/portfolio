@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 interface ContactFormData {
   name: string;
@@ -8,6 +9,8 @@ interface ContactFormData {
   message: string;
   projectType: string;
 }
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,7 +33,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Log the submission (in production, you'd want to save this to a database)
+    // Log the submission
     console.log('Contact form submission:', {
       timestamp: new Date().toISOString(),
       name: body.name,
@@ -41,22 +44,54 @@ export async function POST(request: NextRequest) {
       message: body.message
     });
 
-    // Here you can add different notification methods:
+    const toAddress = process.env.NOTIFICATION_EMAIL;
 
-    // Option 1: Send email using a service like Resend, SendGrid, or Nodemailer
-    // await sendEmailNotification(body);
+    if (!toAddress) {
+      console.error(`Missing NOTIFICATION_EMAIL env variable`)
+      return NextResponse.json({ error: 'Missing configuration'}, { status: 500 })
+    }
 
-    // Option 2: Save to database (Supabase, PlanetScale, etc.)
-    // await saveToDatabase(body);
+    // Send email notification via Resend
+    const result = await resend.batch.send([
+      {
+        from: 'outreach@notifications.fixyourvibeco.de', // Change this to your verified domain
+        to: toAddress, // Your email
+        subject: `Contact Form Submission: ${body.subject}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${body.name}</p>
+          <p><strong>Email:</strong> ${body.email}</p>
+          <p><strong>Company:</strong> ${body.company || 'Not provided'}</p>
+          <p><strong>Project Type:</strong> ${body.projectType}</p>
+          <p><strong>Subject:</strong> ${body.subject}</p>
+          <p><strong>Message:</strong></p>
+          <p>${body.message.replace(/\n/g, '<br>')}</p>
+          <hr>
+          <p style="color: #666; font-size: 12px;">
+            Submitted at: ${new Date().toLocaleString()}
+          </p>
+        `,
+      },
+      {
+        from: 'outreach@notifications.fixyourvibeco.de',
+        to: body.email,
+        subject: `Thanks for getting in touch. We'll respond shortly`,
+        html: `
+          <h2>Thanks for reaching out!</h2>
+          <p>One of our team members will review your message and respond within one business day.</p>
+          <p>Warmest regards,</p>
+          <p>OutreachBot</p>
+        `
+      }
+    ]);
 
-    // Option 3: Send to Slack/Discord webhook
-    // await sendSlackNotification(body);
-
-    // Option 4: Send to a form service like Formspree
-    // await sendToFormspree(body);
-
-    // For now, we'll just simulate success
-    // In production, you'd implement one of the above methods
+    if (result.error) {
+      console.error('Resend API error:', result.error.message);
+      return NextResponse.json(
+        { error: 'Internal server error' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       {
@@ -74,52 +109,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-// Example email notification function (commented out - requires email service)
-/*
-async function sendEmailNotification(formData: ContactFormData) {
-  // Using Resend (popular choice for Next.js)
-  const { Resend } = require('resend');
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
-  await resend.emails.send({
-    from: 'contact@educoder.dev',
-    to: 'your@email.com',
-    subject: `New Contact Form: ${formData.subject}`,
-    html: `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${formData.name}</p>
-      <p><strong>Email:</strong> ${formData.email}</p>
-      <p><strong>Company:</strong> ${formData.company || 'Not provided'}</p>
-      <p><strong>Project Type:</strong> ${formData.projectType}</p>
-      <p><strong>Subject:</strong> ${formData.subject}</p>
-      <p><strong>Message:</strong></p>
-      <p>${formData.message}</p>
-    `
-  });
-}
-*/
-
-// Example Slack notification function
-/*
-async function sendSlackNotification(formData: ContactFormData) {
-  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
-
-  await fetch(webhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      text: `New contact form submission from ${formData.name} (${formData.email})`,
-      blocks: [
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: `*New Contact Form Submission*\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Company:* ${formData.company || 'Not provided'}\n*Project Type:* ${formData.projectType}\n*Subject:* ${formData.subject}\n*Message:* ${formData.message}`
-          }
-        }
-      ]
-    })
-  });
-}
-*/
