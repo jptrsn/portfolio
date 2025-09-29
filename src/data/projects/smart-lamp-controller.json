@@ -40,6 +40,12 @@
       "label": "View Source",
       "isAvailable": true,
       "note": "No longer supported by Chrome Browser"
+    },
+    {
+      "type": "other",
+      "url": "https://www.tinkercad.com/dashboard/collections/3mRGSfz2Hb1/3d",
+      "label": "View Models",
+      "isAvailable": true
     }
   ],
   "status": {

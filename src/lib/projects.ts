@@ -1,6 +1,6 @@
+import { Project, ProjectTag } from '@/types/portfolio'; // Adjust import path as needed
 import fs from 'fs';
 import path from 'path';
-import { Project, PortfolioData, ProjectTag } from '@/types/portfolio'; // Adjust import path as needed
 
 const PROJECTS_DIRECTORY = path.join(process.cwd(), 'src/data/projects');
 
