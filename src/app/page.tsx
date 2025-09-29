@@ -141,23 +141,30 @@ export default function HomePage() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex justify-between items-center">
-                        <Link href={project.link} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center">
+                      <div className={`flex ${project.liveUrl ? 'justify-between' : 'justify-end'} items-center`}>
+                        {/* <Link href={project.link} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center">
                           View Details <ArrowRight className="w-3 h-3 ml-1" />
-                        </Link>
+                        </Link> */}
+                        { project.liveUrl && (
+                          <div className="flex justify-between items-center">
+                            <Link href={project.liveUrl} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center" target="_blank">
+                              Visit the Project <ExternalLink className="w-3 h-3 ml-1" />
+                            </Link>
+                          </div>
+                        )}
                         { project.github && (
                           <Link href={project.github} className="text-neutral-400 hover:text-neutral-300">
                             <BrandIcon name='github'></BrandIcon>
                           </Link>
                         )}
                       </div>
-                      { project.liveUrl && (
+                      {/* { project.liveUrl && (
                         <div className="flex justify-between items-center">
                           <Link href={project.liveUrl} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center" target="_blank">
                             Visit the Project <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </div>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>
@@ -165,11 +172,11 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <Link href="/projects" className="border border-accent-500 text-accent-400 hover:bg-accent-500/10 px-8 py-3 rounded-lg font-semibold transition-all inline-flex items-center">
               View All Projects <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -187,9 +194,9 @@ export default function HomePage() {
             <Link href="/contact" className="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 inline-flex items-center justify-center">
               Start a Conversation <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-            <Link href="/experience" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all inline-flex items-center justify-center">
+            {/* <Link href="/experience" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all inline-flex items-center justify-center">
               View My Experience <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>

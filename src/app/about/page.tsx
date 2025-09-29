@@ -8,12 +8,11 @@ export default function AboutPage() {
       <Navigation />
 
       <div className="container mx-auto max-w-4xl">
-        <h1 className="text-4xl font-bold text-gradient mb-8">About</h1>
         <h2 className="text-xl font-bold mb-8">Hi, I&apos;m James</h2>
         <div className="flex items-center justify-center">
-          <Image src="/Headshot_3web.jpg" alt="Headshot" width="215" height="215" className="rounded-xl" />
+          <Image src="/Headshot_3web.jpg" alt="Headshot" width="215" height="215" className="rounded-xl object-cover aspect-1/1" />
         </div>
-        <div className="flex flex-col gap-6 mt-8">
+        <div className="flex flex-col gap-6 my-8">
           <p>
           I&apos;m a full-stack software developer with a decade of web development experience. I love building beautiful, responsive web apps that are a pleasure to use.
           </p>

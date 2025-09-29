@@ -31,9 +31,9 @@ const Navigation = () => {
 
   const navigationLinks = [
     { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/experience', label: 'Experience' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/#projects', label: 'Projects' },
+    // { href: '/experience', label: 'Experience' },
+    { href: '/posts', label: 'Posts' },
     { href: '/contact', label: 'Contact' },
   ];
 
