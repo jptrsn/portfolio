@@ -1,37 +1,4 @@
-//src/app/types/types.ts
-import { JSX } from "react";
-
-export interface ContactInfo {
-  icon: JSX.Element;
-  label: string;
-  value: string;
-  href: string;
-}
-
-export interface Skill {
-  icon: JSX.Element;
-  name: string;
-  description: string;
-  relatedTech?: string[];
-}
-
-export interface TechnicalUnderstanding {
-  icon: JSX.Element;
-  id: string;
-  name: string;
-  description: string;
-}
-
-export interface FeaturedProject {
-  title: string;
-  cover?: string;
-  description: string;
-  tech: string[];
-  link: string;
-  github?: string;
-  liveUrl?: string;
-}
-
+// TypeScript interfaces for the portfolio schema
 export interface ProjectTag {
   name: string;
   category: 'language' | 'framework' | 'database' | 'tool' | 'platform' | 'hardware' | 'other';
@@ -110,26 +77,36 @@ export interface Project {
   isOpenSource?: boolean;
 }
 
-// Root schema for the projects data file
+// Root schema for the projects data file (if you prefer a single file approach)
 export interface PortfolioData {
   projects: Project[];
   lastUpdated: string; // ISO date string
   version: string; // Schema version for migrations
 }
 
-// Example usage and validation helpers
-export const validateProject = (project: Project): boolean => {
-  return !!(
-    project.id &&
-    project.title &&
-    project.slug &&
-    project.shortDescription &&
-    project.longDescription &&
-    project.year &&
-    project.tags.length > 0
-  );
-};
-
 // Utility types for filtering and display
 export type ProjectCategory = ProjectTag['category'];
 export type ProjectStatusType = ProjectStatus['current'];
+export type ProjectDifficulty = ProjectMetadata['difficulty'];
+
+// Search and filter types
+export interface ProjectFilters {
+  status?: ProjectStatusType[];
+  categories?: ProjectCategory[];
+  technologies?: string[];
+  yearRange?: {
+    start: number;
+    end: number;
+  };
+  difficulty?: ProjectDifficulty[];
+  hasHardware?: boolean;
+  isOpenSource?: boolean;
+  featured?: boolean;
+}
+
+export interface ProjectSearchParams {
+  query?: string;
+  filters?: ProjectFilters;
+  sortBy?: 'year' | 'title' | 'featured';
+  sortOrder?: 'asc' | 'desc';
+}

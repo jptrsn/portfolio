@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Typewriter } from './Typewriter';
 
 const Navigation = () => {
   const pathname = usePathname();
@@ -31,7 +32,7 @@ const Navigation = () => {
 
   const navigationLinks = [
     { href: '/about', label: 'About' },
-    { href: '/#projects', label: 'Projects' },
+    { href: '/projects', label: 'Projects' },
     // { href: '/experience', label: 'Experience' },
     { href: '/posts', label: 'Posts' },
     { href: '/contact', label: 'Contact' },
@@ -48,8 +49,8 @@ const Navigation = () => {
     <>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-neutral-800">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className={`text-xl font-bold text-gradient ${isActiveLink('/') && 'text-gradient'}`}>
-            EduCoder.dev
+          <Link href="/" className={`text-xl font-bold`}>
+            <Typewriter speed={80} delay={100} text="EduCoder.dev" showCursor={false} className="text-gradient" />
           </Link>
 
           {/* Desktop Navigation */}

@@ -5,9 +5,12 @@ import { Typewriter } from '@/components/Typewriter';
 import { contactInfo } from '@/data/contactInfo';
 import { sideProjects } from '@/data/projectInfo';
 import { skills } from '@/data/skills';
+import { generateExtendedMetadata } from '@/lib/metadata';
 import { ArrowRight, ChevronDown, Code, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+
+export const metadata = generateExtendedMetadata({});
 
 export default function HomePage() {
 

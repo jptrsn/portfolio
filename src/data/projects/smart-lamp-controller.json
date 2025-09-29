@@ -1,0 +1,59 @@
+{
+  "id": "smart-lamp-controller",
+  "title": "3D Printed Smart Lamp System",
+  "slug": "smart-lamp-controller",
+  "shortDescription": "Custom IoT lamp with 3D printed housing and browser extension control.",
+  "longDescription": "A complete smart lighting solution featuring custom 3D printed lamp housing, ESP8266 microcontroller, and a Chrome Browser app. The system allows for webcam status control, indicating when the user is \"On-Air\".",
+  "year": 2022,
+  "startDate": "2022-03-01",
+  "endDate": "2022-07-15",
+  "images": [
+    {
+      "url": "/images/projects/smart-lamp/hero.jpg",
+      "alt": "3D printed smart lamp in operation",
+      "caption": "The completed lamp system with custom housing",
+      "isHero": true
+    }
+  ],
+  "tags": [
+    { "name": "Angular", "category": "framework" },
+    { "name": "ESP8266", "category": "hardware" },
+    { "name": "TypeScript", "category": "language" },
+    { "name": "3D Printing", "category": "hardware" },
+    { "name": "IoT", "category": "platform" }
+  ],
+  "technologies": ["Angular", "Arduino", "TypeScript", "3D Printing"],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/username/smart-lamp",
+      "label": "View Source",
+      "isAvailable": false,
+      "note": "Private repository due to custom hardware specifications"
+    },
+    {
+      "type": "video",
+      "url": "https://youtube.com/watch?v=example",
+      "label": "Demo Video",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "completed",
+    "deploymentStatus": "requires-hardware",
+    "maintenanceLevel": "legacy"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 1,
+    "duration": "4 months",
+    "role": "Full Stack Developer & Hardware Designer"
+  },
+  "challenges": "Integrating hardware control with browser extension communication while maintaining reliable connectivity.",
+  "learnings": "Gained experience with IoT protocols, 3D modeling, and cross-platform mobile development.",
+  "hasCustomHardware": true,
+  "requiresSpecialSetup": true,
+  "isOpenSource": false,
+  "featured": true,
+  "keywords": ["iot", "smart home", "3d printing", "browser extension", "arduino"]
+}

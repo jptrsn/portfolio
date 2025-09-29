@@ -2,7 +2,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { getPostBySlug, getAllPosts, formatDate } from '@/lib/posts'
+import { getPostBySlug, getAllPosts, formatDate, Post } from '@/lib/posts'
+import { generateExtendedMetadata } from '@/lib/metadata'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -89,7 +90,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+  const post: Post | null = await getPostBySlug(slug)
 
   if (!post) {
     return {
@@ -97,10 +98,11 @@ export async function generateMetadata({ params }: Props) {
     }
   }
 
-  return {
+  return generateExtendedMetadata({
     title: post.title,
     description: post.excerpt || post.description,
-  }
+    tags: post.tags
+  })
 }
 
 export default async function PostPage({ params }: Props) {
