@@ -1,0 +1,61 @@
+{
+  "id": "quaid-army",
+  "title": "Podcast Fan Transcription Site",
+  "slug": "quaid-army",
+  "shortDescription": "Simple static podcast fan website built from RSS feed data.",
+  "longDescription": "A static website built from a podcast RSS feed. Provides episode transcriptions with automatic sync playback, as well as embedded linked video player and full text search. Hosted on a Raspberry Pi 3B+",
+  "year": 2025,
+  "startDate": "2025-03-01",
+
+  "images": [
+    {
+      "url": "/projects/quaidarmy/qa_banner.png",
+      "alt": "Quaid Army banner",
+      "caption": "Banner",
+      "isHero": true
+    },
+    {
+      "url": "/projects/quaidarmy/episode_page.png",
+      "alt": "Screenshot of episode page",
+      "caption": "Example of data-driven episode page"
+    }
+  ],
+  "tags": [
+    { "name": "NextJS", "category": "framework" },
+    { "name": "TypeScript", "category": "language" },
+    { "name": "Raspberry Pi", "category": "platform" }
+  ],
+  "technologies": ["NextJS", "TypeScript", "Raspberry Pi"],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/quaid_army",
+      "label": "View Source",
+      "isAvailable": false
+    },
+    {
+      "type": "demo",
+      "url": "https://quaid.army",
+      "label": "View the Site",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "concept",
+    "deploymentStatus": "live",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "intermediate",
+    "teamSize": 1,
+    "duration": "3 months",
+    "role": "Madcap Engineer"
+  },
+  "challenges": "Perform automated data retrieval, parsing, and publishing using a new framework (NextJS) and approach (SSG)",
+  "learnings": "Refined understanding of client-side, server-side, and static-site build approaches in a full stack React environment",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": false,
+  "isOpenSource": false,
+  "featured": true,
+  "keywords": []
+}

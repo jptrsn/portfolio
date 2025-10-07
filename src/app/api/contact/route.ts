@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     // Send email notification via Resend
     const result = await resend.batch.send([
       {
-        from: 'outreach@notifications.fixyourvibeco.de', // Change this to your verified domain
+        from: 'outreach@mail.educoder.dev',
         to: toAddress, // Your email
         subject: `Contact Form Submission: ${body.subject}`,
         html: `
@@ -73,14 +73,14 @@ export async function POST(request: NextRequest) {
         `,
       },
       {
-        from: 'outreach@notifications.fixyourvibeco.de',
+        from: 'outreach@mail.educoder.dev',
         to: body.email,
         subject: `Thanks for getting in touch. We'll respond shortly`,
         html: `
           <h2>Thanks for reaching out!</h2>
-          <p>One of our team members will review your message and respond within one business day.</p>
-          <p>Warmest regards,</p>
-          <p>OutreachBot</p>
+          <p>I will review your message and reach out soon.</p>
+          <p>Take care,<br/>
+          James</p>
         `
       }
     ]);

@@ -44,7 +44,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setStatusMessage('Thank you! Your message has been sent successfully. I&apos;ll get back to you within 24 hours.');
+        setStatusMessage('Thank you! Your message has been sent successfully. I\'ll get back to you as soon as possible.');
         setFormData({
           name: '',
           email: '',
