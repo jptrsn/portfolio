@@ -9,13 +9,13 @@
 
   "images": [
     {
-      "url": "/projects/quaidarmy/qa_banner.png",
+      "url": "/project-assets/quaidarmy/qa_banner.png",
       "alt": "Quaid Army banner",
       "caption": "Banner",
       "isHero": true
     },
     {
-      "url": "/projects/quaidarmy/episode_page.png",
+      "url": "/project-assets/quaidarmy/episode_page.png",
       "alt": "Screenshot of episode page",
       "caption": "Example of data-driven episode page"
     }

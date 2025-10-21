@@ -9,18 +9,18 @@
   "endDate": "2022-07-15",
   "images": [
     {
-      "url": "/projects/smart-lamp/hero.jpg",
+      "url": "/project-assets/smart-lamp/hero.jpg",
       "alt": "3D printed smart lamp in operation",
       "caption": "The completed lamp system with custom housing",
       "isHero": true
     },
     {
-      "url": "/projects/smart-lamp/daylight_off.jpg",
+      "url": "/project-assets/smart-lamp/daylight_off.jpg",
       "alt": "3D printed smart lamp in daylight",
       "caption": "The completed lamp system with custom housing, as it appears unlit"
     },
     {
-      "url": "/projects/smart-lamp/daylight_on.jpg",
+      "url": "/project-assets/smart-lamp/daylight_on.jpg",
       "alt": "3D printed smart lamp in operation",
       "caption": "The completed lamp system with custom housing, as it appears lit in full sunlight"
     }

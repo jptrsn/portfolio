@@ -8,7 +8,7 @@
   "startDate": "2023-04-01",
   "images": [
     {
-      "url": "/projects/zipcaptions/screenshot.png",
+      "url": "/project-assets/zipcaptions/screenshot.png",
       "alt": "Screen shot of the Zip Captions landing page",
       "caption": "The landing page of the web application",
       "isHero": true
