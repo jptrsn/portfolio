@@ -19,5 +19,11 @@ export const contactInfo: ContactInfo[] = [
       label: 'Mastodon',
       value: '@educoder@mastodon.online',
       href: 'https://mastodon.online/@educoder'
+    },
+    {
+      icon: <BrandIcon name='discourse' />,
+      label: 'Discourse',
+      value: '@EduCoder',
+      href: 'https://classroom.cafe/u/educoder'
     }
   ];

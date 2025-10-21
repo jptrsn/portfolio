@@ -62,6 +62,8 @@ export interface Project {
   status: ProjectStatus;
   metadata: ProjectMetadata;
 
+  featured?: boolean;
+
   // Additional content
   challenges?: string; // What problems you solved
   learnings?: string; // What you learned from the project

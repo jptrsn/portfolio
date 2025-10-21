@@ -38,6 +38,7 @@
       "isAvailable": true
     }
   ],
+  "featured": true,
   "status": {
     "current": "active",
     "deploymentStatus": "live",
@@ -49,7 +50,8 @@
     "duration": "on-going",
     "role": "CTO & Engineer"
   },
-  "challenged": "Real-time speech to text at low- to no-cost across all devices",
+  "challenges": "Providing real-time speech to text at low- to no-cost across all devices for anyone, anywhere, at any time.",
+  "learnings": "Processing audio in real-time via streaming sockets. Peer-to-peer sharing via WebRTC. Encrypted data stored in IndexedDB using a two-part key.",
   "keywords": ["accessibility", "speech-to-text", "web", "open-source"],
   "isOpenSource": true
 }

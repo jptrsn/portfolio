@@ -27,32 +27,10 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-xl text-neutral-200 max-w-3xl mx-auto">
-            A collection of software development projects spanning web applications, mobile apps,
-            IoT solutions, and hardware integrations. From concept to deployment, from messing around
+            A collection of side projects spanning web applications, mobile apps,
+            IoT solutions, mild distractions, and hardware integrations. From concept to deployment, from messing around
             to maintaining long-term.
           </p>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="bg-neutral-700 p-4 rounded-lg border border-gray-200 text-center">
-            <div className="text-2xl font-bold text-blue-600">
-              {allProjects.length}
-            </div>
-            <div className="text-sm text-neutral-200">Total Projects</div>
-          </div>
-          <div className="bg-neutral-700 p-4 rounded-lg border border-gray-200 text-center">
-            <div className="text-2xl font-bold text-purple-600">
-              {allProjects.filter(p => p.hasCustomHardware).length}
-            </div>
-            <div className="text-sm text-neutral-200 ">Hardware Projects</div>
-          </div>
-          <div className="bg-neutral-700 p-4 rounded-lg border border-gray-200 text-center">
-            <div className="text-2xl font-bold text-orange-600">
-              {getAllTechnologies().length}
-            </div>
-            <div className="text-sm text-neutral-200">Technologies</div>
-          </div>
         </div>
 
         {/* Projects Grid */}

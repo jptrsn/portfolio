@@ -126,11 +126,11 @@ body {
 
 /* Portfolio-specific utility classes */
 .gradient-primary {
-  background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+  background: linear-gradient(135deg, var(--neutral-900), var(--neutral-700));
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, var(--secondary-500), var(--primary-400));
+  background: linear-gradient(135deg, var(--background), var(--neutral-900));
 }
 
 .text-gradient {

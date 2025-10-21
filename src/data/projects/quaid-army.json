@@ -56,6 +56,6 @@
   "hasCustomHardware": false,
   "requiresSpecialSetup": false,
   "isOpenSource": false,
-  "featured": true,
+  "featured": false,
   "keywords": []
 }

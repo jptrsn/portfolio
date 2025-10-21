@@ -1,11 +1,12 @@
 import { BrandIcon } from '@/components/BrandIcon';
 import Navigation from '@/components/Navigation';
 import ScrollToTop from '@/components/ScrollToTop';
+import { SkillsSection } from '@/components/SkillSection';
 import { Typewriter } from '@/components/Typewriter';
 import { contactInfo } from '@/data/contactInfo';
 import { sideProjects } from '@/data/projectInfo';
-import { skills } from '@/data/skills';
 import { generateExtendedMetadata } from '@/lib/metadata';
+import { getSkillsData } from '@/lib/skill';
 import { ArrowRight, ChevronDown, Code, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,12 +15,14 @@ export const metadata = generateExtendedMetadata({});
 
 export default function HomePage() {
 
+  const skills = getSkillsData();
+
   return (
     <div className="min-h-screen bg-background text-foreground">
 
       <Navigation />
 
-      <section id="top" className="pt-24 pb-16 px-6 min-h-screen flex flex-col items-center justify-center">
+      <section id="top" className="pt-24 pb-16 px-6 min-h-screen flex flex-col items-center justify-center gradient-primary">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
 
@@ -41,17 +44,6 @@ export default function HomePage() {
               Building human-centric applications and guiding engineering teams to deliver
               exceptional digital experiences that solve real-world problems.
             </p>
-            {/* <div className="text-sm sm:text-md flex flex-col sm:flex-row justify-center gap-3 mb-12">
-              <Link href="/blog" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all sm:w-48">
-                Blog
-              </Link>
-              <Link href="/contact" className="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 sm:w-48">
-                Get In Touch
-              </Link>
-              <Link href="/projects" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all sm:w-48">
-                View Projects
-              </Link>
-            </div> */}
 
             <div className="flex justify-center space-x-6">
               { contactInfo.map((info, index) => (
@@ -70,28 +62,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="skills" className="py-20 px-6">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">Expertise</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((skill, index) => (
-              <div key={index} className="group">
-                <div className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-primary-500/50 transition-all duration-300 hover:transform hover:scale-105">
-                  <div className="mb-4">
-                    <div className="w-8 h-8 text-primary-500 group-hover:text-primary-400 transition-colors" >
-                      {skill.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{skill.name}</h3>
-                  <p className="text-neutral-400 text-sm">{skill.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SkillsSection skills={skills} />
 
       <section id="projects" className="py-20 px-6 bg-neutral-900/30">
         <div className="container mx-auto max-w-6xl">
@@ -145,9 +116,9 @@ export default function HomePage() {
                         ))}
                       </div>
                       <div className={`flex ${project.liveUrl ? 'justify-between' : 'justify-end'} items-center`}>
-                        {/* <Link href={project.link} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center">
+                        <Link href={project.link} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center">
                           View Details <ArrowRight className="w-3 h-3 ml-1" />
-                        </Link> */}
+                        </Link>
                         { project.liveUrl && (
                           <div className="flex justify-between items-center">
                             <Link href={project.liveUrl} className="text-primary-500 hover:text-primary-400 text-sm font-medium flex items-center" target="_blank">
@@ -194,9 +165,6 @@ export default function HomePage() {
             and ways to solve complex technical challenges.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 inline-flex items-center justify-center">
-              Start a Conversation <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
             {/* <Link href="/experience" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all inline-flex items-center justify-center">
               View My Experience <ArrowRight className="w-4 h-4 ml-2" />
             </Link> */}

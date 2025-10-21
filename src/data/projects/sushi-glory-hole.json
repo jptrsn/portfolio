@@ -1,0 +1,54 @@
+{
+  "id": "sgh",
+  "title": "Sushi Glory Hole",
+  "slug": "sushi-glory-hole",
+  "shortDescription": "Full stack cross platform app with location integration.",
+  "longDescription": "A silly demo of an Angular Ionic full stack cross platform location-enabled app.",
+  "year": 2024,
+  "startDate": "2024-11-01",
+  "endDate": "2025-02-01",
+  "images": [
+    {
+      "url": "/projects/sushigloryhole/icon_512.png",
+      "alt": "Sushi Glory Hole banner",
+      "caption": "Banner",
+      "isHero": true
+    }
+  ],
+  "tags": [
+    { "name": "Angular", "category": "framework" },
+    { "name": "Ionic", "category": "framework" },
+    { "name": "TypeScript", "category": "language" }
+  ],
+  "technologies": ["Angular", "Ionic", "Typescript"],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/sushigloryhole",
+      "label": "View Source",
+      "isAvailable": false
+    },
+    {
+      "type": "demo",
+      "url": "https://sushigloryhole.app",
+      "label": "View the Site",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "concept",
+    "deploymentStatus": "live",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "intermediate"
+
+  },
+  "challenges": "Simple cross-platform full stack application",
+  "learnings": "Building for native app and web using Capacitor plugins for location and maps.",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": false,
+  "isOpenSource": false,
+  "featured": false,
+  "keywords": []
+}

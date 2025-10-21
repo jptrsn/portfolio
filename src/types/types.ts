@@ -133,3 +133,12 @@ export const validateProject = (project: Project): boolean => {
 // Utility types for filtering and display
 export type ProjectCategory = ProjectTag['category'];
 export type ProjectStatusType = ProjectStatus['current'];
+
+export interface SkillNode {
+  id: string;
+  label: string;
+  category: 'framework' | 'language' | 'database' | 'tool' | 'platform' | 'concept';
+  proficiencyLevel?: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+  relatedTo: string[]; // Array of skill IDs this node connects to
+  description?: string;
+}

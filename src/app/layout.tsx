@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Educoder Dot Dev",
   description: "Professional portfolio and blog, showcasing a combination of technical achievement and varied interests, with a passion for Education Technology.",
   icons: {
-    icon: '/avatar_me.png'
+    icon: 'avatar_me.png',
   }
 };
 
