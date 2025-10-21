@@ -164,11 +164,14 @@ export default function HomePage() {
             I&apos;m always interested in discussing new opportunities, innovative projects,
             and ways to solve complex technical challenges.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* <Link href="/experience" className="border border-secondary-500 text-secondary-400 hover:bg-secondary-500/10 px-8 py-3 rounded-lg font-semibold transition-all inline-flex items-center justify-center">
-              View My Experience <ArrowRight className="w-4 h-4 ml-2" />
-            </Link> */}
-          </div>
+          <div className="flex justify-center space-x-6">
+              { contactInfo.map((info, index) => (
+                <Link key={index} href={info.href} className="flex flex-col items-center justify-center gap-2 text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
+                  {info.icon}
+                  <div className="text-sm">{info.label}</div>
+                </Link>
+              ))}
+            </div>
         </div>
       </section>
 
