@@ -1,7 +1,7 @@
 import Navigation from '@/components/Navigation';
 import ProjectCard from '@/components/ProjectCard';
 import { generateExtendedMetadata } from '@/lib/metadata';
-import { getAllProjects, getAllTechnologies } from '@/lib/projects';
+import { getAllProjects } from '@/lib/projects';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = generateExtendedMetadata({
@@ -16,7 +16,6 @@ export default function ProjectsPage() {
 
   // This would typically be handled with client-side state or URL params
   // For now, showing all projects
-  const selectedFilter = 'all';
   const filteredProjects = allProjects;
 
   return (

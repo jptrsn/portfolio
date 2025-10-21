@@ -23,19 +23,16 @@ export const Typewriter: React.FC<TypewriterProps> = ({
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [showBlinkingCursor, setShowBlinkingCursor] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
   const containerRef = useRef<HTMLSpanElement>(null);
   const hiddenRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     // Reset state when text changes
     setDisplayText('');
-    setIsTyping(false);
     setShowBlinkingCursor(false);
 
     // Start typing after delay
     const startTimer = setTimeout(() => {
-      setIsTyping(true);
       let currentIndex = 0;
 
       const typeNextChar = () => {
@@ -44,7 +41,6 @@ export const Typewriter: React.FC<TypewriterProps> = ({
           currentIndex++;
           setTimeout(typeNextChar, speed);
         } else {
-          setIsTyping(false);
           if (showCursor) {
             setShowBlinkingCursor(true);
           }

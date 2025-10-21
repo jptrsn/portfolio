@@ -54,7 +54,8 @@ const mdxComponents = {
     <pre className="bg-neutral-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6 text-sm" {...props} />
   ),
   img: (props: any) => (
-    <img className="rounded-lg shadow-lg mb-6 max-w-full h-auto" {...props} />
+    // eslint-disable-next-line @next/next/no-img-element
+    <img className="rounded-lg shadow-lg mb-6 max-w-full h-auto" alt="" {...props} />
   ),
   hr: (props: any) => (
     <hr className="border-gray-300 my-8" {...props} />
