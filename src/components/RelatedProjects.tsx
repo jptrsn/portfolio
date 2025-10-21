@@ -10,7 +10,6 @@ interface RelatedProjectsProps {
 // Related projects component
 export default function RelatedProjects({ currentProject }: RelatedProjectsProps) {
   const relatedProjects = getRelatedProjects(currentProject, 3);
-  console.log('relatedProjects', relatedProjects)
 
   if (relatedProjects.length === 0) return null;
 
