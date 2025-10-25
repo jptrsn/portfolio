@@ -46,7 +46,7 @@ export default function HomePage() {
 
             <div className="flex justify-center space-x-6">
               { contactInfo.map((info, index) => (
-                <Link href={info.href} key={index} className="text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
+                <Link href={info.href} key={index} aria-label={info.label} className="text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
                   {info.icon}
                 </Link>
               ))}
@@ -55,7 +55,7 @@ export default function HomePage() {
           </div>
 
           {/* Scroll indicator */}
-          <Link href="#skills" className="flex justify-center animate-bounce">
+          <Link href="#skills" aria-label='Skills' className="flex justify-center motion-safe:animate-bounce-once">
             <ChevronDown className="w-6 h-6 text-neutral-400" />
           </Link>
         </div>
@@ -76,7 +76,7 @@ export default function HomePage() {
           </p>
           <div className="flex justify-center space-x-6">
               { contactInfo.map((info, index) => (
-                <Link key={index} href={info.href} className="flex flex-col items-center justify-center gap-2 text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
+                <Link key={index} href={info.href} aria-label={info.label} className="flex flex-col items-center justify-center gap-2 text-neutral-400 hover:text-primary-500 transition-colors" target="_blank">
                   {info.icon}
                   <div className="text-sm">{info.label}</div>
                 </Link>
