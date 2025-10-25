@@ -64,6 +64,6 @@
   "hasCustomHardware": true,
   "requiresSpecialSetup": true,
   "isOpenSource": false,
-  "featured": true,
+  "featured": false,
   "keywords": ["iot", "smart home", "3d printing", "browser extension", "arduino"]
 }

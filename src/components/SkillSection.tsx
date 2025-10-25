@@ -1,18 +1,40 @@
 'use client';
 import { SkillNode } from '@/types/types';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react';
+import {
+  Palette,
+  Code2,
+  Database,
+  Wrench,
+  Cloud,
+  Lightbulb,
+  Package,
+  Sparkles
+} from 'lucide-react';
+
+// Move static data outside component
+const CATEGORIES: Array<SkillNode['category'] | 'all'> = [
+  'all',
+  'language',
+  'framework',
+  'database',
+  'tool',
+  'platform',
+  'concept'
+];
 
 // Category icon mapping helper
-const getCategoryIcon = (category: SkillNode['category']) => {
+const getCategoryIcon = (category: SkillNode['category'], size: number = 24) => {
+  const iconProps = { size, className: 'inline-block' };
   const icons = {
-    framework: '🎨',
-    language: '💻',
-    database: '🗄️',
-    tool: '🔧',
-    platform: '☁️',
-    concept: '💡'
+    framework: <Palette {...iconProps} />,
+    language: <Code2 {...iconProps} />,
+    database: <Database {...iconProps} />,
+    tool: <Wrench {...iconProps} />,
+    platform: <Cloud {...iconProps} />,
+    concept: <Lightbulb {...iconProps} />
   };
-  return icons[category] || '📦';
+  return icons[category] || <Package {...iconProps} />;
 };
 
 // Proficiency color helper
@@ -26,6 +48,33 @@ const getProficiencyColor = (level?: SkillNode['proficiencyLevel']) => {
   return level ? colors[level] : '';
 };
 
+// Memoized thumbnail component
+const SkillThumbnail = memo(({
+  skill,
+  isActive,
+  onClick
+}: {
+  skill: SkillNode;
+  isActive: boolean;
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className={`flex-shrink-0 w-32 bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 ${
+      isActive
+        ? 'border-primary-500 ring-2 ring-primary-500/20'
+        : 'border-neutral-800 hover:border-neutral-700'
+    }`}
+  >
+    <div className="flex justify-center mb-2">
+      {getCategoryIcon(skill.category, 32)}
+    </div>
+    <p className="text-xs font-medium line-clamp-2">{skill.label}</p>
+  </button>
+));
+
+SkillThumbnail.displayName = 'SkillThumbnail';
+
 interface SkillsSectionProps {
   skills: SkillNode[];
 }
@@ -38,55 +87,73 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   const [scrollLeft, setScrollLeft] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const categories: Array<SkillNode['category'] | 'all'> = [
-    'all',
-    'language',
-    'framework',
-    'database',
-    'tool',
-    'platform',
-    'concept'
-  ];
+  // Memoize filtered skills
+  const filteredSkills = useMemo(
+    () => selectedCategory === 'all'
+      ? skills
+      : skills.filter(skill => skill.category === selectedCategory),
+    [selectedCategory, skills]
+  );
 
-  const filteredSkills = selectedCategory === 'all'
-    ? skills
-    : skills.filter(skill => skill.category === selectedCategory);
+  // Create skills map for O(1) lookups
+  const skillsMap = useMemo(() => {
+    return new Map(skills.map(skill => [skill.id, skill]));
+  }, [skills]);
 
-  const getRelatedSkills = (skillIds: string[]) => {
-    return skills.filter(s => skillIds.includes(s.id));
-  };
+  // Memoize getRelatedSkills with optimized lookup
+  const getRelatedSkills = useCallback((skillIds: string[]) => {
+    return skillIds.map(id => skillsMap.get(id)).filter(Boolean) as SkillNode[];
+  }, [skillsMap]);
 
-  const handlePrevious = () => {
+  // Memoize current skill
+  const currentSkill = useMemo(
+    () => filteredSkills[currentIndex],
+    [filteredSkills, currentIndex]
+  );
+
+  // Memoize navigation handlers
+  const handlePrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : filteredSkills.length - 1));
-  };
+  }, [filteredSkills.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev < filteredSkills.length - 1 ? prev + 1 : 0));
-  };
+  }, [filteredSkills.length]);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  // Memoize drag handlers
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
     setIsDragging(true);
     setStartX(e.pageX - (sliderRef.current?.offsetLeft || 0));
     setScrollLeft(sliderRef.current?.scrollLeft || 0);
-  };
+  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isDragging || !sliderRef.current) return;
     e.preventDefault();
     const x = e.pageX - (sliderRef.current.offsetLeft || 0);
     const walk = (x - startX) * 2;
     sliderRef.current.scrollLeft = scrollLeft - walk;
-  };
+  }, [isDragging, startX, scrollLeft]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
+  // Reset index when category changes
   useEffect(() => {
     setCurrentIndex(0);
   }, [selectedCategory]);
 
-  const currentSkill = filteredSkills[currentIndex];
+  // Add keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') handlePrevious();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrevious, handleNext]);
 
   return (
     <section id="skills" className="pt-24 px-6 min-h-screen gradient-secondary">
@@ -97,17 +164,27 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat) => (
+          {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                 selectedCategory === cat
                   ? 'bg-primary-500 text-white'
                   : 'bg-neutral-800/50 text-neutral-300 hover:bg-neutral-700/50'
               }`}
             >
-              {cat === 'all' ? '🌟 All' : `${getCategoryIcon(cat)} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`}
+              {cat === 'all' ? (
+                <>
+                  <Sparkles size={16} />
+                  <span>All</span>
+                </>
+              ) : (
+                <>
+                  {getCategoryIcon(cat, 16)}
+                  <span>{cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
+                </>
+              )}
             </button>
           ))}
         </div>
@@ -139,7 +216,9 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           {currentSkill && (
             <div className="mx-12 bg-neutral-900/70 border border-neutral-800 rounded-2xl p-8 md:p-12 min-h-[400px] transition-all duration-500">
               <div className="flex flex-col items-center text-center">
-                <div className="text-6xl mb-6">{getCategoryIcon(currentSkill.category)}</div>
+                <div className="mb-6 text-primary-500">
+                  {getCategoryIcon(currentSkill.category, 64)}
+                </div>
 
                 <h3 className="text-3xl md:text-4xl font-bold mb-3">{currentSkill.label}</h3>
 
@@ -169,10 +248,10 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
                             const index = filteredSkills.findIndex(s => s.id === related.id);
                             if (index !== -1) setCurrentIndex(index);
                           }}
-                          className="px-3 py-1.5 bg-neutral-800/50 hover:bg-neutral-700/50 border border-neutral-700 rounded-lg text-sm transition-all duration-300 hover:scale-105"
+                          className="px-3 py-1.5 bg-neutral-800/50 hover:bg-neutral-700/50 border border-neutral-700 rounded-lg text-sm transition-all duration-300 hover:scale-105 flex items-center gap-1.5"
                         >
-                          <span className="mr-1">{getCategoryIcon(related.category)}</span>
-                          {related.label}
+                          {getCategoryIcon(related.category, 14)}
+                          <span>{related.label}</span>
                         </button>
                       ))}
                     </div>
@@ -211,18 +290,12 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {filteredSkills.map((skill, index) => (
-              <button
+              <SkillThumbnail
                 key={skill.id}
+                skill={skill}
+                isActive={index === currentIndex}
                 onClick={() => setCurrentIndex(index)}
-                className={`flex-shrink-0 w-32 bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 ${
-                  index === currentIndex
-                    ? 'border-primary-500 ring-2 ring-primary-500/20'
-                    : 'border-neutral-800 hover:border-neutral-700'
-                }`}
-              >
-                <div className="text-3xl mb-2">{getCategoryIcon(skill.category)}</div>
-                <p className="text-xs font-medium line-clamp-2">{skill.label}</p>
-              </button>
+              />
             ))}
           </div>
         </div>
