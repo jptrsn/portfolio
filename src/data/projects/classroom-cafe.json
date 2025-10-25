@@ -1,0 +1,58 @@
+{
+  "id": "classroom-cafe",
+  "title": "Classroom Cafe",
+  "slug": "classroom-cafe",
+  "shortDescription": "Discourse community forum and NextJS site",
+  "longDescription": "A full stack Discourse forum and NextJS static site, running in Docker on VPS. Automated scheduled off-site backups performed by chron-job and Home Assistant Add-on.",
+  "year": 2025,
+  "startDate": "2025-10-15",
+  "images": [
+    {
+      "url": "/project-assets/classroom-cafe/classroom_cafe.png",
+      "alt": "Classroom Cafe Logo",
+      "caption": "Logo"
+    },
+    {
+      "url": "/project-assets/classroom-cafe/classroom-cafe-about-screenshot.png",
+      "alt": "Screenshot of about page",
+      "caption": "About page",
+      "isHero": true
+    }
+  ],
+  "tags": [
+    { "name": "NextJS", "category": "framework" },
+    { "name": "TypeScript", "category": "language" },
+    { "name": "Traefik", "category": "reverse-proxy" },
+    { "name": "VPS", "category": "platform" }
+  ],
+  "technologies": ["NextJS", "TypeScript", "VPS"],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/Zip-Captions/classroom-cafe",
+      "label": "View Source",
+      "isAvailable": false
+    },
+    {
+      "type": "demo",
+      "url": "https://about.classroom.cafe",
+      "label": "View the Site",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "active",
+    "deploymentStatus": "live",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "intermediate"
+  },
+  "challenges": "Host multiple services behind a reverse proxy on a VPS. Automate build, deploy, and backup of user data.",
+  "learnings": "Reverse proxy and multiple services on Docker networks. SSH and bash scripting to automate scheduled backups.",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": false,
+  "isOpenSource": false,
+  "featured": false,
+  "keywords": []
+}
