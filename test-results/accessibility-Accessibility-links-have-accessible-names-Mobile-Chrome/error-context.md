@@ -1,0 +1,339 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "EduC" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e7]: EduC
+        - button "Toggle mobile menu" [ref=e8]
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - img [ref=e18]
+        - heading "|" [level=1] [ref=e21]:
+          - generic [ref=e23]: "|"
+        - paragraph [ref=e24]: Building human-centric applications and guiding engineering teams to deliver exceptional digital experiences that solve real-world problems.
+        - generic [ref=e25]:
+          - link [ref=e26] [cursor=pointer]:
+            - /url: https://github.com/jptrsn
+            - img [ref=e28]
+          - link [ref=e30] [cursor=pointer]:
+            - /url: https://linkedin.com/in/educoder
+            - img [ref=e32]
+          - link [ref=e34] [cursor=pointer]:
+            - /url: https://mastodon.online/@educoder
+            - img [ref=e36]
+          - link [ref=e38] [cursor=pointer]:
+            - /url: https://classroom.cafe/u/educoder
+            - img [ref=e40]
+      - link [ref=e42] [cursor=pointer]:
+        - /url: "#skills"
+        - img [ref=e43]
+    - generic [ref=e46]:
+      - heading "Experience & Skills" [level=2] [ref=e47]
+      - generic [ref=e48]:
+        - button "All" [ref=e49]:
+          - img [ref=e50]
+          - generic [ref=e53]: All
+        - button "Language" [ref=e54]:
+          - img [ref=e55]
+          - generic [ref=e59]: Language
+        - button "Framework" [ref=e60]:
+          - img [ref=e61]
+          - generic [ref=e67]: Framework
+        - button "Database" [ref=e68]:
+          - img [ref=e69]
+          - generic [ref=e73]: Database
+        - button "Tool" [ref=e74]:
+          - img [ref=e75]
+          - generic [ref=e77]: Tool
+        - button "Platform" [ref=e78]:
+          - img [ref=e79]
+          - generic [ref=e81]: Platform
+        - button "Concept" [ref=e82]:
+          - img [ref=e83]
+          - generic [ref=e85]: Concept
+      - generic [ref=e86]:
+        - button "Previous skill" [ref=e87]:
+          - img [ref=e88]
+        - button "Next skill" [ref=e90]:
+          - img [ref=e91]
+        - generic [ref=e94]:
+          - img [ref=e96]
+          - heading "React" [level=3] [ref=e102]
+          - generic [ref=e103]:
+            - generic [ref=e104]: framework
+            - generic [ref=e105]: advanced
+          - paragraph [ref=e106]: Component-based UI library
+          - generic [ref=e107]:
+            - heading "Related Skills" [level=4] [ref=e108]
+            - generic [ref=e109]:
+              - button "TypeScript" [ref=e110]:
+                - img [ref=e111]
+                - generic [ref=e115]: TypeScript
+              - button "JavaScript" [ref=e116]:
+                - img [ref=e117]
+                - generic [ref=e121]: JavaScript
+              - button "Frontend Development" [ref=e122]:
+                - img [ref=e123]
+                - generic [ref=e125]: Frontend Development
+              - button "Node.js" [ref=e126]:
+                - img [ref=e127]
+                - generic [ref=e129]: Node.js
+              - button "Browser" [ref=e130]:
+                - img [ref=e131]
+                - generic [ref=e133]: Browser
+      - generic [ref=e134]:
+        - button "Go to skill 1" [ref=e135]
+        - button "Go to skill 2" [ref=e136]
+        - button "Go to skill 3" [ref=e137]
+        - button "Go to skill 4" [ref=e138]
+        - button "Go to skill 5" [ref=e139]
+        - button "Go to skill 6" [ref=e140]
+        - button "Go to skill 7" [ref=e141]
+        - button "Go to skill 8" [ref=e142]
+        - button "Go to skill 9" [ref=e143]
+        - button "Go to skill 10" [ref=e144]
+        - button "Go to skill 11" [ref=e145]
+        - button "Go to skill 12" [ref=e146]
+        - button "Go to skill 13" [ref=e147]
+        - button "Go to skill 14" [ref=e148]
+        - button "Go to skill 15" [ref=e149]
+        - button "Go to skill 16" [ref=e150]
+        - button "Go to skill 17" [ref=e151]
+        - button "Go to skill 18" [ref=e152]
+        - button "Go to skill 19" [ref=e153]
+        - button "Go to skill 20" [ref=e154]
+        - button "Go to skill 21" [ref=e155]
+        - button "Go to skill 22" [ref=e156]
+        - button "Go to skill 23" [ref=e157]
+        - button "Go to skill 24" [ref=e158]
+        - button "Go to skill 25" [ref=e159]
+        - button "Go to skill 26" [ref=e160]
+        - button "Go to skill 27" [ref=e161]
+        - button "Go to skill 28" [ref=e162]
+        - button "Go to skill 29" [ref=e163]
+        - button "Go to skill 30" [ref=e164]
+        - button "Go to skill 31" [ref=e165]
+        - button "Go to skill 32" [ref=e166]
+        - button "Go to skill 33" [ref=e167]
+        - button "Go to skill 34" [ref=e168]
+        - button "Go to skill 35" [ref=e169]
+        - button "Go to skill 36" [ref=e170]
+        - button "Go to skill 37" [ref=e171]
+        - button "Go to skill 38" [ref=e172]
+        - button "Go to skill 39" [ref=e173]
+        - button "Go to skill 40" [ref=e174]
+      - generic [ref=e176]:
+        - button "React" [ref=e177]:
+          - img [ref=e179]
+          - paragraph [ref=e185]: React
+        - button "Angular" [ref=e186]:
+          - img [ref=e188]
+          - paragraph [ref=e194]: Angular
+        - button "Vue 2" [ref=e195]:
+          - img [ref=e197]
+          - paragraph [ref=e203]: Vue 2
+        - button "jQuery" [ref=e204]:
+          - img [ref=e206]
+          - paragraph [ref=e212]: jQuery
+        - button "Node.js" [ref=e213]:
+          - img [ref=e215]
+          - paragraph [ref=e217]: Node.js
+        - button "Express" [ref=e218]:
+          - img [ref=e220]
+          - paragraph [ref=e226]: Express
+        - button "PostgreSQL" [ref=e227]:
+          - img [ref=e229]
+          - paragraph [ref=e233]: PostgreSQL
+        - button "MySQL" [ref=e234]:
+          - img [ref=e236]
+          - paragraph [ref=e240]: MySQL
+        - button "Firestore" [ref=e241]:
+          - img [ref=e243]
+          - paragraph [ref=e247]: Firestore
+        - button "MongoDB" [ref=e248]:
+          - img [ref=e250]
+          - paragraph [ref=e254]: MongoDB
+        - button "Redis" [ref=e255]:
+          - img [ref=e257]
+          - paragraph [ref=e261]: Redis
+        - button "TypeScript" [ref=e262]:
+          - img [ref=e264]
+          - paragraph [ref=e268]: TypeScript
+        - button "JavaScript" [ref=e269]:
+          - img [ref=e271]
+          - paragraph [ref=e275]: JavaScript
+        - button "SQL" [ref=e276]:
+          - img [ref=e278]
+          - paragraph [ref=e282]: SQL
+        - button "Go" [ref=e283]:
+          - img [ref=e285]
+          - paragraph [ref=e289]: Go
+        - button "Docker" [ref=e290]:
+          - img [ref=e292]
+          - paragraph [ref=e294]: Docker
+        - button "Git" [ref=e295]:
+          - img [ref=e297]
+          - paragraph [ref=e299]: Git
+        - button "YAML" [ref=e300]:
+          - img [ref=e302]
+          - paragraph [ref=e306]: YAML
+        - button "Frontend Development" [ref=e307]:
+          - img [ref=e309]
+          - paragraph [ref=e311]: Frontend Development
+        - button "Backend Development" [ref=e312]:
+          - img [ref=e314]
+          - paragraph [ref=e316]: Backend Development
+        - button "API Development" [ref=e317]:
+          - img [ref=e319]
+          - paragraph [ref=e321]: API Development
+        - button "Database Management" [ref=e322]:
+          - img [ref=e324]
+          - paragraph [ref=e326]: Database Management
+        - button "Browser" [ref=e327]:
+          - img [ref=e329]
+          - paragraph [ref=e331]: Browser
+        - button "REST API" [ref=e332]:
+          - img [ref=e334]
+          - paragraph [ref=e336]: REST API
+        - button "NoSQL" [ref=e337]:
+          - img [ref=e339]
+          - paragraph [ref=e341]: NoSQL
+        - button "Relational DB" [ref=e342]:
+          - img [ref=e344]
+          - paragraph [ref=e346]: Relational DB
+        - button "DevOps" [ref=e347]:
+          - img [ref=e349]
+          - paragraph [ref=e351]: DevOps
+        - button "Microservices" [ref=e352]:
+          - img [ref=e354]
+          - paragraph [ref=e356]: Microservices
+        - button "DOM" [ref=e357]:
+          - img [ref=e359]
+          - paragraph [ref=e361]: DOM
+        - button "UI Design" [ref=e362]:
+          - img [ref=e364]
+          - paragraph [ref=e366]: UI Design
+        - button "Caching" [ref=e367]:
+          - img [ref=e369]
+          - paragraph [ref=e371]: Caching
+        - button "Version Control" [ref=e372]:
+          - img [ref=e374]
+          - paragraph [ref=e376]: Version Control
+        - button "Containerization" [ref=e377]:
+          - img [ref=e379]
+          - paragraph [ref=e381]: Containerization
+        - button "Cloud Services" [ref=e382]:
+          - img [ref=e384]
+          - paragraph [ref=e386]: Cloud Services
+        - button "Configuration" [ref=e387]:
+          - img [ref=e389]
+          - paragraph [ref=e391]: Configuration
+        - button "Collaboration" [ref=e392]:
+          - img [ref=e394]
+          - paragraph [ref=e396]: Collaboration
+        - button "Deployment" [ref=e397]:
+          - img [ref=e399]
+          - paragraph [ref=e401]: Deployment
+        - button "Server" [ref=e402]:
+          - img [ref=e404]
+          - paragraph [ref=e406]: Server
+        - button "HTTP" [ref=e407]:
+          - img [ref=e409]
+          - paragraph [ref=e411]: HTTP
+        - button "Performance" [ref=e412]:
+          - img [ref=e414]
+          - paragraph [ref=e416]: Performance
+    - generic [ref=e418]:
+      - generic [ref=e419]:
+        - heading "Side Projects" [level=2] [ref=e420]
+        - paragraph [ref=e421]: A selection of recent work and play showcasing full-stack development, system design, and problem-solving capabilities.
+      - generic [ref=e422]:
+        - generic [ref=e424]:
+          - img "Zip Captions cover image" [ref=e425]
+          - generic [ref=e429]:
+            - heading "Zip Captions" [level=3] [ref=e430]
+            - paragraph [ref=e431]: A free, open-source, and browser-based captioning application built with a modern TypeScript-driven stack and a commitment to accessibility, allowing users to generate captions directly in their browser at no cost.
+            - generic [ref=e432]:
+              - generic [ref=e433]: Angular
+              - generic [ref=e434]: Node.js
+              - generic [ref=e435]: MongoDB
+              - generic [ref=e436]: Azure
+            - generic [ref=e437]:
+              - link "View Details" [ref=e438] [cursor=pointer]:
+                - /url: /projects/zip-captions/
+                - text: View Details
+                - img [ref=e439]
+              - link "Visit Project" [ref=e441] [cursor=pointer]:
+                - /url: https://zipcaptions.app
+                - text: Visit Project
+                - img [ref=e442]
+              - link "View Zip Captions on GitHub" [ref=e446] [cursor=pointer]:
+                - /url: https://github.com/jptrsn/zip-captions
+                - img [ref=e448]
+        - generic [ref=e451]:
+          - img "Quaid Dot Army cover image" [ref=e452]
+          - generic [ref=e456]:
+            - heading "Quaid Dot Army" [level=3] [ref=e457]
+            - paragraph [ref=e458]: A fully-accessible podcast fan website and player, with AI-generated transcriptions synced to remote audio. Because no one had bought the domain yet.
+            - generic [ref=e459]:
+              - generic [ref=e460]: Next.js
+              - generic [ref=e461]: Python
+              - generic [ref=e462]: Docker
+              - generic [ref=e463]: Whisper
+            - generic [ref=e464]:
+              - link "View Details" [ref=e465] [cursor=pointer]:
+                - /url: /projects/quaid-army/
+                - text: View Details
+                - img [ref=e466]
+              - link "Visit Project" [ref=e468] [cursor=pointer]:
+                - /url: https://quaid.army
+                - text: Visit Project
+                - img [ref=e469]
+        - generic [ref=e474]:
+          - img "S-G-H cover image" [ref=e475]
+          - generic [ref=e479]:
+            - heading "S-G-H" [level=3] [ref=e480]
+            - paragraph [ref=e481]: Cross-Platform codebase with location and map interactivity, inspired by the music of The Lonely Island. They pitched the app idea in their music video, so I had to build it.
+            - generic [ref=e482]:
+              - generic [ref=e483]: Angular
+              - generic [ref=e484]: Ionic
+              - generic [ref=e485]: GitHub Actions
+            - generic [ref=e486]:
+              - link "View Details" [ref=e487] [cursor=pointer]:
+                - /url: /projects/sushi-glory-hole/
+                - text: View Details
+                - img [ref=e488]
+              - link "Visit Project" [ref=e490] [cursor=pointer]:
+                - /url: https://sushigloryhole.app
+                - text: Visit Project
+                - img [ref=e491]
+    - generic [ref=e496]:
+      - heading "Let's Build Something Amazing Together" [level=2] [ref=e497]
+      - paragraph [ref=e498]: I'm always interested in discussing new opportunities, innovative projects, and ways to solve complex technical challenges.
+      - generic [ref=e499]:
+        - link "GitHub" [ref=e500] [cursor=pointer]:
+          - /url: https://github.com/jptrsn
+          - img [ref=e502]
+          - generic [ref=e504]: GitHub
+        - link "LinkedIn" [ref=e505] [cursor=pointer]:
+          - /url: https://linkedin.com/in/educoder
+          - img [ref=e507]
+          - generic [ref=e509]: LinkedIn
+        - link "Mastodon" [ref=e510] [cursor=pointer]:
+          - /url: https://mastodon.online/@educoder
+          - img [ref=e512]
+          - generic [ref=e514]: Mastodon
+        - link "Discourse" [ref=e515] [cursor=pointer]:
+          - /url: https://classroom.cafe/u/educoder
+          - img [ref=e517]
+          - generic [ref=e519]: Discourse
+    - contentinfo [ref=e520]:
+      - generic [ref=e522]: © 2025 EduCoder.dev
+  - button "Open Next.js Dev Tools" [ref=e528] [cursor=pointer]:
+    - img [ref=e529]
+  - alert [ref=e532]
+```

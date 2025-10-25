@@ -156,7 +156,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   }, [handlePrevious, handleNext]);
 
   return (
-    <section id="skills" className="pt-24 px-6 min-h-screen gradient-secondary">
+    <section id="skills" className="pt-16 px-6 min-h-screen gradient-secondary">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           <span className="text-gradient">Experience & Skills</span>
