@@ -79,10 +79,15 @@ const mdxComponents = {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  try {
+    const posts = await getAllPosts()
+    return posts.map((post) => ({
+      slug: post.slug,
+    }))
+  } catch (error) {
+    console.error('Error generating static params for posts:', error)
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: Props) {

@@ -1,0 +1,61 @@
+{
+  "id": "ha-discourse-backup-sync",
+  "title": "Home Assistant Discourse Backup Sync",
+  "slug": "ha-discourse-backup-sync",
+  "shortDescription": "Home Assistant Add-on for automated Discourse backup sync",
+  "longDescription": "A Home Assistant Add-on that connects to a Discourse community forum server via API to automatically retrieve and download backup files to the local disk. It allows the user to configure a retention schedule, ensuring older backups are pruned to save space. The add-on is automatically built and deployed to GitHub Container Registry (GHCR) using GitHub Actions.",
+  "year": 2025,
+  "startDate": "2024-10-01",
+  "images": [
+    {
+      "url": "/project-assets/ha-discourse-backup-sync/logo.png",
+      "alt": "Home Assistant Discourse Backup Sync Logo",
+      "caption": "Project Logo"
+    },
+    {
+      "url": "/project-assets/ha-discourse-backup-sync/screenshot-options.png",
+      "alt": "Screenshot of add-on options page",
+      "caption": "Configuration Options",
+      "isHero": true
+    }
+  ],
+  "tags": [
+    { "name": "Python", "category": "language" },
+    { "name": "Bash", "category": "language" },
+    { "name": "JavaScript", "category": "language" },
+    { "name": "HTML", "category": "language" },
+    { "name": "Docker", "category": "platform" },
+    { "name": "Home Assistant", "category": "platform" },
+    { "name": "GitHub Actions", "category": "devops" }
+  ],
+  "technologies": ["Python", "Home Assistant", "Docker", "GitHub Actions"],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/ha-discourse-backup-sync",
+      "label": "View Source",
+      "isAvailable": true
+    },
+    {
+      "type": "documentation",
+      "url": "https://github.com/jptrsn/ha-discourse-backup-sync#readme",
+      "label": "View Documentation",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "active",
+    "deploymentStatus": "live",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "intermediate"
+  },
+  "challenges": "Integrating with the Home Assistant Add-on structure. Implementing reliable API communication with the Discourse server, including handling authentication and large file transfers. Configuring automated build and deployment to GHCR.",
+  "learnings": "Building **Docker containers** specific to the **Home Assistant Add-on** specification. Utilizing **Python's `requests` library** for secure API interaction and file transfer. Setting up multi-stage builds and **GitHub Actions** workflows for Continuous Integration/Continuous Deployment (CI/CD).",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true,
+  "featured": true,
+  "keywords": ["Discourse", "Home Assistant", "Backup", "Automation", "Docker", "GHCR"]
+}

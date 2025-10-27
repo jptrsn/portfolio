@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Experience | EduCoder Dot Dev',
+  description: 'Professional experience and work history',
+}
+
 export default function Experience() {
   return (
     <div className="min-h-screen bg-background text-foreground pt-24 px-6">
