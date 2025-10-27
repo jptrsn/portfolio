@@ -140,18 +140,56 @@ describe('ProjectLinkButton', () => {
     expect(link).toHaveClass('transition-all', 'duration-200')
   })
 
-  it('matches snapshot for available link', () => {
+  it('renders available link with complete structure', () => {
     const { container } = render(<ProjectLinkButton link={baseLink} />)
-    expect(container).toMatchSnapshot('ProjectLinkButton-available')
+
+    // Verify link element exists
+    const link = screen.getByRole('link')
+    expect(link).toBeInTheDocument()
+    expect(link.tagName).toBe('A')
+
+    // Verify link has correct classes
+    expect(link).toHaveClass('inline-flex', 'items-center', 'gap-2')
+
+    // Verify icon exists
+    const svg = container.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(svg).toHaveClass('w-4', 'h-4')
+
+    // Verify label text
+    expect(link).toHaveTextContent('View on GitHub')
+
+    // Verify attributes
+    expect(link).toHaveAttribute('href', 'https://github.com/test/repo')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
-  it('matches snapshot for unavailable link', () => {
+  it('renders unavailable link with complete structure', () => {
     const unavailableLink: ProjectLink = {
       ...baseLink,
       isAvailable: false,
       note: 'Coming soon'
     }
     const { container } = render(<ProjectLinkButton link={unavailableLink} />)
-    expect(container).toMatchSnapshot('ProjectLinkButton-unavailable')
+
+    // Verify it's a div, not a link
+    expect(screen.queryByRole('link')).not.toBeInTheDocument()
+
+    // Verify container div exists
+    const div = container.querySelector('.cursor-not-allowed')
+    expect(div).toBeInTheDocument()
+    expect(div?.tagName).toBe('DIV')
+
+    // Verify disabled styling
+    expect(div).toHaveClass('bg-neutral-100', 'text-gray-400')
+
+    // Verify icon exists
+    const svg = container.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+
+    // Verify label and note text
+    expect(div).toHaveTextContent('View on GitHub')
+    expect(div).toHaveTextContent('(Coming soon)')
   })
 })

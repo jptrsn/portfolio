@@ -153,8 +153,48 @@ describe('ProjectCard', () => {
     expect(tag).toHaveStyle({ backgroundColor: '#FF573320', color: '#FF5733' })
   })
 
-  it('matches snapshot', () => {
+  it('renders complete card structure with all elements', () => {
     const { container } = render(<ProjectCard project={mockProject} />)
-    expect(container).toMatchSnapshot()
+
+    // Verify link wrapper exists
+    const link = screen.getByRole('link')
+    expect(link).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', '/projects/test-project')
+    expect(link).toHaveClass('group', 'block', 'rounded-lg')
+
+    // Verify card container exists
+    const cardContainer = link.querySelector('.relative.flex.flex-col')
+    expect(cardContainer).toBeInTheDocument()
+
+    // Verify image exists
+    const image = container.querySelector('img')
+    expect(image).toBeInTheDocument()
+    expect(image).toHaveAttribute('alt', 'Test image')
+
+    // Verify content section exists
+    const contentSection = container.querySelector('.p-6')
+    expect(contentSection).toBeInTheDocument()
+
+    // Verify title
+    const title = screen.getByText('Test Project')
+    expect(title).toBeInTheDocument()
+    expect(title.tagName).toBe('H3')
+
+    // Verify description
+    expect(screen.getByText('A test project description')).toBeInTheDocument()
+
+    // Verify year
+    expect(screen.getByText('2024')).toBeInTheDocument()
+
+    // Verify status badge
+    const statusBadge = screen.getByText('active')
+    expect(statusBadge.tagName).toBe('SPAN')
+
+    // Verify tags section exists
+    const tagsContainer = container.querySelector('.flex.flex-wrap.gap-1')
+    expect(tagsContainer).toBeInTheDocument()
+
+    // Verify at least some tags are rendered
+    expect(screen.getByText('React')).toBeInTheDocument()
   })
 })

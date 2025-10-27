@@ -177,8 +177,39 @@ describe('HomePage', () => {
     expect(heroSection).toHaveClass('pt-24', 'pb-16', 'px-6', 'min-h-screen')
   })
 
-  it('matches snapshot', () => {
+  it('renders complete page structure with all sections', () => {
     const { container } = render(<HomePage />)
-    expect(container).toMatchSnapshot()
+
+    // Verify main container
+    const main = container.firstChild as HTMLElement
+    expect(main.tagName).toBe('DIV')
+    expect(main).toHaveClass('min-h-screen', 'bg-background', 'text-foreground')
+
+    // Verify navigation is present
+    expect(screen.getByTestId('navigation')).toBeInTheDocument()
+
+    // Verify hero section exists with correct ID
+    const heroSection = container.querySelector('#top')
+    expect(heroSection).toBeInTheDocument()
+    expect(heroSection?.tagName).toBe('SECTION')
+
+    // Verify skills section is rendered
+    expect(screen.getByTestId('skills-section')).toBeInTheDocument()
+
+    // Verify projects section is rendered
+    expect(screen.getByTestId('projects-section')).toBeInTheDocument()
+
+    // Verify connect section exists with correct ID
+    const connectSection = container.querySelector('#connect')
+    expect(connectSection).toBeInTheDocument()
+    expect(connectSection?.tagName).toBe('SECTION')
+
+    // Verify footer exists
+    const footer = container.querySelector('footer')
+    expect(footer).toBeInTheDocument()
+    expect(footer).toHaveTextContent('© 2025 EduCoder.dev')
+
+    // Verify scroll to top button
+    expect(screen.getByTestId('scroll-to-top')).toBeInTheDocument()
   })
 })

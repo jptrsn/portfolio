@@ -167,8 +167,56 @@ describe('ProjectsSection', () => {
     expect(section).toHaveClass('bg-neutral-900/30')
   })
 
-  it('matches snapshot', () => {
+  it('renders complete section structure with all elements', () => {
     const { container } = render(<ProjectsSection projects={mockProjects} />)
-    expect(container).toMatchSnapshot()
+
+    // Verify section element exists with correct ID
+    const section = container.querySelector('#projects')
+    expect(section).toBeInTheDocument()
+    expect(section?.tagName).toBe('SECTION')
+    expect(section).toHaveClass('py-20', 'px-6', 'bg-neutral-900/30')
+
+    // Verify container
+    const mainContainer = section?.querySelector('.container')
+    expect(mainContainer).toBeInTheDocument()
+
+    // Verify section heading exists
+    const headingText = screen.getByText('Side Projects')
+    expect(headingText).toBeInTheDocument()
+
+    // The heading is an H2 containing a SPAN with text-gradient
+    const heading = headingText.closest('h2')
+    expect(heading).toBeInTheDocument()
+
+    // Verify the span with text-gradient class
+    expect(headingText).toHaveClass('text-gradient')
+
+    // Verify description text
+    expect(screen.getByText(/A selection of recent work and play/i)).toBeInTheDocument()
+
+    // Verify grid container
+    const grid = container.querySelector('.grid')
+    expect(grid).toBeInTheDocument()
+    expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3')
+
+    // Verify all project cards are rendered
+    mockProjects.forEach(project => {
+      expect(screen.getByText(project.title)).toBeInTheDocument()
+      expect(screen.getByText(project.description)).toBeInTheDocument()
+    })
+
+    // Verify project cards have correct structure
+    const projectCards = container.querySelectorAll('.group')
+    expect(projectCards.length).toBe(mockProjects.length)
+
+    projectCards.forEach(card => {
+      // Verify card has background and overlay
+      const overlay = card.querySelector('.bg-neutral-900\\/80')
+      expect(overlay).toBeInTheDocument()
+
+      // Verify content container
+      const content = card.querySelector('.p-6')
+      expect(content).toBeInTheDocument()
+    })
   })
 })

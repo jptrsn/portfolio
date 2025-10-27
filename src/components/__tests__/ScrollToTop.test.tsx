@@ -292,17 +292,47 @@ describe('ScrollToTop', () => {
     expect(button).toHaveClass('transition-all', 'duration-300', 'ease-in-out')
   })
 
-  it('matches snapshot when visible', () => {
+  it('renders button with correct structure when visible', () => {
     const { container } = render(<ScrollToTop threshold={300} />)
 
     Object.defineProperty(window, 'scrollY', { value: 400, writable: true, configurable: true })
     fireEvent.scroll(window)
 
-    expect(container).toMatchSnapshot('ScrollToTop-visible')
+    // Verify button exists
+    const button = screen.getByLabelText('Scroll to top')
+    expect(button).toBeInTheDocument()
+    expect(button.tagName).toBe('BUTTON')
+
+    // Verify button classes
+    expect(button).toHaveClass('fixed', 'z-50', 'p-3', 'rounded-full')
+    expect(button).toHaveClass('bg-gradient-to-r')
+
+    // Verify icon exists
+    const svg = container.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(svg).toHaveClass('w-6', 'h-6')
+
+    // Verify positioning
+    expect(button).toHaveStyle({ bottom: '24px', right: '24px' })
+
+    // Verify style tag exists for animations
+    const style = container.querySelector('style')
+    expect(style).toBeInTheDocument()
+    expect(style?.textContent).toContain('fade-in-up')
   })
 
-  it('matches snapshot when hidden', () => {
+  it('renders nothing when hidden', () => {
     const { container } = render(<ScrollToTop threshold={300} />)
-    expect(container).toMatchSnapshot('ScrollToTop-hidden')
+
+    // Button should not be in the document
+    expect(screen.queryByLabelText('Scroll to top')).not.toBeInTheDocument()
+
+    // Container should be empty or only contain fragment
+    expect(container.firstChild).toBeTruthy()
+    const children = Array.from(container.firstChild?.childNodes || [])
+    const buttonElements = children.filter(child =>
+      child.nodeType === 1 && (child as Element).tagName === 'BUTTON'
+    )
+    expect(buttonElements.length).toBe(0)
   })
 })

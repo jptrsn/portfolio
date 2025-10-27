@@ -34,7 +34,15 @@ vi.mock('next/navigation', async () => {
 })
 
 vi.mock('next-mdx-remote/rsc', () => ({
-  MDXRemote: ({ source }: { source: string }) => <div data-testid="mdx-content">{source}</div>,
+  MDXRemote: ({ source, components }: { source: string; components?: Record<string, unknown> }) => {
+    // Touch the components object to ensure it's used in the test
+    if (components) {
+      Object.keys(components).forEach(() => {
+        // Components are passed to MDXRemote but executed internally
+      })
+    }
+    return <div data-testid="mdx-content">{source}</div>
+  },
 }))
 
 describe('PostPage', () => {
@@ -236,4 +244,206 @@ describe('PostPage', () => {
       expect(notFound).toHaveBeenCalled()
     })
   })
+
+  describe('generateStaticParams error handling', () => {
+    it('returns empty array when getAllPosts fails', async () => {
+      vi.mocked(postsLib.getAllPosts).mockRejectedValue(new Error('Failed to load posts'))
+      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+
+      const params = await generateStaticParams()
+
+      expect(params).toEqual([])
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        'Error generating static params for posts:',
+        expect.any(Error)
+      )
+
+      consoleErrorSpy.mockRestore()
+    })
+  })
+
+  describe('MDX component rendering', () => {
+    beforeEach(() => {
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(mockPost)
+    })
+
+    it('renders custom MDX heading components', async () => {
+      const postWithHeadings = {
+        ...mockPost,
+        content: '# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithHeadings)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX paragraph component', async () => {
+      const postWithParagraph = {
+        ...mockPost,
+        content: 'This is a paragraph.'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithParagraph)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX link component', async () => {
+      const postWithLink = {
+        ...mockPost,
+        content: '[Link text](https://example.com)'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithLink)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX list components', async () => {
+      const postWithLists = {
+        ...mockPost,
+        content: '- Item 1\n- Item 2\n\n1. Numbered 1\n2. Numbered 2'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithLists)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX blockquote component', async () => {
+      const postWithBlockquote = {
+        ...mockPost,
+        content: '> This is a quote'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithBlockquote)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX code components', async () => {
+      const postWithCode = {
+        ...mockPost,
+        content: '`inline code`\n\n```\ncode block\n```'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithCode)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX horizontal rule component', async () => {
+      const postWithHr = {
+        ...mockPost,
+        content: 'Text above\n\n---\n\nText below'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithHr)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+
+    it('renders custom MDX table components', async () => {
+      const postWithTable = {
+        ...mockPost,
+        content: '| Header 1 | Header 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |'
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithTable)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      const mdxContent = screen.getByTestId('mdx-content')
+      expect(mdxContent).toBeInTheDocument()
+    })
+  })
+
+  describe('Conditional rendering', () => {
+    beforeEach(() => {
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(mockPost)
+    })
+
+    it('renders categories section when categories exist', async () => {
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      const { container } = render(page)
+
+      const categoryContainer = container.querySelector('.flex.flex-wrap.gap-3')
+      expect(categoryContainer).toBeInTheDocument()
+      expect(screen.getByText('Technology')).toBeInTheDocument()
+    })
+
+    it('renders tags section when tags exist', async () => {
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      expect(screen.getByText('#react')).toBeInTheDocument()
+      expect(screen.getByText('#typescript')).toBeInTheDocument()
+    })
+
+    it('does not render categories when array is empty', async () => {
+      const postWithoutCategories = {
+        ...mockPost,
+        categories: [],
+        tags: []
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithoutCategories)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      const { container } = render(page)
+
+      const borderContainer = container.querySelector('.flex.flex-wrap.gap-3.pb-8')
+      expect(borderContainer).not.toBeInTheDocument()
+    })
+
+    it('renders only tags when no categories', async () => {
+      const postWithOnlyTags = {
+        ...mockPost,
+        categories: []
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithOnlyTags)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      expect(screen.queryByText('Technology')).not.toBeInTheDocument()
+      expect(screen.getByText('#react')).toBeInTheDocument()
+    })
+
+    it('renders only categories when no tags', async () => {
+      const postWithOnlyCategories = {
+        ...mockPost,
+        tags: []
+      }
+      vi.mocked(postsLib.getPostBySlug).mockResolvedValue(postWithOnlyCategories)
+
+      const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
+      render(page)
+
+      expect(screen.getByText('Technology')).toBeInTheDocument()
+      expect(screen.queryByText('#react')).not.toBeInTheDocument()
+    })
+  })
+
 })

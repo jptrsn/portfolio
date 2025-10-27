@@ -95,8 +95,28 @@ describe('AboutPage', () => {
     expect(imageContainer).toBeInTheDocument()
   })
 
-  it('matches snapshot', () => {
+  it('renders all required sections with correct structure', () => {
     const { container } = render(<AboutPage />)
-    expect(container).toMatchSnapshot()
+
+    // Verify main container structure
+    const mainContainer = container.firstChild as HTMLElement
+    expect(mainContainer).toBeInTheDocument()
+    expect(mainContainer.tagName).toBe('DIV')
+
+    // Verify heading exists and is h2
+    const heading = screen.getByRole('heading', { name: "Hi, I'm James" })
+    expect(heading.tagName).toBe('H2')
+
+    // Verify image container exists
+    const imageContainer = container.querySelector('.flex.items-center.justify-center')
+    expect(imageContainer).toBeInTheDocument()
+
+    // Verify content container with paragraphs
+    const contentDiv = container.querySelector('.flex-col.gap-6.my-8')
+    expect(contentDiv).toBeInTheDocument()
+
+    // Verify all 5 paragraphs are present
+    const paragraphs = contentDiv?.querySelectorAll('p')
+    expect(paragraphs?.length).toBe(5)
   })
 })

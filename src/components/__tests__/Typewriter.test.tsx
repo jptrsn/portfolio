@@ -190,8 +190,34 @@ describe('TypewriterSimple', () => {
     expect(cursorSpan).not.toBeInTheDocument()
   })
 
-  it('matches snapshot', () => {
+  it('renders complete component structure', () => {
     const { container } = render(<TypewriterSimple text="Hello World" />)
-    expect(container).toMatchSnapshot()
+
+    // Verify main container
+    const mainContainer = container.querySelector('.relative.inline-block.w-full')
+    expect(mainContainer).toBeInTheDocument()
+    expect(mainContainer?.tagName).toBe('SPAN')
+
+    // Verify hidden text span (for layout)
+    const hiddenSpan = container.querySelector('.invisible')
+    expect(hiddenSpan).toBeInTheDocument()
+    expect(hiddenSpan).toHaveClass('w-full', 'inline-block')
+    expect(hiddenSpan).toHaveTextContent('Hello World')
+    expect(hiddenSpan).toHaveAttribute('aria-hidden', 'true')
+
+    // Verify visible text span
+    const visibleSpan = container.querySelector('.absolute')
+    expect(visibleSpan).toBeInTheDocument()
+    expect(visibleSpan).toHaveClass('absolute', 'top-0', 'left-0', 'w-full')
+    expect(visibleSpan).toHaveStyle({ maxWidth: '100%', wordWrap: 'break-word' })
+
+    // Verify style tag exists for animations
+    const style = container.querySelector('style')
+    expect(style).toBeInTheDocument()
+    expect(style?.textContent).toContain('@keyframes typewriter-blink')
+    expect(style?.textContent).toContain('opacity')
+
+    // Verify cursor is present initially
+    expect(visibleSpan?.textContent).toContain('|')
   })
 })

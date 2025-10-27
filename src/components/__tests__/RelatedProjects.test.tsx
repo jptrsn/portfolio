@@ -276,15 +276,61 @@ describe('RelatedProjects', () => {
     expect(image).toHaveAttribute('height', '180')
   })
 
-  it('matches snapshot with related projects', () => {
+  it('renders complete section structure with related projects', () => {
     vi.mocked(projectsLib.getRelatedProjects).mockReturnValue(relatedProjects)
     const { container } = render(<RelatedProjects currentProject={currentProject} />)
-    expect(container).toMatchSnapshot()
+
+    // Verify main container exists
+    const mainContainer = container.querySelector('.mt-16.pt-12')
+    expect(mainContainer).toBeInTheDocument()
+    expect(mainContainer).toHaveClass('border-t', 'border-gray-200', 'bg-gradient-primary')
+
+    // Verify section heading
+    const heading = screen.getByText('Related Projects')
+    expect(heading).toBeInTheDocument()
+    expect(heading.tagName).toBe('H3')
+    expect(heading).toHaveClass('text-2xl', 'font-bold')
+
+    // Verify grid container
+    const grid = container.querySelector('.grid')
+    expect(grid).toBeInTheDocument()
+    expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-3', 'gap-6')
+
+    // Verify all project links
+    const projectLinks = screen.getAllByRole('link')
+    expect(projectLinks.length).toBe(3)
+
+    projectLinks.forEach((link, index) => {
+      expect(link).toHaveAttribute('href', `/projects/${relatedProjects[index].slug}`)
+      expect(link).toHaveClass('group', 'block')
+    })
+
+    // Verify project titles
+    relatedProjects.forEach(project => {
+      const title = screen.getByText(project.title)
+      expect(title).toBeInTheDocument()
+      expect(title.tagName).toBe('H4')
+    })
+
+    // Verify project descriptions
+    relatedProjects.forEach(project => {
+      expect(screen.getByText(project.shortDescription)).toBeInTheDocument()
+    })
+
+    // Verify images are rendered (or gradient fallback)
+    const images = container.querySelectorAll('img')
+    expect(images.length).toBeGreaterThan(0)
   })
 
-  it('matches snapshot with no related projects', () => {
+  it('renders nothing when no related projects', () => {
     vi.mocked(projectsLib.getRelatedProjects).mockReturnValue([])
     const { container } = render(<RelatedProjects currentProject={currentProject} />)
-    expect(container).toMatchSnapshot('RelatedProjects-empty')
+
+    // Container should be empty (null return)
+    expect(container.firstChild).toBeNull()
+
+    // Should not render any elements
+    expect(screen.queryByText('Related Projects')).not.toBeInTheDocument()
+    expect(container.querySelector('.grid')).not.toBeInTheDocument()
   })
 })
