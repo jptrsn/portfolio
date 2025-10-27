@@ -25,8 +25,8 @@ interface MetadataProps {
 }
 
 const DEFAULT_METADATA = {
-  siteName: SITE_CONFIG.name,
-  title: SITE_CONFIG.name + ' - ' + SITE_CONFIG.description,
+  siteName: SITE_CONFIG.siteName,
+  title: SITE_CONFIG.title,
   description: SITE_CONFIG.description,
   keywords: ['coding', 'programming', 'tutorials', 'javascript', 'python', 'react', 'web development', 'learn to code'],
   author: 'James Petersen',

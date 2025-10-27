@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
-  name: 'EduCoder',
-  siteName: 'Edu Coder Dot Dev',
-  description: 'Portfolio and Blog of an Educator Software Developer',
+  siteName: 'EduCoder',
+  title: 'Educoder Dot Dev',
+  description: 'Professional portfolio and blog, showcasing a combination of technical achievement and varied interests, with a passion for Education Technology.',
   url: 'https://educoder.dev',
   ogImage: '/avatar_me.png',
   keywords: [
