@@ -8,7 +8,7 @@
   "startDate": "2024-10-01",
   "images": [
     {
-      "url": "/project-assets/ha-discourse-backup-sync/logo.png",
+      "url": "/project-assets/ha-discourse-backup-sync/icon.svg",
       "alt": "Home Assistant Discourse Backup Sync Logo",
       "caption": "Project Logo"
     },
