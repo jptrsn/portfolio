@@ -54,8 +54,11 @@ test.describe('Project Detail Page', () => {
     if (projectCount > 0) {
       await projectLinks.first().click()
 
-      // Click breadcrumb link
-      await page.locator('.grid a[href^="/projects"]').first().click()
+      // Wait for the detail page to load
+      await expect(page).toHaveURL(/\/projects\/.+/)
+
+      // Click breadcrumb link by text (more reliable than href)
+      await page.getByRole('link', { name: 'Projects' }).first().click()
 
       // Should be back on projects page
       await expect(page).toHaveURL(/\/projects\/?$/)
