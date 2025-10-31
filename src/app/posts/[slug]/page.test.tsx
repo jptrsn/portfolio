@@ -90,6 +90,8 @@ describe('PostPage', () => {
         title: mockPost.title,
         description: mockPost.excerpt,
         tags: mockPost.tags,
+        url: '/posts/test-post',
+        type: 'article'
       })
       expect(metadata).toHaveProperty('title', mockPost.title)
     })
@@ -112,6 +114,8 @@ describe('PostPage', () => {
         title: mockPost.title,
         description: mockPost.description,
         tags: mockPost.tags,
+        url: '/posts/test-post',
+        type: 'article'
       })
     })
   })
