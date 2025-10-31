@@ -103,7 +103,9 @@ export async function generateMetadata({ params }: Props) {
   return generateExtendedMetadata({
     title: post.title,
     description: post.excerpt || post.description,
-    tags: post.tags
+    tags: post.tags,
+    url: `/posts/${slug}`,  // Add this line
+    type: 'article',        // Also good to set this for blog posts
   })
 }
 
