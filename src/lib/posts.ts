@@ -89,10 +89,12 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
 export function formatDate(dateString: string): string {
   try {
+
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
+      timeZone: 'UTC'
     })
   } catch {
     return dateString
