@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ChevronRight, ExternalLink } from 'lucide-react';
 import { BrandIcon } from '@/components/BrandIcon';
 import { FeaturedProject } from '@/types/types';
 
@@ -16,10 +16,18 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">Side Projects</span>
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-neutral-400 max-w-2xl mx-auto mb-4">
             A selection of recent work and play showcasing full-stack development,
             system design, and problem-solving capabilities.
           </p>
+          <Link href={'/projects'}>
+            <button
+              className={`inline-flex flex-row cursor-pointer bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 border-primary-500 ring-2 ring-primary-500/20 hover:border-neutral-700`}
+            >
+              View All Projects
+              <ChevronRight />
+            </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -103,6 +111,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             </div>
           ))}
         </div>
+
+
       </div>
     </section>
   );
