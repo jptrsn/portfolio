@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Project } from '@/types/portfolio';
+import { dateStringToYear } from '@/lib/posts';
 
 export default function ProjectCard({ project }: { project: Project }) {
   const heroImage = project.images.find(img => img.isHero) || project.images[0];
@@ -28,7 +29,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               {project.title}
             </h3>
             <span className="text-sm ml-2 flex-shrink-0">
-              {project.year}
+              {dateStringToYear(project.startDate)}
             </span>
           </div>
 

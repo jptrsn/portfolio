@@ -17,12 +17,11 @@
   "tags": [
     { "name": "Angular", "category": "framework" },
     { "name": "NodeJS", "category": "framework" },
-    { "name": "Web (PWA)", "category": "platform" },
+    { "name": "Progressive Web App (PWA)", "category": "platform" },
     { "name": "Android", "category": "platform" },
     { "name": "Windows", "category": "platform" },
     { "name": "TypeScript", "category": "language" }
   ],
-  "technologies": ["Angular", "Progressive Web App (PWA)"],
   "links": [
     {
       "type": "github",

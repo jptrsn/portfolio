@@ -25,7 +25,6 @@
     { "name": "Traefik", "category": "reverse-proxy" },
     { "name": "VPS", "category": "platform" }
   ],
-  "technologies": ["NextJS", "TypeScript", "VPS"],
   "links": [
     {
       "type": "github",

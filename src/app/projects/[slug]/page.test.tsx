@@ -55,13 +55,12 @@ describe('ProjectDetailPage', () => {
     title: 'Test Project',
     shortDescription: 'A test project description',
     longDescription: 'This is a longer description\nwith multiple lines.',
-    year: 2024,
+    startDate: '2024-04-01',
     tags: [
       { name: 'React', category: 'framework', color: '#61DAFB' },
       { name: 'TypeScript', category: 'language', color: '#3178C6' },
       { name: 'PostgreSQL', category: 'database' },
     ],
-    technologies: ['React', 'TypeScript', 'PostgreSQL'],
     images: [
       { url: '/test-image.jpg', alt: 'Test image', isHero: true },
     ],
@@ -194,15 +193,6 @@ describe('ProjectDetailPage', () => {
       render(page)
 
       expect(screen.getByText(/This is a longer description/)).toBeInTheDocument()
-    })
-
-    it('renders technologies by category', async () => {
-      const page = await ProjectDetailPage({ params: Promise.resolve({ slug: 'test-project' }) })
-      render(page)
-
-      expect(screen.getByText('React')).toBeInTheDocument()
-      expect(screen.getByText('TypeScript')).toBeInTheDocument()
-      expect(screen.getByText('PostgreSQL')).toBeInTheDocument()
     })
 
     it('renders challenges section', async () => {

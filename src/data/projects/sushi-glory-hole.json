@@ -20,7 +20,6 @@
     { "name": "Ionic", "category": "framework" },
     { "name": "TypeScript", "category": "language" }
   ],
-  "technologies": ["Angular", "Ionic", "Typescript"],
   "links": [
     {
       "type": "github",

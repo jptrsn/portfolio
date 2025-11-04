@@ -25,7 +25,6 @@
     { "name": "TypeScript", "category": "language" },
     { "name": "Raspberry Pi", "category": "platform" }
   ],
-  "technologies": ["NextJS", "TypeScript", "Raspberry Pi"],
   "links": [
     {
       "type": "github",

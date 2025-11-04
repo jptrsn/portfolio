@@ -60,7 +60,9 @@ export function getAllProjects(): Project[] {
     if (!a.featured && b.featured) return 1;
 
     // Then by year (newest first)
-    return b.year - a.year;
+    const aYear = new Date(a.startDate).getFullYear();
+    const bYear = new Date(b.startDate).getFullYear();
+    return bYear - aYear;
   });
 }
 
@@ -111,27 +113,16 @@ export function getProjectsByTag(tagName: string, category?: string): Project[] 
 }
 
 /**
- * Get projects filtered by technology
- */
-export function getProjectsByTechnology(technology: string): Project[] {
-  const projects = getAllProjects();
-
-  return projects.filter(project =>
-    project.technologies.some(tech =>
-      tech.toLowerCase() === technology.toLowerCase()
-    )
-  );
-}
-
-/**
  * Get projects filtered by year range
  */
 export function getProjectsByYearRange(startYear: number, endYear?: number): Project[] {
   const projects = getAllProjects();
   const end = endYear || new Date().getFullYear();
 
-  return projects.filter(project =>
-    project.year >= startYear && project.year <= end
+  return projects.filter(project => {
+    const projYear = new Date(project.startDate).getFullYear();
+    return (projYear >= startYear && projYear <= end);
+  }
   );
 }
 
@@ -141,20 +132,6 @@ export function getProjectsByYearRange(startYear: number, endYear?: number): Pro
 export function getProjectsByStatus(status: Project['status']['current']): Project[] {
   const projects = getAllProjects();
   return projects.filter(project => project.status.current === status);
-}
-
-/**
- * Get all unique technologies across all projects
- */
-export function getAllTechnologies(): string[] {
-  const projects = getAllProjects();
-  const technologies = new Set<string>();
-
-  projects.forEach(project => {
-    project.technologies.forEach(tech => technologies.add(tech));
-  });
-
-  return Array.from(technologies).sort();
 }
 
 /**
@@ -208,24 +185,21 @@ export function searchProjects(query: string): Project[] {
     const keywordMatch = project.keywords?.some(keyword =>
       keyword.toLowerCase().includes(searchTerm)
     ) || false;
-    const techMatch = project.technologies.some(tech =>
-      tech.toLowerCase().includes(searchTerm)
-    );
     const tagMatch = project.tags.some(tag =>
       tag.name.toLowerCase().includes(searchTerm)
     );
 
-    return titleMatch || shortDescMatch || longDescMatch || keywordMatch || techMatch || tagMatch;
+    return titleMatch || shortDescMatch || longDescMatch || keywordMatch || tagMatch;
   });
 }
 
 /**
- * Get related projects based on shared tags/technologies
+ * Get related projects based on shared tags
  */
 export function getRelatedProjects(currentProject: Project, limit: number = 3): Project[] {
   const allProjects = getAllProjects().filter(p => p.id !== currentProject.id);
 
-  // Score projects based on shared tags and technologies
+  // Score projects based on shared tags
   const scoredProjects = allProjects.map(project => {
     let score = 0;
 
@@ -247,18 +221,6 @@ export function getRelatedProjects(currentProject: Project, limit: number = 3): 
         score += tagWeights[tag.category] || 1;
       }
     });
-
-    // Score for shared technologies
-    project.technologies.forEach(tech => {
-      if (currentProject.technologies.includes(tech)) {
-        score += 2;
-      }
-    });
-
-    // Bonus for same year (indicates similar time period/tech stack)
-    if (project.year === currentProject.year) {
-      score += 1;
-    }
 
     return { project, score };
   });
@@ -284,13 +246,13 @@ export function getProjectStats() {
   }, {} as Record<string, number>);
 
   const yearRange = projects.reduce((acc, project) => {
+    const projectYear = new Date(project.startDate).getFullYear();
     return {
-      earliest: Math.min(acc.earliest, project.year),
-      latest: Math.max(acc.latest, project.year)
+      earliest: Math.min(acc.earliest, projectYear),
+      latest: Math.max(acc.latest, projectYear)
     };
   }, { earliest: Infinity, latest: -Infinity });
 
-  const totalTechnologies = getAllTechnologies().length;
   const averageTagsPerProject = projects.reduce((sum, project) =>
     sum + project.tags.length, 0) / projects.length;
 
@@ -299,7 +261,6 @@ export function getProjectStats() {
     featuredProjects: projects.filter(p => p.featured).length,
     statusBreakdown: statusCounts,
     yearRange: yearRange.earliest === Infinity ? null : yearRange,
-    totalTechnologies,
     averageTagsPerProject: Math.round(averageTagsPerProject * 10) / 10,
     projectsWithImages: projects.filter(p => p.images.length > 0).length,
     openSourceProjects: projects.filter(p => p.isOpenSource).length

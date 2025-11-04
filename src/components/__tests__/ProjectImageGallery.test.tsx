@@ -10,7 +10,7 @@ describe('ProjectImageGallery', () => {
     title: 'Test Project',
     shortDescription: 'Short desc',
     longDescription: 'Full detailed description',
-    year: 2024,
+    startDate: "2024-05-01",
     status: {
       current: 'active',
       deploymentStatus: 'live',
@@ -22,7 +22,6 @@ describe('ProjectImageGallery', () => {
       duration: '2 months'
     },
     tags: [],
-    technologies: [],
     images: [
       { url: '/hero.jpg', alt: 'Hero image', isHero: true, caption: 'Hero caption' },
       { url: '/image1.jpg', alt: 'Image 1', isHero: false, caption: 'Caption 1' },

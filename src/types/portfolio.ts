@@ -43,8 +43,7 @@ export interface Project {
   longDescription: string; // Detailed description (supports markdown)
 
   // Temporal info
-  year: number;
-  startDate?: string; // ISO date string for more precision
+  startDate: string; // ISO date string for more precision
   endDate?: string; // For projects with defined end dates
 
   // Visual assets
@@ -53,7 +52,6 @@ export interface Project {
 
   // Technical details
   tags: ProjectTag[];
-  technologies: string[]; // Flat array for simpler filtering
 
   // Links and availability
   links: ProjectLink[];
@@ -94,7 +92,6 @@ export type ProjectDifficulty = ProjectMetadata['difficulty'];
 export interface ProjectFilters {
   status?: ProjectStatusType[];
   categories?: ProjectCategory[];
-  technologies?: string[];
   yearRange?: {
     start: number;
     end: number;

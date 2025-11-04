@@ -32,7 +32,6 @@
     { "name": "3D Printing", "category": "hardware" },
     { "name": "IoT", "category": "platform" }
   ],
-  "technologies": ["Angular", "Arduino", "TypeScript", "3D Printing"],
   "links": [
     {
       "type": "github",

@@ -36,7 +36,6 @@ describe('ProjectsPage', () => {
         { name: 'React', category: 'framework' },
         { name: 'TypeScript', category: 'language' }
       ],
-      technologies: ['React', 'TypeScript'],
       images: [],
       links: [],
       status: { current: 'active' },
@@ -56,7 +55,6 @@ describe('ProjectsPage', () => {
         { name: 'Node.js', category: 'platform' },
         { name: 'PostgreSQL', category: 'database' }
       ],
-      technologies: ['Node.js', 'PostgreSQL'],
       images: [],
       links: [],
       status: { current: 'completed' },

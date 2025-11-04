@@ -76,7 +76,6 @@ export interface Project {
   longDescription: string; // Detailed description (supports markdown)
 
   // Temporal info
-  year: number;
   startDate?: string; // ISO date string for more precision
   endDate?: string; // For projects with defined end dates
 
@@ -86,7 +85,6 @@ export interface Project {
 
   // Technical details
   tags: ProjectTag[];
-  technologies: string[]; // Flat array for simpler filtering
 
   // Links and availability
   links: ProjectLink[];
@@ -125,7 +123,6 @@ export const validateProject = (project: Project): boolean => {
     project.slug &&
     project.shortDescription &&
     project.longDescription &&
-    project.year &&
     project.tags.length > 0
   );
 };

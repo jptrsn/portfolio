@@ -100,3 +100,15 @@ export function formatDate(dateString: string): string {
     return dateString
   }
 }
+
+export function dateStringToYear(dateString: string): string {
+  try {
+
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      timeZone: 'UTC'
+    })
+  } catch {
+    return dateString
+  }
+}
