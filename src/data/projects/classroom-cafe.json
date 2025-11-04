@@ -4,7 +4,6 @@
   "slug": "classroom-cafe",
   "shortDescription": "Discourse community forum and NextJS site",
   "longDescription": "A full stack Discourse forum and NextJS static site, running in Docker on VPS. Automated scheduled off-site backups performed by chron-job and Home Assistant Add-on.",
-  "year": 2025,
   "startDate": "2025-10-15",
   "images": [
     {
