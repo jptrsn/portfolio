@@ -22,7 +22,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           </p>
           <Link href={'/projects'}>
             <button
-              className={`inline-flex flex-row cursor-pointer bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 border-primary-500 ring-2 ring-primary-500/20 hover:border-neutral-700`}
+              className={`inline-flex flex-row cursor-pointer bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 border-primary-700 ring-2 ring-primary-500/20 hover:border-primary-500`}
             >
               View All Projects
               <ChevronRight />
