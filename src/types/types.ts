@@ -121,6 +121,7 @@ export const validateProject = (project: Project): boolean => {
     project.id &&
     project.title &&
     project.slug &&
+    project.startDate &&
     project.shortDescription &&
     project.longDescription &&
     project.tags.length > 0

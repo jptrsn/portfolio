@@ -103,12 +103,12 @@ export function formatDate(dateString: string): string {
 
 export function dateStringToYear(dateString: string): string {
   try {
-
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      timeZone: 'UTC'
-    })
+    const year = new Date(dateString).getUTCFullYear();
+    if (isNaN(year)) {
+      return dateString;
+    }
+    return year.toString();
   } catch {
-    return dateString
+    return dateString;
   }
 }

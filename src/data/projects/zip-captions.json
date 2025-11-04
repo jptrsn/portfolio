@@ -4,7 +4,6 @@
   "slug": "zip-captions",
   "shortDescription": "Simple, free, easy speech-to-text for everyone, because accessibility should be free.",
   "longDescription": "A free, open-source, and browser-based captioning application built with a modern TypeScript-driven stack and a commitment to accessibility, allowing users to generate captions directly in their browser at no cost.",
-  "year": "2023",
   "startDate": "2023-04-01",
   "images": [
     {

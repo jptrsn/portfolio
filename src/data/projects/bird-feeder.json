@@ -23,7 +23,7 @@
       "type": "github",
       "url": "https://github.com/jptrsn/Birdfeeder",
       "label": "View Source",
-      "isAvailable": "true"
+      "isAvailable": true
     }
   ],
   "status": {
