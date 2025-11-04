@@ -76,7 +76,7 @@ export interface Project {
   longDescription: string; // Detailed description (supports markdown)
 
   // Temporal info
-  startDate?: string; // ISO date string for more precision
+  startDate: string; // ISO date string for more precision
   endDate?: string; // For projects with defined end dates
 
   // Visual assets
