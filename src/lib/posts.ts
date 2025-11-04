@@ -100,3 +100,15 @@ export function formatDate(dateString: string): string {
     return dateString
   }
 }
+
+export function dateStringToYear(dateString: string): string {
+  try {
+    const year = new Date(dateString).getUTCFullYear();
+    if (isNaN(year)) {
+      return dateString;
+    }
+    return year.toString();
+  } catch {
+    return dateString;
+  }
+}

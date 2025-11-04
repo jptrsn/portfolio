@@ -4,7 +4,6 @@
   "slug": "smart-lamp-controller",
   "shortDescription": "Custom IoT lamp with 3D printed housing and browser extension control.",
   "longDescription": "A complete smart lighting solution featuring custom 3D printed lamp housing, ESP8266 microcontroller, and a Chrome Browser app. The system allows for webcam status control, indicating when the user is \"On-Air\".",
-  "year": 2022,
   "startDate": "2022-03-01",
   "endDate": "2022-07-15",
   "images": [
@@ -32,7 +31,6 @@
     { "name": "3D Printing", "category": "hardware" },
     { "name": "IoT", "category": "platform" }
   ],
-  "technologies": ["Angular", "Arduino", "TypeScript", "3D Printing"],
   "links": [
     {
       "type": "github",

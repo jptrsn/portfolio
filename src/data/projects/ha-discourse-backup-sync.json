@@ -4,8 +4,7 @@
   "slug": "ha-discourse-backup-sync",
   "shortDescription": "Home Assistant Add-on for automated Discourse backup sync",
   "longDescription": "A Home Assistant Add-on that connects to a Discourse community forum server via API to automatically retrieve and download backup files to the local disk. It allows the user to configure a retention schedule, ensuring older backups are pruned to save space. The add-on is automatically built and deployed to GitHub Container Registry (GHCR) using GitHub Actions.",
-  "year": 2025,
-  "startDate": "2024-10-01",
+  "startDate": "2025-10-01",
   "images": [
     {
       "url": "/project-assets/ha-discourse-backup-sync/icon.svg",
@@ -28,7 +27,6 @@
     { "name": "Home Assistant", "category": "platform" },
     { "name": "GitHub Actions", "category": "devops" }
   ],
-  "technologies": ["Python", "Home Assistant", "Docker", "GitHub Actions"],
   "links": [
     {
       "type": "github",

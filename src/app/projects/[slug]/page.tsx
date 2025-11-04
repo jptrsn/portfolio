@@ -2,6 +2,7 @@ import ProjectImageGallery from '@/components/ProjectImageGallery';
 import ProjectLinkButton from '@/components/ProjectLink';
 import RelatedProjects from '@/components/RelatedProjects';
 import { generateExtendedMetadata } from '@/lib/metadata';
+import { dateStringToYear } from '@/lib/posts';
 import { getAllProjectSlugs, getProjectBySlug } from '@/lib/projects';
 import { Metadata } from 'next';
 
@@ -73,7 +74,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
           <div className="text-right flex-shrink-0 ml-6">
             <div className="text-2xl font-bold text-neutral-600">
-              {project.year}
+              {dateStringToYear(project.startDate)}
             </div>
             {project.metadata.duration && (
               <div className="text-sm text-neutral-700">

@@ -4,7 +4,6 @@
   "slug": "quaid-army",
   "shortDescription": "Simple static podcast fan website built from RSS feed data.",
   "longDescription": "A static website built from a podcast RSS feed. Provides episode transcriptions with automatic sync playback, as well as embedded linked video player and full text search. Hosted on a Raspberry Pi 3B+",
-  "year": 2025,
   "startDate": "2025-03-01",
 
   "images": [
@@ -25,7 +24,6 @@
     { "name": "TypeScript", "category": "language" },
     { "name": "Raspberry Pi", "category": "platform" }
   ],
-  "technologies": ["NextJS", "TypeScript", "Raspberry Pi"],
   "links": [
     {
       "type": "github",

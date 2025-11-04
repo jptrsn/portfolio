@@ -80,21 +80,6 @@ test.describe('Project Detail Page', () => {
     }
   })
 
-  test('displays technologies section', async ({ page }) => {
-    await page.goto('/projects')
-
-    const projectLinks = page.locator('.grid a[href^="/projects/"]')
-    const projectCount = await projectLinks.count()
-
-    if (projectCount > 0) {
-      await projectLinks.first().click()
-
-      // Check for technologies heading
-      const techHeading = page.getByRole('heading', { name: /technologies used/i })
-      await expect(techHeading).toBeVisible()
-    }
-  })
-
   test('displays project status badge', async ({ page }) => {
     await page.goto('/projects')
 

@@ -4,7 +4,6 @@
   "slug": "sushi-glory-hole",
   "shortDescription": "Full stack cross platform app with location integration.",
   "longDescription": "A silly demo of an Angular Ionic full stack cross platform location-enabled app.",
-  "year": 2024,
   "startDate": "2024-11-01",
   "endDate": "2025-02-01",
   "images": [
@@ -20,7 +19,6 @@
     { "name": "Ionic", "category": "framework" },
     { "name": "TypeScript", "category": "language" }
   ],
-  "technologies": ["Angular", "Ionic", "Typescript"],
   "links": [
     {
       "type": "github",

@@ -10,7 +10,7 @@ describe('ProjectCard', () => {
     title: 'Test Project',
     shortDescription: 'A test project description',
     longDescription: 'Full detailed description',
-    year: 2024,
+    startDate: '2024-10-01',
     status: {
       current: 'active',
       deploymentStatus: 'live',
@@ -29,7 +29,6 @@ describe('ProjectCard', () => {
       { name: 'PostgreSQL', category: 'database' },
       { name: 'Docker', category: 'tool' },
     ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker'],
     images: [
       { url: '/test-image.jpg', alt: 'Test image', isHero: true }
     ],

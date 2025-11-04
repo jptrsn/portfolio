@@ -59,6 +59,7 @@ jobs:
           retention-days: 30
 
   build:
+    if: github.event_name != 'pull_request'
     needs: test
     runs-on: ubuntu-latest
     steps:

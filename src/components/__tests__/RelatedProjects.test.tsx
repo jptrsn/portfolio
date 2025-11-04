@@ -28,7 +28,6 @@ describe('RelatedProjects', () => {
       duration: '3 months'
     },
     tags: [{ name: 'React', category: 'framework' }],
-    technologies: ['React', 'TypeScript'],
     images: [],
     links: [],
   }
@@ -53,7 +52,6 @@ describe('RelatedProjects', () => {
         { name: 'React', category: 'framework' },
         { name: 'TypeScript', category: 'language' }
       ],
-      technologies: ['React', 'TypeScript'],
       images: [
         { url: '/related-one.jpg', alt: 'Related One', isHero: true }
       ],
@@ -81,7 +79,6 @@ describe('RelatedProjects', () => {
         { name: 'Python', category: 'language' },
         { name: 'Docker', category: 'tool' }
       ],
-      technologies: ['Vue', 'Python', 'Docker'],
       images: [
         { url: '/related-two-1.jpg', alt: 'Related Two Image 1', isHero: false },
         { url: '/related-two-2.jpg', alt: 'Related Two Image 2', isHero: false }
@@ -104,7 +101,6 @@ describe('RelatedProjects', () => {
         duration: '1 month'
       },
       tags: [{ name: 'Angular', category: 'framework' }],
-      technologies: ['Angular', 'Java'],
       images: [],
       links: [],
     }
