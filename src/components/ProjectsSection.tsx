@@ -20,13 +20,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             A selection of recent work and play showcasing full-stack development,
             system design, and problem-solving capabilities.
           </p>
-          <Link href={'/projects'}>
-            <button
-              className={`inline-flex flex-row cursor-pointer bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 border-primary-700 ring-2 ring-primary-500/20 hover:border-primary-500`}
+          <Link
+            href={'/projects'}
+            className={`inline-flex flex-row gap-3 cursor-pointer bg-neutral-900/50 border rounded-lg p-4 transition-all duration-300 hover:scale-105 border-primary-700 ring-2 ring-primary-500/20 hover:border-primary-500`}
             >
-              View All Projects
+              <span>View All Projects</span>
               <ChevronRight />
-            </button>
           </Link>
         </div>
 
