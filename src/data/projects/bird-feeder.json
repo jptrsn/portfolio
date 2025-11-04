@@ -1,0 +1,35 @@
+{
+  "id": "bird-feeder",
+  "title": "Bird Feeder for Google Sheets",
+  "slug": "bird-feeder",
+  "shortDescription": "An add-on for Google Sheets, which allows the user to schedule, save, and automate posting to Twitter.",
+  "longDescription": "A Google Sheets add-on that connected to Twitter using the V1 API, to automatically schedule and post to Twitter, in coordination with a presentation schedule.",
+  "startDate": "2015-04-01",
+  "endDate": "2018-04-26",
+  "images": [
+    {
+      "url": "/project-assets/no_image_exists.png",
+      "alt": "No image exists for this project",
+      "caption": "No images exist"
+    }
+  ],
+  "tags": [
+    { "name": "JavaScript", "category": "language" },
+    { "name": "Google Apps-Script", "category": "framework" },
+    { "name": "OAuth", "category": "authentication" }
+  ],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/Birdfeeder",
+      "label": "View Source",
+      "isAvailable": "true"
+    }
+  ],
+  "status": {
+    "current": "archived"
+  },
+  "metadata": {
+    "difficulty": "beginner"
+  }
+}
