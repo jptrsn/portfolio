@@ -1,0 +1,109 @@
+{
+  "id": "youtube-transcript-search",
+  "title": "YouTube Transcript Search",
+  "slug": "youtube-transcript-search",
+  "shortDescription": "Full-stack application with browser extensions for capturing and searching YouTube video transcripts across channels.",
+  "longDescription": "A comprehensive full-stack system designed to solve the problem of searchability across YouTube content. The project consists of three integrated components: a FastAPI backend with PostgreSQL full-text search, a SvelteKit web interface for channel management and cross-video search, and browser extensions for Chrome and Firefox that automatically capture transcripts. The extension architecture is particularly sophisticated, featuring a modular manifest patching system that allows separate development and production builds for each browser, handling the nuances of Chrome's Manifest V3 service workers versus Firefox's scripts requirement. Users can search transcripts in two ways: through an in-page UI that seamlessly integrates into YouTube's existing transcript panel (matching the native theme in both light and dark modes), or via the extension popup which provides API-powered search with click-to-seek functionality. The service worker implements intelligent caching with FIFO eviction (50 video limit) to minimize API calls while maintaining fresh data. WebSub (PubSubHubbub) integration provides real-time notifications when subscribed channels publish new videos, triggering automatic transcript capture. The backend leverages PostgreSQL's ts_vector for performant full-text search across potentially thousands of video transcripts, while the frontend offers an intuitive interface for managing channel subscriptions and exploring search results across entire catalogs.",
+  "startDate": "2024-09-25",
+
+  "images": [
+    {
+      "url": "/project-assets/youtube-transcript-search/hero.png",
+      "alt": "YouTube Transcript Search interface",
+      "caption": "Main application interface showing channel management and search capabilities",
+      "isHero": true
+    },
+    {
+      "url": "/project-assets/youtube-transcript-search/frontend-landing.png",
+      "alt": "Frontend landing page showing channel search",
+      "caption": "Channel search and management interface with subscription status and video counts"
+    },
+    {
+      "url": "/project-assets/youtube-transcript-search/extension-popup.png",
+      "alt": "Extension popup showing search results",
+      "caption": "Extension popup demonstrating Mode 1 search with API-powered results and click-to-seek navigation"
+    },
+    {
+      "url": "/project-assets/youtube-transcript-search/injected-ui.png",
+      "alt": "In-page search UI injected into YouTube",
+      "caption": "Mode 2 in-page search UI seamlessly integrated into YouTube's transcript panel, matching native theme"
+    },
+    {
+      "url": "/project-assets/youtube-transcript-search/search-results.png",
+      "alt": "Search results showing matches across videos",
+      "caption": "Cross-channel transcript search results with timestamp navigation and context preview"
+    },
+    {
+      "url": "/project-assets/youtube-transcript-search/architecture.png",
+      "alt": "System architecture diagram",
+      "caption": "Multi-component architecture showing extension, API, database, and WebSub integration"
+    }
+  ],
+  "tags": [
+    { "name": "FastAPI", "category": "framework" },
+    { "name": "SvelteKit", "category": "framework" },
+    { "name": "TypeScript", "category": "language" },
+    { "name": "Python", "category": "language" },
+    { "name": "PostgreSQL", "category": "database" },
+    { "name": "Browser Extension", "category": "platform" },
+    { "name": "Chrome", "category": "platform" },
+    { "name": "Firefox", "category": "platform" },
+    { "name": "SQLAlchemy", "category": "framework" },
+    { "name": "Webpack", "category": "tool" },
+    { "name": "Alembic", "category": "tool" },
+    { "name": "WebSub", "category": "protocol" }
+  ],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/yourusername/youtube-transcript-search",
+      "label": "View Source",
+      "isAvailable": true
+    },
+    {
+      "type": "demo",
+      "url": "https://ytscri.be",
+      "label": "View Live Site",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "production",
+    "deploymentStatus": "live",
+    "maintenanceLevel": "actively-developed"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 1,
+    "duration": "Ongoing",
+    "role": "Full-Stack Developer & System Architect"
+  },
+  "challenges": "Modular manifest patching for multi-browser, multi-environment builds. Chrome service_worker vs Firefox scripts in Manifest V3. Theme-aware UI integration matching YouTube's native interface. Service worker caching with FIFO eviction under memory constraints. YouTube SPA navigation detection without memory leaks. PostgreSQL full-text search optimization across large datasets. WebSub protocol implementation for real-time notifications. CORS configuration for chrome-extension:// and moz-extension:// origins.",
+  "learnings": "Extension Manifest V3 architecture across browsers. Advanced Webpack multi-target builds with transform-based patching. Service worker lifecycle and memory optimization. PostgreSQL ts_vector and GIN index for full-text search. FastAPI dependency injection and SQLAlchemy relationships. Alembic migrations across environments. WebSub/PubSubHubbub protocol and signature verification. Chrome vs Firefox extension API differences. CSS custom properties for theme-aware integration. Separation of concerns in multi-component architecture.",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true,
+  "featured": true,
+  "keywords": [
+    "youtube",
+    "transcripts",
+    "search",
+    "browser-extension",
+    "full-text-search",
+    "websub",
+    "manifest-v3",
+    "chrome-extension",
+    "firefox-addon",
+    "fastapi",
+    "sveltekit",
+    "postgresql",
+    "service-worker",
+    "cross-browser",
+    "content-script",
+    "typescript",
+    "python",
+    "alembic",
+    "sqlalchemy",
+    "webpack"
+  ]
+}
