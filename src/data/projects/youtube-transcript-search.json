@@ -4,7 +4,7 @@
   "slug": "youtube-transcript-search",
   "shortDescription": "Full-stack application with browser extensions for capturing and searching YouTube video transcripts across channels.",
   "longDescription": "A comprehensive full-stack system designed to solve the problem of searchability across YouTube content. The project consists of three integrated components: a FastAPI backend with PostgreSQL full-text search, a SvelteKit web interface for channel management and cross-video search, and browser extensions for Chrome and Firefox that automatically capture transcripts. The extension architecture is particularly sophisticated, featuring a modular manifest patching system that allows separate development and production builds for each browser, handling the nuances of Chrome's Manifest V3 service workers versus Firefox's scripts requirement. Users can search transcripts in two ways: through an in-page UI that seamlessly integrates into YouTube's existing transcript panel (matching the native theme in both light and dark modes), or via the extension popup which provides API-powered search with click-to-seek functionality. The service worker implements intelligent caching with FIFO eviction (50 video limit) to minimize API calls while maintaining fresh data. WebSub (PubSubHubbub) integration provides real-time notifications when subscribed channels publish new videos, triggering automatic transcript capture. The backend leverages PostgreSQL's ts_vector for performant full-text search across potentially thousands of video transcripts, while the frontend offers an intuitive interface for managing channel subscriptions and exploring search results across entire catalogs.",
-  "startDate": "2024-09-25",
+  "startDate": "2025-09-25",
 
   "images": [
     {
