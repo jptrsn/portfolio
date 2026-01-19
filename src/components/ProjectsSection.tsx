@@ -10,13 +10,13 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="py-20 px-6 bg-neutral-900/30">
+    <section id="projects" className="py-20 px-6 bg-primary-900/50">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">Side Projects</span>
           </h2>
-          <p className="text-neutral-400 max-w-2xl mx-auto mb-4">
+          <p className="text-primary-400 max-w-2xl mx-auto mb-4">
             A selection of recent work and play showcasing full-stack development,
             system design, and problem-solving capabilities.
           </p>

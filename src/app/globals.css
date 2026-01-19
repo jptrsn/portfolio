@@ -1,64 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  /* Force dark mode for all users */
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* Dark mode: Warm Charcoal & Soft Cream */
+  --background: #1a1917; /* Deep umber-tinted black */
+  --foreground: #e8e4df; /* Soft parchment white */
 
-  /* Primary: Softer Coral for dark backgrounds */
-  --primary-50: #fef2f2;
-  --primary-100: #fee2e2;
-  --primary-200: #fecaca;
-  --primary-300: #fca5a5;
-  --primary-400: #f87171;
-  --primary-500: #ff6b6b;
-  --primary-600: #ff5252;
-  --primary-700: #ff4444;
-  --primary-800: #e53935;
-  --primary-900: #c62828;
+  /* Primary: Sage & Olive Greens */
+  --primary-50: #f4f7f1;
+  --primary-100: #e7eee2;
+  --primary-200: #d1dfc9;
+  --primary-300: #afc6a4;
+  --primary-400: #8ba97e;
+  --primary-500: #718f61; /* Main Brand Green */
+  --primary-600: #5a734d;
+  --primary-700: #465a3c;
+  --primary-800: #3a4a33;
+  --primary-900: #313e2b;
 
-  /* Secondary: Brighter Teal for dark backgrounds */
-  --secondary-50: #f0fdfa;
-  --secondary-100: #ccfbf1;
-  --secondary-200: #99f6e4;
-  --secondary-300: #5eead4;
-  --secondary-400: #2dd4bf;
-  --secondary-500: #26d0ce;
-  --secondary-600: #22c8c6;
-  --secondary-700: #1eb5b3;
-  --secondary-800: #1a9d9a;
-  --secondary-900: #168481;
+  /* Secondary: Warm Browns & Ochre */
+  --secondary-50: #fbf8f3;
+  --secondary-100: #f5eedf;
+  --secondary-200: #ead9bc;
+  --secondary-300: #dbc091;
+  --secondary-400: #c9a06b;
+  --secondary-500: #b98a50; /* Main Earth Brown */
+  --secondary-600: #a77443;
+  --secondary-700: #8a5e3a;
+  --secondary-800: #714e33;
+  --secondary-900: #5f422d;
 
-  /* Accent: Warmer Orange for dark backgrounds */
-  --accent-50: #fff7ed;
-  --accent-100: #ffedd5;
-  --accent-200: #fed7aa;
-  --accent-300: #fdba74;
-  --accent-400: #fb923c;
-  --accent-500: #ffa726;
-  --accent-600: #ff9800;
-  --accent-700: #f57c00;
-  --accent-800: #ef6c00;
-  --accent-900: #e65100;
+  /* Accent: Terracotta & Clay */
+  --accent-50: #fef4f2;
+  --accent-100: #fde7e2;
+  --accent-200: #fbcfc6;
+  --accent-300: #f6ab9c;
+  --accent-400: #ef7e69;
+  --accent-500: #e25a41; /* Muted Terracotta */
+  --accent-600: #cf452f;
+  --accent-700: #ad3625;
+  --accent-800: #8c2f22;
+  --accent-900: #752a1f;
 
-  /* Dark mode optimized neutrals */
-  --neutral-50: #f9fafb;
-  --neutral-100: #f3f4f6;
-  --neutral-200: #e5e7eb;
-  --neutral-300: #d1d5db;
-  --neutral-400: #9ca3af;
-  --neutral-500: #6b7280;
-  --neutral-600: #4b5563;
-  --neutral-700: #374151;
-  --neutral-800: #1f2937;
-  --neutral-900: #111827;
+  /* Neutrals: Stone & Slate Clay */
+  --neutral-50: #f8f8f7;
+  --neutral-100: #f1f0ee;
+  --neutral-200: #e2e0db;
+  --neutral-300: #ccc8c0;
+  --neutral-400: #9c9689;
+  --neutral-500: #7d776b;
+  --neutral-600: #635e54;
+  --neutral-700: #4d4942;
+  --neutral-800: #383530;
+  --neutral-900: #24221f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Typography Polish */
+  --tracking-tight: -0.02em; /* Technical fonts often look better slightly tighter */
+  --tracking-wide: 0.05em;  /* Use for small uppercase labels */
 
   /* Custom color palette */
   --color-primary-50: var(--primary-50);
@@ -121,21 +123,23 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
 /* Portfolio-specific utility classes */
 .gradient-primary {
-  background: linear-gradient(135deg, var(--neutral-900), var(--neutral-700));
+  background: linear-gradient(290deg, var(--neutral-900), var(--accent-800));
+  color: var(--primary-700);
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, var(--background), var(--neutral-900));
+  background: linear-gradient(135deg, var(--primary-200), var(--neutral-200));
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+  background: linear-gradient(135deg, var(--primary-200), var(--secondary-200));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: var(--font-serif);
 }

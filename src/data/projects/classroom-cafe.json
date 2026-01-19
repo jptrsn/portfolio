@@ -35,13 +35,13 @@
       "type": "demo",
       "url": "https://about.classroom.cafe",
       "label": "View the Site",
-      "isAvailable": true
+      "isAvailable": false
     }
   ],
   "status": {
-    "current": "active",
-    "deploymentStatus": "live",
-    "maintenanceLevel": "maintained"
+    "current": "archived",
+    "deploymentStatus": "offline",
+    "maintenanceLevel": "not maintained"
   },
   "metadata": {
     "difficulty": "intermediate"

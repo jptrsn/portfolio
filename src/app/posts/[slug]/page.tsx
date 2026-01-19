@@ -118,7 +118,7 @@ export default async function PostPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-900">
+    <div className="min-h-screen bg-secondary-900/50">
       {/* Back Navigation */}
       <div className="bg-neutral-500/20 border-b border-neutral-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

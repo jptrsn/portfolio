@@ -164,7 +164,7 @@ describe('ProjectsSection', () => {
   it('applies background styling to section', () => {
     const { container } = render(<ProjectsSection projects={mockProjects} />)
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-neutral-900/30')
+    expect(section).toHaveClass('bg-primary-900/50')
   })
 
   it('renders complete section structure with all elements', () => {
@@ -174,7 +174,7 @@ describe('ProjectsSection', () => {
     const section = container.querySelector('#projects')
     expect(section).toBeInTheDocument()
     expect(section?.tagName).toBe('SECTION')
-    expect(section).toHaveClass('py-20', 'px-6', 'bg-neutral-900/30')
+    expect(section).toHaveClass('py-20', 'px-6', 'bg-primary-900/50')
 
     // Verify container
     const mainContainer = section?.querySelector('.container')

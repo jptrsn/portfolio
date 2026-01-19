@@ -66,7 +66,7 @@ describe('AboutPage', () => {
   it('has correct page structure with proper classes', () => {
     const { container } = render(<AboutPage />)
     const pageContainer = container.firstChild as HTMLElement
-    expect(pageContainer).toHaveClass('min-h-screen', 'bg-background', 'text-foreground', 'pt-24', 'px-6')
+    expect(pageContainer).toHaveClass('min-h-screen', 'bg-secondary-700/50', 'text-foreground', 'pt-24', 'px-6')
   })
 
   it('has correct container max-width', () => {

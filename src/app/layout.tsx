@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Mono, Merriweather } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plexSans = IBM_Plex_Sans({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  weight: ["400", "500"],
   subsets: ["latin"],
+  variable: "--font-mono",
 });
+
+const merriweather = Merriweather({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-serif",
+})
 
 export const metadata: Metadata = {
   title: "Educoder Dot Dev",
@@ -28,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${plexSans.variable} ${plexMono.variable} ${merriweather.variable} antialiased`}
       >
         {children}
       </body>
