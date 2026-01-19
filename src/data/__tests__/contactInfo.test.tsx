@@ -28,15 +28,8 @@ describe('contactInfo', () => {
     expect(mastodon?.href).toBe('https://mastodon.online/@educoder')
   })
 
-  it('contains Discourse contact info', () => {
-    const discourse = contactInfo.find(info => info.label === 'Discourse')
-    expect(discourse).toBeDefined()
-    expect(discourse?.value).toBe('@EduCoder')
-    expect(discourse?.href).toBe('https://classroom.cafe/u/educoder')
-  })
-
-  it('has exactly 4 contact methods', () => {
-    expect(contactInfo).toHaveLength(4)
+  it('has exactly 3 contact methods', () => {
+    expect(contactInfo).toHaveLength(3)
   })
 
   it('all contact info items have required properties', () => {

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground pt-24 px-6">
+    <div className="min-h-screen bg-secondary-700/50 text-foreground pt-24 px-6">
 
       <Navigation />
 
