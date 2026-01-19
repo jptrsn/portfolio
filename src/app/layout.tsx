@@ -17,7 +17,7 @@ const plexMono = IBM_Plex_Mono({
 const merriweather = Merriweather({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-serrif",
+  variable: "--font-serif",
 })
 
 export const metadata: Metadata = {

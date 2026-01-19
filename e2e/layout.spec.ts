@@ -43,7 +43,7 @@ test.describe('Root Layout', () => {
     const className = await body.getAttribute('class')
 
     // Check that font variable classes are present
-    expect(className).toMatch(/geist_mono/)
+    expect(className).toMatch(/ibm_plex_sans/)
   })
 
   test('layout persists across page navigation', async ({ page }) => {

@@ -9,7 +9,7 @@ describe('Navigation', () => {
     // Verify nav element exists
     const nav = container.querySelector('nav')
     expect(nav).toBeInTheDocument()
-    expect(nav).toHaveClass('fixed', 'top-0', 'w-full', 'z-50')
+    expect(nav).toHaveClass('fixed', 'top-0', 'left-0', 'right-0', 'z-50')
 
     // Verify logo/brand link exists (the link has no accessible name due to Typewriter component)
     const brandLink = container.querySelector('a[href="/"]')

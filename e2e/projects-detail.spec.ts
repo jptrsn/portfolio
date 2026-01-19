@@ -36,7 +36,7 @@ test.describe('Project Detail Page', () => {
       await expect(page.locator('h1')).toBeVisible()
 
       // Check for year
-      const year = new Date().getFullYear()
+      const year = 2025
       const yearRange = Array.from({ length: 10 }, (_, i) => year - i)
       const hasYear = await Promise.race(
         yearRange.map(y => page.getByText(y.toString()).isVisible().catch(() => false))

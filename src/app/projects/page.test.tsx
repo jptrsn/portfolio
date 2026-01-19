@@ -31,7 +31,7 @@ describe('ProjectsPage', () => {
       title: 'Test Project 1',
       shortDescription: 'First test project',
       longDescription: 'Long description for first project',
-      year: 2024,
+      startDate: "2024-01-01",
       tags: [
         { name: 'React', category: 'framework' },
         { name: 'TypeScript', category: 'language' }
@@ -50,7 +50,7 @@ describe('ProjectsPage', () => {
       title: 'Test Project 2',
       shortDescription: 'Second test project',
       longDescription: 'Long description for second project',
-      year: 2023,
+      startDate: "2023-01-01",
       tags: [
         { name: 'Node.js', category: 'platform' },
         { name: 'PostgreSQL', category: 'database' }
@@ -114,7 +114,7 @@ describe('ProjectsPage', () => {
 
       const mainDiv = container.firstChild as HTMLElement
       expect(mainDiv).toHaveClass('min-h-screen')
-      expect(mainDiv).toHaveClass('bg-background')
+      expect(mainDiv).toHaveClass('bg-secondary-700/50')
       expect(mainDiv).toHaveClass('text-foreground')
     })
 
