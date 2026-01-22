@@ -1,0 +1,129 @@
+{
+  "id": "owntone-sync",
+  "title": "OwnTone Sync",
+  "slug": "owntone-sync",
+  "shortDescription": "A mobile app that recreates the iTunes/iPod sync experience by synchronizing your music collection from an OwnTone server to your Android device for offline playback.",
+  "longDescription": "OwnTone Sync brings back the classic music ownership experience of iTunes and iPod for the modern era. This Flutter-based Android application connects to a self-hosted OwnTone server on your local network, allowing you to synchronize your entire music collection to your mobile device for offline listening. The app handles complex background synchronization, file streaming, and playback tracking while maintaining the simplicity of the original iPod sync workflow. Built as a learning project to transfer full-stack web development skills to mobile development, it demonstrates advanced mobile architecture patterns including Flutter-Kotlin interoperability, background execution, and efficient media file management.",
+  "startDate": "2025-12-01",
+  "endDate": null,
+  "images": [
+    {
+      "url": "/project-assets/owntone-sync/feature_graphic.png",
+      "alt": "Owntone Sync Banner",
+      "caption": "Banner",
+      "isHero": true
+    },
+    {
+      "url": "/project-assets/owntone-sync/screenshot_1.png",
+      "alt": "Owntone Sync Screenshot",
+      "caption": "Server Configuration"
+    },
+    {
+      "url": "/project-assets/owntone-sync/screenshot_4.png",
+      "alt": "Owntone Sync Screenshot",
+      "caption": "Synchronization Screen"
+    },
+    {
+      "url": "/project-assets/owntone-sync/screenshot_3.png",
+      "alt": "Owntone Sync Screenshot",
+      "caption": "Media Browser"
+    },
+    {
+      "url": "/project-assets/owntone-sync/screenshot_2.png",
+      "alt": "Owntone Sync Screenshot",
+      "caption": "Sync History"
+    }
+  ],
+  "thumbnailUrl": null,
+  "tags": [
+    {
+      "name": "Flutter",
+      "category": "framework"
+    },
+    {
+      "name": "Dart",
+      "category": "language"
+    },
+    {
+      "name": "Kotlin",
+      "category": "language"
+    },
+    {
+      "name": "Android",
+      "category": "platform"
+    },
+    {
+      "name": "REST API",
+      "category": "other"
+    },
+    {
+      "name": "Background Processing",
+      "category": "other"
+    },
+    {
+      "name": "Media Streaming",
+      "category": "other"
+    }
+  ],
+  "links": [
+    {
+      "type": "codeberg",
+      "url": "https://codeberg.org/edu_coder/owntone-sync",
+      "label": "Source Code",
+      "isAvailable": true
+    },
+    {
+      "type": "documentation",
+      "url": "https://edu_coder.codeberg.page/owntone-sync/",
+      "label": "Project Documentation",
+      "isAvailable": true
+    },
+    {
+      "type": "demo",
+      "url": "",
+      "label": "Live Demo",
+      "isAvailable": false,
+      "note": "Requires local OwnTone server hardware setup"
+    },
+    {
+      "type": "download",
+      "url": "",
+      "label": "Google Play Store",
+      "isAvailable": false,
+      "note": "Not yet published to Play Store"
+    }
+  ],
+  "status": {
+    "current": "active",
+    "deploymentStatus": "requires-hardware",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 1,
+    "duration": "Ongoing",
+    "role": "Solo Developer"
+  },
+  "challenges": "The project required solving several complex mobile development challenges: implementing reliable background execution for long-running sync operations, building an efficient ETL pipeline to transform and store music metadata, streaming file downloads directly to device storage without excessive memory usage, and tracking playback state and skip events across the Flutter-Kotlin boundary. The handoff between Flutter's UI layer and Kotlin's native Android capabilities required careful architecture to maintain performance and reliability.",
+  "learnings": "This project served as a practical bridge from full-stack web development to mobile development. Key learnings included understanding mobile-specific constraints like battery optimization and background execution limits, working with platform channels to integrate native Android code with Flutter, managing file I/O and storage efficiently on mobile devices, and designing offline-first architectures that gracefully handle network availability. The experience highlighted both the similarities (REST APIs, state management) and differences (lifecycle management, platform-specific APIs) between web and mobile development.",
+  "futureImprovements": "Future enhancements could include iOS support to make it truly cross-platform, implementing intelligent sync strategies (delta syncing, priority queuing), adding support for playlist management and smart playlists, implementing a more sophisticated caching strategy for album artwork, and potentially adding peer-to-peer sync capabilities for scenarios without a central server.",
+  "keywords": [
+    "flutter",
+    "dart",
+    "kotlin",
+    "android",
+    "mobile development",
+    "rest api",
+    "background processing",
+    "media player",
+    "file streaming",
+    "etl",
+    "platform channels",
+    "self-hosted",
+    "offline-first"
+  ],
+  "featured": true,
+  "hasCustomHardware": true,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true
+}

@@ -103,6 +103,18 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           <BrandIcon name="github" className="w-5 h-5" />
                         </Link>
                       )}
+
+                      {project.codeberg && (
+                        <Link
+                          href={project.codeberg}
+                          className="text-neutral-400 hover:text-neutral-300 transition-colors ml-auto"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${project.title} on GitHub`}
+                        >
+                          <BrandIcon name="codeberg" className="w-5 h-5" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

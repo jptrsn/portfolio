@@ -28,12 +28,12 @@ describe('sideProjects', () => {
     expect(quaidArmy?.link).toBe('/projects/quaid-army')
   })
 
-  it('contains S-G-H project', () => {
-    const sgh = sideProjects.find(p => p.title === 'S-G-H')
-    expect(sgh).toBeDefined()
-    expect(sgh?.description).toContain('Cross-Platform')
-    expect(sgh?.liveUrl).toBe('https://sushigloryhole.app')
-    expect(sgh?.link).toBe('/projects/sushi-glory-hole')
+  it('contains OwnTone Sync project', () => {
+    const owntoneSync = sideProjects.find(p => p.title === 'OwnTone Sync')
+    expect(owntoneSync).toBeDefined()
+    expect(owntoneSync?.description).toContain('A mobile app')
+    expect(owntoneSync?.liveUrl).toBe('https://edu_coder.codeberg.page/owntone-sync/')
+    expect(owntoneSync?.link).toBe('/projects/owntone-sync')
   })
 
   it('all projects have required properties', () => {

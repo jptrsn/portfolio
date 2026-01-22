@@ -29,6 +29,7 @@ export interface FeaturedProject {
   tech: string[];
   link: string;
   github?: string;
+  codeberg?: string;
   liveUrl?: string;
 }
 
@@ -46,7 +47,7 @@ export interface ProjectImage {
 }
 
 export interface ProjectLink {
-  type: 'github' | 'demo' | 'download' | 'documentation' | 'blog' | 'video' | 'other';
+  type: 'github' | 'codeberg' | 'demo' | 'download' | 'documentation' | 'blog' | 'video' | 'other';
   url: string;
   label: string;
   isAvailable: boolean; // For handling aged-out or unavailable links

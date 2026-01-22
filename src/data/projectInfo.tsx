@@ -11,6 +11,21 @@ export const sideProjects: FeaturedProject[] = [
     liveUrl: "https://zipcaptions.app"
   },
   {
+    title: "OwnTone Sync",
+    cover: "/project-assets/owntone-sync/screenshot_4.png",
+    description: "A mobile app that recreates the iTunes/iPod sync experience by synchronizing your music collection from an OwnTone server to your Android device for offline playback.",
+    tech: [
+      "Flutter",
+      "Dart",
+      "Kotlin",
+      "Android",
+      "REST API"
+    ],
+    link: "/projects/owntone-sync",
+    codeberg: "https://codeberg.org/edu_coder/owntone-sync",
+    liveUrl: "https://edu_coder.codeberg.page/owntone-sync/"
+  },
+  {
     title: "Quaid Dot Army",
     cover: "/project-assets/quaidarmy/qa_banner.png",
     description: "A fully-accessible podcast fan website and player, with AI-generated transcriptions synced to remote audio. Because no one had bought the domain yet.",
@@ -18,12 +33,13 @@ export const sideProjects: FeaturedProject[] = [
     link: "/projects/quaid-army",
     liveUrl: "https://quaid.army"
   },
-  {
-    title: "S-G-H",
-    cover: "/project-assets/sushigloryhole/icon_512.png",
-    description: "Cross-Platform codebase with location and map interactivity, inspired by the music of The Lonely Island. They pitched the app idea in their music video, so I had to build it.",
-    tech: ["Angular", "Ionic", "GitHub Actions"],
-    link: "/projects/sushi-glory-hole",
-    liveUrl: "https://sushigloryhole.app"
-  }
+  // {
+  //   title: "S-G-H",
+  //   cover: "/project-assets/sushigloryhole/icon_512.png",
+  //   description: "Cross-Platform codebase with location and map interactivity, inspired by the music of The Lonely Island. They pitched the app idea in their music video, so I had to build it.",
+  //   tech: ["Angular", "Ionic", "GitHub Actions"],
+  //   link: "/projects/sushi-glory-hole",
+  //   liveUrl: "https://sushigloryhole.app"
+  // }
+
 ];
