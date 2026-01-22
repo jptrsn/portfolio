@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import ProjectsPage, { metadata } from './page'
 import * as projectsLib from '@/lib/projects'
-import { Project } from '@/types/portfolio'
+import { Project } from '@/types/types'
 
 // Mock the projects library
 vi.mock('@/lib/projects', () => ({

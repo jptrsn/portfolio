@@ -4,7 +4,7 @@ import ProjectDetailPage, { generateMetadata, generateStaticParams } from './pag
 import * as projectsLib from '@/lib/projects'
 import * as metadataLib from '@/lib/metadata'
 import { notFound } from 'next/navigation'
-import { Project } from '@/types/portfolio'
+import { Project } from '@/types/types'
 
 // Mock dependencies
 vi.mock('@/lib/projects', () => ({

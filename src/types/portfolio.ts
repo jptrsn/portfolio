@@ -33,56 +33,6 @@ export interface ProjectMetadata {
   role?: string; // Your role if team project
 }
 
-export interface Project {
-  id: string; // Unique identifier for routing
-  title: string;
-  slug: string; // URL-friendly version for Next.js dynamic routing
-
-  // Descriptions
-  shortDescription: string; // For project list/cards (1-2 sentences)
-  longDescription: string; // Detailed description (supports markdown)
-
-  // Temporal info
-  startDate: string; // ISO date string for more precision
-  endDate?: string; // For projects with defined end dates
-
-  // Visual assets
-  images: ProjectImage[];
-  thumbnailUrl?: string; // Fallback if no hero image
-
-  // Technical details
-  tags: ProjectTag[];
-
-  // Links and availability
-  links: ProjectLink[];
-
-  // Project context
-  status: ProjectStatus;
-  metadata: ProjectMetadata;
-
-  featured?: boolean;
-
-  // Additional content
-  challenges?: string; // What problems you solved
-  learnings?: string; // What you learned from the project
-  futureImprovements?: string; // What you'd do differently
-
-  // SEO and discovery
-  keywords?: string[]; // For search functionality
-
-  // Content flags
-  hasCustomHardware?: boolean;
-  requiresSpecialSetup?: boolean;
-  isOpenSource?: boolean;
-}
-
-// Root schema for the projects data file (if you prefer a single file approach)
-export interface PortfolioData {
-  projects: Project[];
-  lastUpdated: string; // ISO date string
-  version: string; // Schema version for migrations
-}
-
 // Utility types for filtering and display
 export type ProjectCategory = ProjectTag['category'];
 export type ProjectStatusType = ProjectStatus['current'];
@@ -102,9 +52,3 @@ export interface ProjectFilters {
   featured?: boolean;
 }
 
-export interface ProjectSearchParams {
-  query?: string;
-  filters?: ProjectFilters;
-  sortBy?: 'year' | 'title' | 'featured';
-  sortOrder?: 'asc' | 'desc';
-}

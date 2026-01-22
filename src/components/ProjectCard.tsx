@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Project } from '@/types/portfolio';
+import { Project } from '@/types/types';
 import { dateStringToYear } from '@/lib/posts';
 
 export default function ProjectCard({ project }: { project: Project }) {

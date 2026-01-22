@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import ProjectCard from '../ProjectCard'
-import { Project } from '@/types/portfolio'
+import { Project } from '@/types/types'
 
 describe('ProjectCard', () => {
   const mockProject: Project = {

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import ScrollToTop from '../ScrollToTop'
 
@@ -242,7 +242,7 @@ describe('ScrollToTop', () => {
     // Make window.scrollTo throw an error only when called with an object (smooth scroll)
     // but work normally when called with two numbers (fallback)
     let callCount = 0
-    const scrollToMock = vi.fn().mockImplementation((arg1: ScrollToOptions | number, arg2?: number) => {
+    const scrollToMock = vi.fn().mockImplementation((arg1: ScrollToOptions | number) => {
       callCount++
       // First call with object should throw
       if (callCount === 1 && typeof arg1 === 'object') {

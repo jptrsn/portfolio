@@ -1,4 +1,4 @@
-import { Project, ProjectTag } from '@/types/portfolio'; // Adjust import path as needed
+import { Project, ProjectTag } from '@/types/types'; // Adjust import path as needed
 import fs from 'fs';
 import path from 'path';
 
