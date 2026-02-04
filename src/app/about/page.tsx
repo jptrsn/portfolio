@@ -12,22 +12,12 @@ export default function AboutPage() {
         <div className="flex items-center justify-center">
           <Image src="/Headshot_3web.jpg" alt="Headshot" width="215" height="215" className="rounded-xl object-cover aspect-1/1" />
         </div>
-        <div className="flex flex-col gap-6 my-8">
-          <p>
-          I&apos;m a full-stack software developer with a decade of web development experience. I love building beautiful, responsive web apps that are a pleasure to use.
-          </p>
-          <p>
-            As a former teacher, I&apos;m passionate about using technology to empower learners to seek, find and use information to improve learning. I am an advocate for free and open technology, and I believe that community-building is the true power of the internet.
-          </p>
-          <p>
-            I believe that knowledge should be shared freely and accessibly, and that people are more important that profits. I write and publish a lot of code, some of it is even good.
-          </p>
-          <p>
-            I love solving problems, brainstorming new ideas, features, and approaches, learning new coding languages, techniques, and architectures. One of my greatest strengths is in coordinating a group of people who enjoy
-          </p>
-          <p>
-            When I&apos;m not working, I spend my free time tinkering with hobby electronics in the smart home area of interest, usually involving 3D printing and lots of blinking lights.
-          </p>
+        <div className="flex flex-col gap-6 mt-8 pb-12">
+          <p>I&apos;m a full-stack software developer with over a dozen years of development experience building across web, mobile, and embedded systems. But more than that, I&apos;m an educator at heart—one who brings that mindset to every line of code I write and every team I work with.</p>
+          <p>My approach to development is rooted in the meta-skills of teaching: understanding the real problems users face, fostering collaboration, thinking laterally about solutions, and continuously adapting. I believe the best software emerges when teams work together to deeply understand a problem, then creatively and collaboratively design an elegant solution before building it. This process of discovery, iteration, and growth—whether I&apos;m mentoring a junior developer or coordinating a team tackling a complex challenge—is where I thrive.</p>
+          <p>My technical curiosity knows few boundaries. I&apos;ve built production web applications with React, Angular, and Vue, backed by Node.js, NestJS, and Go services, working with everything from PostgreSQL to MongoDB. I&apos;ve architected progressive web apps with offline functionality, encrypted IndexedDB storage, and web workers for performance. When I encounter a tool or service that doesn&apos;t quite fit, I don&apos;t settle—I dig in and build something better. This drive has taken me beyond the browser to Flutter mobile apps, ESP32 firmware, Docker orchestration, and custom CI/CD pipelines. I&apos;m passionate about open source because it embodies technical excellence, genuine collaboration, and creative freedom while giving everyone the power to choose their own path.</p>
+          <p>My self-hosted infrastructure serves as my personal laboratory—a sandbox where I experiment with DevOps practices, network architecture, containerization, Linux administration, and automation. Every side project teaches me something new that I can apply to production systems.</p>
+          <p>When I&apos;m not writing code or deploying services, you&apos;ll find me tinkering with hobby electronics in the smart home space—usually involving ESP32 microcontrollers, 3D-printed enclosures, and more blinking lights than any reasonable person needs.</p>
         </div>
       </div>
     </div>

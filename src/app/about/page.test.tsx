@@ -35,31 +35,29 @@ describe('AboutPage', () => {
   it('renders the introduction paragraph', () => {
     render(<AboutPage />)
     expect(screen.getByText(/full-stack software developer/i)).toBeInTheDocument()
-    expect(screen.getByText(/decade of web development experience/i)).toBeInTheDocument()
+    expect(screen.getByText(/dozen years of development experience/i)).toBeInTheDocument()
   })
 
-  it('renders the teacher background paragraph', () => {
+  it('renders the teacher influence', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/former teacher/i)).toBeInTheDocument()
-    expect(screen.getByText(/empower learners/i)).toBeInTheDocument()
+    expect(screen.getByText(/teaching/i)).toBeInTheDocument()
+    expect(screen.getByText(/technical excellence/i)).toBeInTheDocument()
   })
 
-  it('renders the knowledge sharing philosophy', () => {
+  it('renders technical experience', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/knowledge should be shared freely/i)).toBeInTheDocument()
-    expect(screen.getByText(/people are more important that profits/i)).toBeInTheDocument()
+    expect(screen.getByText(/technical curiosity knows few boundaries/i)).toBeInTheDocument()
+    expect(screen.getByText(/passionate about open source/i)).toBeInTheDocument()
   })
 
-  it('renders the problem solving paragraph', () => {
+  it('renders the self-hosting paragraph', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/love solving problems/i)).toBeInTheDocument()
-    expect(screen.getByText(/brainstorming new ideas/i)).toBeInTheDocument()
+    expect(screen.getByText(/self-hosted infrastructure/i)).toBeInTheDocument()
   })
 
-  it('renders the hobby electronics paragraph', () => {
+  it('renders the hobby paragraph', () => {
     render(<AboutPage />)
     expect(screen.getByText(/hobby electronics/i)).toBeInTheDocument()
-    expect(screen.getByText(/3D printing/i)).toBeInTheDocument()
     expect(screen.getByText(/blinking lights/i)).toBeInTheDocument()
   })
 
@@ -86,7 +84,7 @@ describe('AboutPage', () => {
     const { container } = render(<AboutPage />)
     const contentDiv = container.querySelector('.flex-col.gap-6')
     expect(contentDiv).toBeInTheDocument()
-    expect(contentDiv).toHaveClass('my-8')
+    expect(contentDiv).toHaveClass('mt-8')
   })
 
   it('image is centered', () => {
@@ -112,7 +110,7 @@ describe('AboutPage', () => {
     expect(imageContainer).toBeInTheDocument()
 
     // Verify content container with paragraphs
-    const contentDiv = container.querySelector('.flex-col.gap-6.my-8')
+    const contentDiv = container.querySelector('.flex-col.gap-6.mt-8.pb-12')
     expect(contentDiv).toBeInTheDocument()
 
     // Verify all 5 paragraphs are present

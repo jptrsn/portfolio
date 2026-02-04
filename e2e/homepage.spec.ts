@@ -69,15 +69,20 @@ test.describe('Homepage', () => {
   test('scroll to top button appears after scrolling', async ({ page }) => {
     await page.goto('/')
 
-    // Scroll down significantly
+    // Button should not be visible initially
+    const scrollButton = page.getByRole('button', { name: 'Scroll to top' })
+    await expect(scrollButton).not.toBeVisible()
+
+    // Scroll down past threshold (300px by default)
     await page.evaluate(() => window.scrollTo(0, 1000))
 
-    // Wait for scroll to top button to appear
-    await page.waitForTimeout(500)
+    // Button should appear
+    await expect(scrollButton).toBeVisible({ timeout: 2000 })
 
-    // Look for a button that might be the scroll-to-top
-    // Adjust this selector based on your ScrollToTop component
-    const scrollButtons = await page.locator('button').all()
-    expect(scrollButtons.length).toBeGreaterThan(0)
+    // Optional: Test that it actually scrolls to top
+    await scrollButton.click()
+    await page.waitForTimeout(1000) // Wait for smooth scroll animation
+    const scrollY = await page.evaluate(() => window.scrollY)
+    expect(scrollY).toBeLessThan(100)
   })
 })

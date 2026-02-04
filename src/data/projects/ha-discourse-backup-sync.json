@@ -55,6 +55,6 @@
   "hasCustomHardware": false,
   "requiresSpecialSetup": true,
   "isOpenSource": true,
-  "featured": true,
+  "featured": false,
   "keywords": ["Discourse", "Home Assistant", "Backup", "Automation", "Docker", "GHCR"]
 }

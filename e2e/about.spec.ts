@@ -14,6 +14,15 @@ test.describe('About Page', () => {
     const image = page.locator('img[alt="Headshot"]')
     await expect(image).toBeVisible()
 
+    // Wait for image to fully load
+    await image.evaluate((img: HTMLImageElement) => {
+      if (img.complete) return
+      return new Promise((resolve, reject) => {
+        img.onload = resolve
+        img.onerror = reject
+      })
+    })
+
     // Verify image loaded successfully
     const naturalWidth = await image.evaluate((img: HTMLImageElement) => img.naturalWidth)
     expect(naturalWidth).toBeGreaterThan(0)
@@ -21,25 +30,26 @@ test.describe('About Page', () => {
 
   test('displays introduction content', async ({ page }) => {
     await expect(page.getByText(/full-stack software developer/i)).toBeVisible()
-    await expect(page.getByText(/decade of web development experience/i)).toBeVisible()
+    await expect(page.getByText(/dozen years of development experience/i)).toBeVisible()
   })
 
-  test('displays teacher background', async ({ page }) => {
-    await expect(page.getByText(/former teacher/i)).toBeVisible()
-    await expect(page.getByText(/empower learners/i)).toBeVisible()
+  test('displays teacher influence', async ({ page }) => {
+    await expect(page.getByText(/teaching:/i)).toBeVisible()
+    await expect(page.getByText(/technical excellence/i)).toBeVisible()
   })
 
-  test('displays knowledge sharing philosophy', async ({ page }) => {
-    await expect(page.getByText(/knowledge should be shared freely/i)).toBeVisible()
+  test('displays technical experience', async ({ page }) => {
+    await expect(page.getByText(/technical curiosity knows few boundaries/i)).toBeVisible()
+    await expect(page.getByText(/passionate about open source/i)).toBeVisible()
   })
 
-  test('displays problem solving section', async ({ page }) => {
-    await expect(page.getByText(/love solving problems/i)).toBeVisible()
+  test('displays self-hosting', async ({ page }) => {
+    await expect(page.getByText(/self-hosted infrastructure/i)).toBeVisible()
   })
 
   test('displays hobby section', async ({ page }) => {
     await expect(page.getByText(/hobby electronics/i)).toBeVisible()
-    await expect(page.getByText(/3D printing/i)).toBeVisible()
+    await expect(page.getByText(/blinking lights/i)).toBeVisible()
   })
 
   test('navigation links work on desktop', async ({ page }) => {

@@ -1,0 +1,77 @@
+{
+  "id": "centipede-chromebook-enrollment",
+  "title": "Centipede for Chromebook Enrollment",
+  "slug": "centipede-chromebook-enrollment",
+  "shortDescription": "Arduino-based USB HID device that automates Chromebook fleet enrollment for school districts",
+  "longDescription": "Created while working with Amplified IT's Amplified Labs division, Centipede addresses a critical pain point in educational IT: enrolling hundreds or thousands of Chromebooks into a domain requires manually typing WiFi credentials and account details into each device.\n\nBy recognizing that USB HID keyboard emulation could automate this repetitive process, Centipede transformed a $5 Arduino Leonardo into a reusable enrollment tool. The decision to release the project as open source under an MIT license, rather than commercializing it, empowered school districts and spawned a community of users who continue to maintain and evolve forks of the original code.\n\nThe original version remains available on Codebender, representing one of the early successful applications of browser-based microcontroller flashing for practical IT automation.",
+  "startDate": "2016-01-01",
+  "endDate": "2018-12-31",
+  "images": [
+    {
+      "url": "/project-assets/centipede-chromebook-enrollment/centipede-banner.png",
+      "alt": "Centipede for Chromebook Enrollment",
+      "caption": "Banner"
+    }
+  ],
+  "tags": [
+    { "name": "Arduino", "category": "technology" },
+    { "name": "USB HID", "category": "technology" },
+    { "name": "Education", "category": "domain" },
+    { "name": "Open Source", "category": "approach" },
+    { "name": "Hardware", "category": "technology" },
+    { "name": "Automation", "category": "purpose" }
+  ],
+  "links": [
+    {
+      "type": "source",
+      "url": "https://codebender.cc/sketch:331274#Centipede%20for%20Chromebook%20Enrollment.ino",
+      "label": "Original Source (Codebender)",
+      "isAvailable": true
+    },
+    {
+      "type": "documentation",
+      "url": "https://amplifiedlabs.zendesk.com/hc/en-us/articles/221099628-Inspiration-for-Centipede",
+      "label": "Project Documentation",
+      "isAvailable": true
+    },
+    {
+      "type": "documentation",
+      "url": "https://amplifiedlabs.zendesk.com/hc/en-us/articles/221099548-Program-Centipede",
+      "label": "Programming Guide",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "completed",
+    "deploymentStatus": "requires-hardware",
+    "maintenanceLevel": "legacy"
+  },
+  "metadata": {
+    "difficulty": "intermediate",
+    "teamSize": 1,
+    "duration": "2 years",
+    "role": "Creator & Lead Developer"
+  },
+  "challenges": "The primary technical challenge was making the solution accessible to non-technical users when browser-based microcontroller flashing was still emerging technology. The device needed to be easily customizable, portable, and reusable across different deployment scenarios. A significant constraint was communicating device state to users using only the onboard LED - I had to develop a signaling pattern that clearly indicated when the device was actively typing, waiting between steps, and when enrollment had completed. Achieving reliability required careful timing adjustments to accommodate Chromebook UI delays and ensuring the HID input sequences worked consistently across different ChromeOS versions and hardware models.",
+  "learnings": "This project taught me the value of recognizing when existing technology can be applied to solve problems in unexpected domains. The bigger lesson was understanding when to release rather than monetize - by open-sourcing Centipede, it reached far more schools than any commercial product could have, and the community's continued evolution of the concept has amplified its impact far beyond what I could have achieved alone.",
+  "futureImprovements": "If I were building this today, I would create a full-stack solution with a guided tutorial and complete browser-based implementation supporting device erase, flashing, and logging. Modern WiFi-enabled microcontrollers (at similar cost points) would enable significantly enhanced capabilities: serialized data allowing unique field values per device (reading from CSV rows), remote control and orchestration for managing multiple enrollment stations simultaneously, and real-time progress monitoring. The hardware available today is orders of magnitude more powerful than what was available in 2016.",
+  "keywords": [
+    "chromebook",
+    "enrollment",
+    "arduino",
+    "usb hid",
+    "automation",
+    "education technology",
+    "edtech",
+    "fleet management",
+    "keyboard emulation",
+    "open source hardware",
+    "amplified it",
+    "school districts",
+    "it automation"
+  ],
+  "featured": true,
+  "hasCustomHardware": true,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true
+}

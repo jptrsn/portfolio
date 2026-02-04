@@ -1,0 +1,62 @@
+{
+  "id": "espairplay",
+  "title": "ESPAirPlay",
+  "slug": "espairplay",
+  "shortDescription": "ESP32-based AirPlay receiver enabling reliable synchronous multi-room audio streaming from OwnTone server",
+  "longDescription": "ESPAirPlay is a purpose-built AirPlay (RAOP) receiver implementation for ESP32 microcontrollers, designed to provide affordable, scalable whole-home audio streaming from self-hosted OwnTone servers. The project addresses limitations in existing solutions like Raspberry Pi Zero W devices (which have become expensive and difficult to source) and squeezelite-esp32 (which struggles with reliable synchronous multi-room playback).\n\nBuilt on ESP-IDF and leveraging modern ESP32 hardware with onboard PSRAM, ESPAirPlay prioritizes performance and reliability through careful buffer management, dual-core task assignment, and optimized audio pipeline design. The implementation reduces complexity by focusing on a single purpose: delivering synchronized audio to multiple rooms without drift or dropouts.\n\nThis project serves as a technical foundation for a future ESPHome component, allowing the solution to be easily deployed and shared within the smart home community. Licensed under GPLv3, it demonstrates how modern embedded hardware can provide professional-grade audio streaming capabilities at a fraction of traditional costs.",
+  "startDate": "2025-01-15",
+  "images": [],
+  "tags": [
+    { "name": "ESP32", "category": "technology" },
+    { "name": "Audio Streaming", "category": "purpose" },
+    { "name": "AirPlay", "category": "technology" },
+    { "name": "Embedded Systems", "category": "domain" },
+    { "name": "C/C++", "category": "technology" },
+    { "name": "ESP-IDF", "category": "technology" },
+    { "name": "Home Automation", "category": "domain" },
+    { "name": "Open Source", "category": "approach" }
+  ],
+  "links": [
+    {
+      "type": "source",
+      "url": "https://codeberg.org/Edu_Coder/espairplay",
+      "label": "Source Code (Codeberg)",
+      "active": true
+    }
+  ],
+  "status": {
+    "current": "active",
+    "deploymentStatus": "local-only",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 1,
+    "duration": "ongoing",
+    "role": "Creator & Lead Developer"
+  },
+  "challenges": "The primary technical challenge was achieving reliable synchronous multi-room audio playback on resource-constrained hardware where existing solutions like squeezelite-esp32 had struggled. This required deep optimization of buffer management strategies, strategic dual-core task assignments to balance audio processing and network I/O, and careful tuning of the audio pipeline to prevent drift and dropouts across multiple receivers.\n\nPorting shairport-sync to the ESP-IDF framework meant rewriting significant scaffold code while maintaining protocol compatibility with the AirPlay RAOP specification. Working with an AI code assistant throughout the project introduced an additional layer of complexity - maintaining code consistency and performance required establishing clear communication patterns and guardrails before any code was written, ensuring that AI-generated suggestions aligned with architectural decisions rather than creating fragmented or suboptimal implementations.",
+  "learnings": "This project deepened my understanding of real-time audio systems on embedded hardware, particularly the intricate balance between buffer sizes, task priorities, and memory constraints required for glitch-free playback. Working with ESP-IDF's dual-core architecture taught me how strategic core assignment can dramatically impact performance in timing-sensitive applications.\n\nA significant meta-learning was understanding how to effectively collaborate with AI coding assistants on complex technical projects. Success required maintaining strict architectural discipline - ensuring design decisions were made through dialogue before code generation, keeping guardrails in place to prevent spaghetti code, and critically evaluating AI suggestions against performance requirements rather than accepting expedient solutions. The AI was most valuable as a research and implementation partner when the problem was well-defined and constraints were clearly communicated.\n\nThe project also reinforced the value of reducing scope and complexity - by focusing on a single purpose (reliable RAOP streaming) rather than trying to support multiple protocols, the implementation could prioritize performance and reliability over feature breadth.",
+  "futureImprovements": "The immediate goal is to package this implementation as an ESPHome component, making it trivially easy for the smart home community to deploy synchronized audio receivers across their homes. This will require abstracting the configuration interface and ensuring compatibility with ESPHome's ecosystem and conventions.\n\nBeyond ESPHome integration, future enhancements could include support for additional audio codecs, web-based configuration interfaces for non-technical users, and deeper integration with Home Assistant for automated audio routing and scene control. There's also potential to explore hardware variants optimized for different use cases - minimal devices for simple streaming versus feature-rich boards with local controls and displays.\n\nLong-term, contributing this work back to the broader embedded audio streaming community could help establish ESP32 as a viable platform for professional-quality synchronized audio, moving beyond the current dominance of Raspberry Pi-based solutions.",
+  "keywords": [
+    "esp32",
+    "airplay",
+    "raop",
+    "audio streaming",
+    "multi-room audio",
+    "synchronized playback",
+    "owntone",
+    "embedded systems",
+    "esp-idf",
+    "home automation",
+    "self-hosted",
+    "real-time audio",
+    "buffer management",
+    "dual-core optimization",
+    "esphome"
+  ],
+  "featured": false,
+  "hasCustomHardware": true,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true
+}

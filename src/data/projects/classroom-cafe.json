@@ -5,6 +5,7 @@
   "shortDescription": "Discourse community forum and NextJS site",
   "longDescription": "A full stack Discourse forum and NextJS static site, running in Docker on VPS. Automated scheduled off-site backups performed by chron-job and Home Assistant Add-on.",
   "startDate": "2025-10-15",
+  "endDate": "2026-02-01",
   "images": [
     {
       "url": "/project-assets/classroom-cafe/classroom_cafe.png",
