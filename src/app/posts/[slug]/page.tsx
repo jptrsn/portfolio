@@ -45,10 +45,16 @@ const mdxComponents = {
     <li className="leading-relaxed" {...props} />
   ),
   blockquote: (props: any) => (
-    <blockquote className="border-l-4 border-blue-500 pl-6 py-4 mb-6 bg-neutral-200 italic text-gray-800 rounded-r-lg" {...props} />
+    <blockquote className="border-l-4 whitespace-pre border-primary-500 pl-6 !py-0 bg-neutral-800 italic text-neutral-100 rounded-r-lg" {...props} />
+  ),
+  Details: (props: any) => (
+    <details className="my-4" {...props} />
+  ),
+  Summary: (props: any) => (
+    <summary className="text-primary-500 font-bold cursor-pointer" {...props} />
   ),
   code: (props: any) => (
-    <code className="bg-neutral-100 text-red-600 px-2 py-1 rounded text-sm font-mono" {...props} />
+    <code className="bg-neutral-900 text-primary-50 px-2 py-1 rounded text-sm font-mono" {...props} />
   ),
   pre: (props: any) => (
     <pre className="bg-neutral-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-6 text-sm" {...props} />
@@ -149,7 +155,7 @@ export default async function PostPage({ params }: Props) {
             )}
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold text-neutral-500 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold text-neutral-200 mb-6 leading-tight">
             {post.title}
           </h1>
 
