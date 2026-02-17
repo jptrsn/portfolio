@@ -1,0 +1,73 @@
+{
+  "id": "esp32-mqtt-room",
+  "title": "ESP32 MQTT Room",
+  "slug": "esp32-mqtt-room",
+
+  "shortDescription": "ESP32-based BLE presence detection system for Home Assistant, enabling room-level device tracking years before commercial alternatives like Apple AirTags.",
+
+  "longDescription": "An embedded systems project that brought indoor location tracking to home automation enthusiasts in 2019-2020, well before Apple's AirTag launch in 2021. The system uses ESP32 microcontrollers as stationary nodes that scan for Bluetooth Low Energy beacons and report device proximity via MQTT to Home Assistant, enabling room-level presence detection for items like keys, wallets, or phones.\n\nThe primary technical challenge involved managing hardware resource contention between WiFi and Bluetooth on the ESP32's shared antenna. Core panics would occur when attempting simultaneous WiFi connectivity (required for MQTT) and BLE scanning (required for beacon detection). With minimal vendor documentation, the solution required extensive trial-and-error experimentation to understand hardware behavior and develop a stable coordination strategy between the two radios.\n\nThis project demonstrated the ability to rapidly engage with emerging embedded technology outside typical web development expertise, producing a functional IoT solution that became the foundation for ESPresense, a community-maintained fork that continues active development today.",
+
+  "startDate": "2019-01-01",
+  "endDate": "2020-12-31",
+
+  "images": [
+    {
+      "url": "https://jptrsn.github.io/ESP32-mqtt-room/images/cover.jpg",
+      "alt": "ESP32 development board used for BLE room presence detection",
+      "isHero": true
+    }
+  ],
+
+  "tags": [
+    { "name": "C++", "category": "language" },
+    { "name": "C", "category": "language" },
+    { "name": "ESP32", "category": "hardware" },
+    { "name": "Bluetooth Low Energy", "category": "platform" },
+    { "name": "MQTT", "category": "platform" },
+    { "name": "PlatformIO", "category": "tool" },
+    { "name": "Home Assistant", "category": "platform" },
+    { "name": "IoT", "category": "other" },
+    { "name": "Embedded Systems", "category": "other" }
+  ],
+
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/ESP32-mqtt-room",
+      "label": "View Source Code",
+      "isAvailable": true,
+      "note": "Repository is archived but code remains available for reference"
+    },
+    {
+      "type": "documentation",
+      "url": "https://jptrsn.github.io/ESP32-mqtt-room/",
+      "label": "View Documentation",
+      "isAvailable": true
+    }
+  ],
+
+  "status": {
+    "current": "archived",
+    "deploymentStatus": "offline",
+    "maintenanceLevel": "deprecated"
+  },
+
+  "metadata": {
+    "difficulty": "intermediate",
+    "teamSize": 1,
+    "duration": "2 years",
+    "role": "Sole Developer"
+  },
+
+  "challenges": "The core technical challenge was managing hardware resource contention on the ESP32 microcontroller between WiFi (required for MQTT communication) and Bluetooth Low Energy (required for beacon scanning). The ESP32's shared antenna architecture caused system core panics when both radios attempted simultaneous operation. With minimal vendor documentation available at the time, solving this required extensive experimentation to understand the hardware's behavior patterns and develop a stable coordination mechanism that maintained reliable WiFi connectivity for MQTT while preventing missed BLE advertisement packets during scanning intervals.",
+
+  "learnings": "This project represented a significant departure from web development into embedded systems programming. Key learnings included: understanding microcontroller resource constraints and hardware-level debugging; managing concurrent radio operations on shared antenna systems; implementing reliable MQTT communication in resource-constrained environments; and working with BLE protocols and advertisement packet parsing. The experience demonstrated that strong problem-solving skills and systematic experimentation can bridge knowledge gaps when formal documentation is lacking.",
+
+  "keywords": ["ESP32", "Bluetooth", "BLE", "MQTT", "Home Assistant", "presence detection", "IoT", "embedded systems", "indoor positioning", "microcontroller"],
+
+  "featured": true,
+
+  "hasCustomHardware": true,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true
+}
