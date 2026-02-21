@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getAllPosts, formatDate, Post } from '@/lib/posts'
 import { generateExtendedMetadata } from '@/lib/metadata'
+import { Rss } from 'lucide-react'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -127,7 +128,7 @@ export default async function PostPage({ params }: Props) {
     <div className="min-h-screen bg-secondary-900/50">
       {/* Back Navigation */}
       <div className="bg-neutral-500/20 border-b border-neutral-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-row justify-between">
           <Link
             href="/posts"
             className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
@@ -137,15 +138,20 @@ export default async function PostPage({ params }: Props) {
             </svg>
             Back to posts
           </Link>
+          <Link
+            href="/feed.xml"
+          >
+            <Rss size={"22"} />
+          </Link>
         </div>
       </div>
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* Article Header */}
-        <header className="mb-12">
-          <div className="flex items-center justify-between mb-6">
+        <header className="mb-4 sm:mb-8 md:mb-12">
+          <div className="flex items-center justify-between mb-2 sm:mb-6">
             <time
-              className="text-sm font-medium text-primary-600 bg-neutral-400 px-3 py-1 rounded-full"
+              className="text-xs sm:text-sm sm:font-medium text-primary-600 bg-neutral-400 px-3 py-1 rounded-full"
               dateTime={post.date}
             >
               {formatDate(post.date)}
@@ -155,25 +161,25 @@ export default async function PostPage({ params }: Props) {
             )}
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold text-neutral-200 mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-5xl font-bold text-neutral-200 mb-3 sm:mb-6 leading-tight break-all">
             {post.title}
           </h1>
 
           {post.excerpt && (
-            <div className="text-xl text-secondary-600 leading-relaxed mb-8 p-6 bg-neutral-600 rounded-lg border-l-4 border-secondary-600">
+            <div className="text-md sm:text-xl text-secondary-300 leading-relaxed mb-3 sm:mb-8 p-3 sm:p-6 bg-neutral-600 rounded-lg border-l-4 border-secondary-600">
               {post.excerpt}
             </div>
           )}
 
           {/* Tags and Categories */}
           {(post.categories?.length || post.tags?.length) && (
-            <div className="flex flex-wrap gap-3 pb-8 border-b border-gray-200">
+            <div className="flex flex-wrap gap-3 pb-4 sm:pb-8 border-b border-gray-200">
               {post.categories && post.categories.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {post.categories.map(category => (
                     <span
                       key={category}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium text-secondary-200 bg-secondary-800"
+                      className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm sm:font-medium text-secondary-200 bg-secondary-800"
                     >
                       {category}
                     </span>
@@ -185,7 +191,7 @@ export default async function PostPage({ params }: Props) {
                   {post.tags.map(tag => (
                     <span
                       key={tag}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium text-secondary-200 bg-secondary-800"
+                      className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm sm:font-medium text-secondary-200 bg-secondary-800"
                     >
                       #{tag}
                     </span>
@@ -197,7 +203,7 @@ export default async function PostPage({ params }: Props) {
         </header>
 
         {/* Article Content */}
-        <div className="prose prose-lg max-w-none">
+        <div className="text-sm sm:text-md max-w-none">
           <MDXRemote
             source={post.content}
             components={mdxComponents}

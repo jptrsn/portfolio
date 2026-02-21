@@ -1,6 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import remarkHtml from 'remark-html'
+import { remark } from 'remark'
+import remarkGfm from 'remark-gfm'
 
 export interface PostMetadata {
   title: string
@@ -85,6 +88,24 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     console.error(`Error loading post ${slug}:`, error)
     return null
   }
+}
+
+export async function getPostContentAsHtml(slug: string): Promise<string> {
+  const post = await getPostBySlug(slug)
+  if (!post) return ''
+
+  const normalized = post.content
+    .replace(/<Details/g, '<details')
+    .replace(/<\/Details>/g, '</details>')
+    .replace(/<Summary/g, '<summary')
+    .replace(/<\/Summary>/g, '</summary>')
+
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkHtml, { sanitize: false })
+    .process(normalized)
+
+  return result.toString()
 }
 
 export function formatDate(dateString: string): string {

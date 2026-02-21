@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Typewriter } from './Typewriter';
 
 const Navigation = () => {
   const pathname = usePathname();
@@ -48,7 +47,7 @@ const Navigation = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-md border-b border-neutral-800">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className={`text-xl font-bold`}>
-            <Typewriter speed={80} delay={100} text="EduCoder.dev" showCursor={false} className="text-gradient" />
+            <span className="text-gradient">EduCoder.dev</span>
           </Link>
 
           {/* Desktop Navigation */}

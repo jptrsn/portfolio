@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getAllPosts, formatDate } from '@/lib/posts'
 import Navigation from '@/components/Navigation'
+import { Rss } from 'lucide-react'
 
 export const metadata = {
   title: 'Blog Posts',
@@ -13,12 +14,15 @@ export default async function PostsPage() {
   return (
     <div className="min-h-screen background">
       <Navigation />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-18 sm:pt-24 pb-6 sm:pb-12">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <div className="flex justify-center w-full mb-4 sm:mb-16 gap-2">
+          <div className="text-xl text-gray-500">
             Thoughts on web development and technology
-          </p>
+          </div>
+          <Link href="/feed.xml">
+            <Rss className="text-gray-500" />
+          </Link>
         </div>
 
         {/* Posts Grid */}
@@ -33,35 +37,35 @@ export default async function PostsPage() {
             <p className="text-gray-500">Create your first post in the src/content/posts directory</p>
           </div>
         ) : (
-          <div className="space-y-8">
+          <div className="space-y-4 sm:space-y-8">
             {posts.map((post) => (
               <article
                 key={post.slug}
                 className="bg-primary-300/10 rounded-xl shadow-sm border border-primary-700 overflow-hidden hover:shadow-md transition-shadow duration-300"
               >
                 <Link href={`/posts/${post.slug}`} className="block">
-                  <div className="p-8">
+                  <div className="p-3 sm:p-8">
                     {/* Post Header */}
                     <div className="flex items-center justify-between mb-4">
                       <time
-                        className="text-sm font-medium text-secondary-200 bg-secondary-800 px-3 py-1 rounded-full"
+                        className="text-xs sm:text-sm font-medium text-secondary-200 bg-secondary-800 px-3 py-1 rounded-full"
                         dateTime={post.date}
                       >
                         {formatDate(post.date)}
                       </time>
                       {post.author && (
-                        <span className="text-sm text-secondary-700">by {post.author}</span>
+                        <span className="text-xs sm:text-sm text-secondary-700">by {post.author}</span>
                       )}
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-2xl sm:text-3xl font-bold text-primary-200 mb-4 hover:text-primary-100 transition-colors duration-200">
+                    <h2 className="text-xl sm:text-3xl font-bold text-primary-200 mb-4 hover:text-primary-100 transition-colors duration-200">
                       {post.title}
                     </h2>
 
                     {/* Excerpt */}
                     {post.excerpt && (
-                      <p className="text-gray-400 text-lg leading-relaxed mb-6">
+                      <p className="text-gray-400 text-sm sm:text-lg leading-relaxed mb-6">
                         {post.excerpt}
                       </p>
                     )}
@@ -73,7 +77,7 @@ export default async function PostsPage() {
                           {post.categories.map(category => (
                             <span
                               key={category}
-                              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800"
+                              className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm sm:font-medium bg-purple-100 text-purple-800"
                             >
                               {category}
                             </span>
@@ -85,7 +89,7 @@ export default async function PostsPage() {
                           {post.tags.map(tag => (
                             <span
                               key={tag}
-                              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium text-secondary-200 bg-secondary-800 hover:bg-secondary-600 hover:text-primary-900 transition-colors"
+                              className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm sm:font-medium text-secondary-200 bg-secondary-800 hover:bg-secondary-600 hover:text-primary-900 transition-colors"
                             >
                               #{tag}
                             </span>
