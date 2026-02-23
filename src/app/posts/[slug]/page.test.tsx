@@ -14,6 +14,8 @@ vi.mock('@/lib/posts', () => ({
     month: 'long',
     day: 'numeric',
   })),
+  toSnakeCase: vi.fn((str: string) => str.split(' ').map((s) => s.toLowerCase()).join('_')),
+  extractHeadings: vi.fn((str: string) => null)
 }))
 
 vi.mock('@/lib/metadata', () => ({
@@ -129,7 +131,7 @@ describe('PostPage', () => {
       const page = await PostPage({ params: Promise.resolve({ slug: 'test-post' }) })
       render(page)
 
-      expect(screen.getByText('Test Post Title')).toBeInTheDocument()
+      expect(screen.getByText(postsLib.toSnakeCase('Test Post Title'))).toBeInTheDocument()
     })
 
     it('renders post date', async () => {

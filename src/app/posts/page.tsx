@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllPosts, formatDate } from '@/lib/posts'
+import { getAllPosts, formatDate, toSnakeCase } from '@/lib/posts'
 import Navigation from '@/components/Navigation'
 import { Rss } from 'lucide-react'
 
@@ -60,7 +60,7 @@ export default async function PostsPage() {
 
                     {/* Title */}
                     <h2 className="text-xl sm:text-3xl font-bold text-primary-200 mb-4 hover:text-primary-100 transition-colors duration-200">
-                      {post.title}
+                      {toSnakeCase(post.title)}
                     </h2>
 
                     {/* Excerpt */}

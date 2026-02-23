@@ -172,16 +172,6 @@ describe('ScrollToTop', () => {
     expect(scrollToSpy.mock.calls.length).toBeGreaterThan(0)
   })
 
-  it('applies gradient background styles', () => {
-    render(<ScrollToTop threshold={300} />)
-
-    Object.defineProperty(window, 'scrollY', { value: 400, writable: true, configurable: true })
-    fireEvent.scroll(window)
-
-    const button = screen.getByLabelText('Scroll to top')
-    expect(button).toHaveClass('bg-gradient-to-r')
-  })
-
   it('applies hover effects', () => {
     render(<ScrollToTop threshold={300} />)
 
@@ -305,7 +295,6 @@ describe('ScrollToTop', () => {
 
     // Verify button classes
     expect(button).toHaveClass('fixed', 'z-50', 'p-3', 'rounded-full')
-    expect(button).toHaveClass('bg-gradient-to-r')
 
     // Verify icon exists
     const svg = container.querySelector('svg')

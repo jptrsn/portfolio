@@ -69,6 +69,8 @@ export default function ScrollToTop({
       document.body.scrollTop = 0;
     }
 
+    history.replaceState(null, '', window.location.pathname)
+
     // Reset scrolling state after animation completes
     setTimeout(() => setIsScrolling(false), 800);
   };
@@ -81,8 +83,8 @@ export default function ScrollToTop({
           disabled={isScrolling}
           className={`
             fixed z-50 p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out
-            bg-gradient-to-r from-[var(--primary-500)] to-[var(--secondary-500)] hover:from-[var(--primary-400)] hover:to-[var(--secondary-400)]
-            text-white backdrop-blur-sm
+            hover:from-[var(--primary-400)] hover:to-[var(--secondary-400)]
+            text-white backdrop-blur-xs
             hover:scale-110 hover:shadow-xl active:scale-95
             disabled:opacity-50 disabled:cursor-not-allowed
             group animate-fade-in-up

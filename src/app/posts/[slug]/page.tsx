@@ -2,9 +2,12 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { getPostBySlug, getAllPosts, formatDate, Post } from '@/lib/posts'
+import { getPostBySlug, getAllPosts, formatDate, Post, toSnakeCase, extractHeadings } from '@/lib/posts'
 import { generateExtendedMetadata } from '@/lib/metadata'
 import { Rss } from 'lucide-react'
+import TableOfContents from '@/components/TableOfContents'
+import rehypeSlug from 'rehype-slug'
+import ScrollToTop from '@/components/ScrollToTop'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -124,6 +127,8 @@ export default async function PostPage({ params }: Props) {
     notFound()
   }
 
+  const headings = extractHeadings(post.content)
+
   return (
     <div className="min-h-screen bg-secondary-900/50">
       {/* Back Navigation */}
@@ -148,7 +153,7 @@ export default async function PostPage({ params }: Props) {
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* Article Header */}
-        <header className="mb-4 sm:mb-8 md:mb-12">
+        <header className="mb-4">
           <div className="flex items-center justify-between mb-2 sm:mb-6">
             <time
               className="text-xs sm:text-sm sm:font-medium text-primary-600 bg-neutral-400 px-3 py-1 rounded-full"
@@ -162,7 +167,7 @@ export default async function PostPage({ params }: Props) {
           </div>
 
           <h1 className="text-2xl sm:text-5xl font-bold text-neutral-200 mb-3 sm:mb-6 leading-tight break-all">
-            {post.title}
+            {toSnakeCase(post.title)}
           </h1>
 
           {post.excerpt && (
@@ -200,6 +205,8 @@ export default async function PostPage({ params }: Props) {
               )}
             </div>
           )}
+
+          <TableOfContents headings={headings} />
         </header>
 
         {/* Article Content */}
@@ -207,6 +214,11 @@ export default async function PostPage({ params }: Props) {
           <MDXRemote
             source={post.content}
             components={mdxComponents}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [rehypeSlug],
+              }
+            }}
           />
         </div>
 
@@ -229,6 +241,7 @@ export default async function PostPage({ params }: Props) {
           </div>
         </footer>
       </article>
+      <ScrollToTop />
     </div>
   )
 }

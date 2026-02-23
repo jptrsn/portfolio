@@ -11,6 +11,7 @@ vi.mock('@/lib/posts', () => ({
     month: 'long',
     day: 'numeric',
   })),
+  toSnakeCase: vi.fn((str: string) => str.split(' ').map((s) => s.toLowerCase()).join('_')),
 }))
 
 // Mock Navigation component
@@ -74,8 +75,8 @@ describe('PostsPage', () => {
       const page = await PostsPage()
       render(page)
 
-      expect(screen.getByText('Test Post 1')).toBeInTheDocument()
-      expect(screen.getByText('Test Post 2')).toBeInTheDocument()
+      expect(screen.getByText(postsLib.toSnakeCase('Test Post 1'))).toBeInTheDocument()
+      expect(screen.getByText(postsLib.toSnakeCase('Test Post 2'))).toBeInTheDocument()
     })
 
     it('renders post excerpts', async () => {

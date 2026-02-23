@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import remarkHtml from 'remark-html'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
+import GithubSlugger from 'github-slugger'
 
 export interface PostMetadata {
   title: string
@@ -15,6 +16,12 @@ export interface PostMetadata {
   draft?: boolean
   author?: string
   categories?: string[]
+}
+
+export interface Heading {
+  id: string
+  text: string
+  level: number
 }
 
 export interface Post extends PostMetadata {
@@ -108,6 +115,19 @@ export async function getPostContentAsHtml(slug: string): Promise<string> {
   return result.toString()
 }
 
+export function extractHeadings(content: string): Heading[] {
+  const slugger = new GithubSlugger()
+  const codeFenceRegex = /^`{3}[\s\S]*?^`{3}|^~{3}[\s\S]*?^~{3}/gm
+  const strippedContent = content.replace(codeFenceRegex, '')
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm
+
+  return Array.from(strippedContent.matchAll(headingRegex)).map((match) => ({
+    level: match[1].length,
+    text: match[2].trim(),
+    id: slugger.slug(match[2].trim()),
+  }))
+}
+
 export function formatDate(dateString: string): string {
   try {
 
@@ -120,6 +140,11 @@ export function formatDate(dateString: string): string {
   } catch {
     return dateString
   }
+}
+
+export function toSnakeCase(inputStr: string): string {
+  const parts = inputStr.split(' ')
+  return parts.map((p) => p.toLowerCase()).join('_')
 }
 
 export function dateStringToYear(dateString: string): string {
