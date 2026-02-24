@@ -1,10 +1,10 @@
 {
-  "id": "espairplay",
-  "title": "ESPAirPlay",
-  "slug": "espairplay",
+  "id": "espairsync",
+  "title": "ESPAirSync",
+  "slug": "espairsync",
   "shortDescription": "ESP32-based AirPlay receiver enabling reliable synchronous multi-room audio streaming from OwnTone server",
-  "longDescription": "ESPAirPlay is a purpose-built AirPlay (RAOP) receiver implementation for ESP32 microcontrollers, designed to provide affordable, scalable whole-home audio streaming from self-hosted OwnTone servers. The project addresses limitations in existing solutions like Raspberry Pi Zero W devices (which have become expensive and difficult to source) and squeezelite-esp32 (which struggles with reliable synchronous multi-room playback).\n\nBuilt on ESP-IDF and leveraging modern ESP32 hardware with onboard PSRAM, ESPAirPlay prioritizes performance and reliability through careful buffer management, dual-core task assignment, and optimized audio pipeline design. The implementation reduces complexity by focusing on a single purpose: delivering synchronized audio to multiple rooms without drift or dropouts.\n\nThis project serves as a technical foundation for a future ESPHome component, allowing the solution to be easily deployed and shared within the smart home community. Licensed under GPLv3, it demonstrates how modern embedded hardware can provide professional-grade audio streaming capabilities at a fraction of traditional costs.",
-  "startDate": "2025-01-15",
+  "longDescription": "ESPAirSync is a purpose-built AirPlay (RAOP) receiver implementation for ESP32 microcontrollers, designed to provide simple, scalable whole-home audio streaming from self-hosted OwnTone servers. The project addresses limitations in existing solutions like Raspberry Pi Zero W devices (which have become expensive and difficult to source) and squeezelite-esp32 (which struggles with reliable synchronous multi-room playback).\n\nBuilt on ESP-IDF and leveraging modern ESP32 hardware with onboard PSRAM, ESPAirSync prioritizes performance and reliability through careful buffer management, dual-core task assignment, and optimized audio pipeline design. The implementation reduces complexity by focusing on a single purpose: delivering synchronized audio to multiple rooms without drift or dropouts.\n\nThis project serves as a technical foundation for a future ESPHome component, allowing the solution to be easily deployed and shared within the smart home community. Licensed under GPLv3, it demonstrates how modern embedded hardware can provide professional-grade audio streaming capabilities at a fraction of traditional costs.",
+  "startDate": "2026-01-15",
   "images": [],
   "tags": [
     { "name": "ESP32", "category": "technology" },
@@ -19,7 +19,7 @@
   "links": [
     {
       "type": "source",
-      "url": "https://codeberg.org/Edu_Coder/espairplay",
+      "url": "https://codeberg.org/Edu_Coder/espairsync",
       "label": "Source Code (Codeberg)",
       "active": true
     }
