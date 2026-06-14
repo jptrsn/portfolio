@@ -83,7 +83,7 @@
   "hasCustomHardware": false,
   "requiresSpecialSetup": true,
   "isOpenSource": true,
-  "featured": true,
+  "featured": false,
   "keywords": [
     "youtube",
     "transcripts",

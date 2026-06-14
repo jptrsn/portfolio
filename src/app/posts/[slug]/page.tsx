@@ -48,8 +48,8 @@ const mdxComponents = {
   li: (props: any) => (
     <li className="leading-relaxed" {...props} />
   ),
-  blockquote: (props: any) => (
-    <blockquote className="border-l-4 whitespace-pre border-primary-500 pl-6 !py-0 bg-neutral-800 italic text-neutral-100 rounded-r-lg" {...props} />
+  Blockquote: (props: any) => (
+    <blockquote className="border-l-4 whitespace-prewrap border-primary-500 pl-6 pt-3 pb-1 mb-3 bg-neutral-800 italic text-neutral-100 rounded-r-lg" {...props} />
   ),
   Details: (props: any) => (
     <details className="my-4" {...props} />

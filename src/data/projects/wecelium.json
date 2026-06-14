@@ -1,0 +1,68 @@
+{
+  "id": "wecelium",
+  "title": "Wecelium",
+  "slug": "wecelium",
+  "shortDescription": "A Postgres-native architecture system for AI-assisted engineering using vector search, graph traversal, and full-text search fusion.",
+  "longDescription": "Wecelium was a self-directed proposal for an institutional knowledge system for AI-assisted software engineering. The system solves the problem of scattered institutional knowledge by capturing architectural decisions, technical debt, conventions, and code insights during normal engineering practice, then providing persistent, contextual knowledge to developers and LLMs alike.\n\nThe architecture is Postgres-native, using a three-table-family schema that embodies the system's methodology: personas and problems as rows plus join tables (not columns/tables), allowing traceability via database queries and reverting migrations via Sqitch. The system maintained over 14,000 knowledge entries across 11 internal projects.\n\nSearch is the core differentiator. Wecelium implements a three-signal Reciprocal Rank Fusion (RRF) that runs three retrieval strategies in parallel and fuses results without manual weight tuning:\n\n1. **Vector similarity** — pgvector (768-dim, nomic-embed-text via Ollama) captures semantic intent\n2. **Full-text search** — GIN indexes capture keyword/structural matches\n3. **Graph traversal** — recursive CTEs traverse the knowledge graph to find structurally related items\n\nThe system connects related knowledge across dimensions: decisions → constraints → trade-offs → tech debt. A 1,352-item pending review queue with staging confirm gates captures knowledge organically during active coding sessions before it enters the live database.\n\nThe interface consists of 30+ MCP tools for knowledge interaction, a PostgREST API auto-generated from the schema, and a session hooks system for session capture and progressive context loading.\n\nStatus: The proposal was submitted as a pitch for adoption. The business case was not accepted and the system was decommissioned. The technical architecture, schema design, and search implementation remain as a reference of engineering work.",
+  "startDate": "2026-01-01",
+  "endDate": "2026-06-15",
+  "images": [
+    {
+      "url": "/project-assets/wecelium/wecelium_logo.png",
+      "alt": "Wecelium Logo",
+      "caption": "Wecelium Logo",
+      "isHero": true
+    },
+    {
+      "url": "/project-assets/wecelium/wecelium_rrf.png",
+      "alt": "Wecelium architecture showing three-signal RRF search pipeline",
+      "caption": "Three-signal Reciprocal Rank Fusion: vector similarity, full-text search, and graph traversal fused without manual weight tuning"
+    }
+  ],
+  "tags": [
+    { "name": "PostgreSQL", "category": "database" },
+    { "name": "pgvector", "category": "database" },
+    { "name": "PostgREST", "category": "database" },
+    { "name": "Docker Compose", "category": "tool" },
+    { "name": "MCP Tools", "category": "framework" },
+    { "name": "FastAPI", "category": "framework" },
+    { "name": "Sqitch", "category": "tool" }
+  ],
+  "links": [],
+  "status": {
+    "current": "archived",
+    "deploymentStatus": "offline",
+    "maintenanceLevel": "deprecated"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 1,
+    "duration": "6 months",
+    "role": "Author & Sole Developer"
+  },
+  "challenges": "Designing a knowledge schema that captures architectural decisions, trade-offs, and code insights as structured data rather than text. Implementing three-signal RRF without manual weight tuning — combining vector similarity (pgvector 768-dim), full-text search (GIN indexes), and graph traversal (recursive CTEs) in parallel and fusing results. Building a staging confirm gate for human-in-the-loop knowledge ingestion. Managing a pending-review queue with session hooks. Schema design that supports reversibility via additive migrations (Sqitch deploy/revert/verify). MCP tools for knowledge interaction (30+ tools). Progressive context loading via session lifecycle hooks. Pitching the business case to decision-makers and presenting the engineering rationale.",
+  "learnings": "Three-signal Reciprocal Rank Fusion for search — compensating for blind spots of each retrieval signal. PostgreSQL as a knowledge graph: recursive CTEs, GIN indexes, pgvector, and JSONB for extensible metadata. Schema design where methodology is embodied in table structure (personas/problems as rows + join tables). Session lifecycle hooks for capturing knowledge organically during work. MCP tool architecture for structured knowledge interaction. Progressive context loading — delivering relevant knowledge at point-of-action, not upfront. Conway's Law as design principle for knowledge system architecture. Business case presentation and technical pitching.",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": false,
+  "isOpenSource": false,
+  "featured": true,
+  "keywords": [
+    "knowledge-graph",
+    "vector-search",
+    "reciprocal-rank-fusion",
+    "pgvector",
+    "postgresql",
+    "mcp",
+    "context-engineering",
+    "graph-traversal",
+    "ai-orchestration",
+    "rag",
+    "llm",
+    "search-fusion",
+    "knowledge-capture",
+    "recursion",
+    "ctes",
+    "gin-index",
+    "fastapi"
+  ]
+}

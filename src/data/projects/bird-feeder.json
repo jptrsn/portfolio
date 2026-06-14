@@ -2,8 +2,8 @@
   "id": "bird-feeder",
   "title": "Bird Feeder for Google Sheets",
   "slug": "bird-feeder",
-  "shortDescription": "An add-on for Google Sheets, which allows the user to schedule, save, and automate posting to Twitter.",
-  "longDescription": "A Google Sheets add-on that connected to Twitter using the V1 API, to automatically schedule and post to Twitter, in coordination with a presentation schedule.",
+  "shortDescription": "An add-on for Google Sheets which allows the user to schedule, save, and automate posting to Twitter.",
+  "longDescription": "A Google Sheets add-on that connected to Twitter using the V1 API to automatically schedule and post to Twitter, coordinated with a presentation schedule. One of the first projects I built and deployed end-to-end, learning the full lifecycle of creating an add-on. Implemented OAuth authentication for the Twitter API, scheduled post queuing, and automated the coordination between spreadsheet data and social media posts. The project taught me the fundamentals of working with third-party APIs, OAuth, and scheduling systems as a beginner developer.",
   "startDate": "2015-04-01",
   "endDate": "2018-04-26",
   "images": [
@@ -15,8 +15,11 @@
   ],
   "tags": [
     { "name": "JavaScript", "category": "language" },
-    { "name": "Google Apps-Script", "category": "framework" },
-    { "name": "OAuth", "category": "authentication" }
+    { "name": "Google Apps Script", "category": "framework" },
+    { "name": "OAuth", "category": "authentication" },
+    { "name": "Google Workspace", "category": "platform" },
+    { "name": "Twitter API", "category": "framework" },
+    { "name": "Automation", "category": "tool" }
   ],
   "links": [
     {
@@ -27,9 +30,20 @@
     }
   ],
   "status": {
-    "current": "archived"
+    "current": "archived",
+    "deploymentStatus": "offline",
+    "maintenanceLevel": "legacy"
   },
   "metadata": {
-    "difficulty": "beginner"
-  }
+    "difficulty": "beginner",
+    "teamSize": 2,
+    "duration": "3 years"
+  },
+  "challenges": "Implementing OAuth authentication for Twitter API, managing scheduled post queuing, and coordinating spreadsheet data with social media posts. Working within Google Apps Script constraints and the limitations of Twitter API V1.",
+  "learnings": "Full project lifecycle from initial setup to deployment and long-term maintenance. OAuth authentication patterns. Scheduling and automation. Google Apps Script for Google Workspace add-ons. Working with third-party APIs. Twitter API V1 integration.",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": false,
+  "isOpenSource": true,
+  "featured": false,
+  "keywords": ["google-sheets", "twitter", "oauth", "automation", "google-apps-script", "social-media", "scheduling", "beginner-project", "google-workspace"]
 }

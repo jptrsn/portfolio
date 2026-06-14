@@ -1,0 +1,67 @@
+{
+  "id": "contengine",
+  "title": "Contengine",
+  "slug": "contengine",
+  "shortDescription": "A distributed orchestration gateway for local LLM inference servers with JWT auth, rate limiting, and isolated MCP tool containers.",
+  "longDescription": "Contengine is a production-grade MCP (Model Context Protocol) server that functions as an orchestration gateway between users and a local NVIDIA inference server running Qwen3.6-35B-MoE via vLLM. The system handles JWT authentication, API key management, rate limiting, tool routing, and multi-user isolation across two hosts (a VPS and a local LAN DGX Spark connected via Tailscale).\n\nThe architecture is built around a custom FastAPI gateway that intercepts `tool_use` messages from the vLLM inference engine, resolves tools to isolated MCP tool containers, and loops results back to the model. Each user gets dynamically provisioned Docker Compose stacks for complete isolation. The system was designed for asymmetric resilience — external users retain access to their data layer even during WAN drops, since the inference engine remains accessible locally.\n\nThe project includes 20+ MCP tools written with the MCP SDK, full Observability stack with Prometheus/Grafana dashboards, a Qdrant vector store with sentence-transformers embeddings, and a graphrag corpus management system for multi-user context injection.",
+  "startDate": "2026-05-01",
+  "images": [
+    {
+      "url": "/project-assets/contengine/contengine-logo.png",
+      "alt": "Contengine logo",
+      "caption": "Contengine Logo",
+      "isHero": true
+    }
+  ],
+  "tags": [
+    { "name": "Python", "category": "language" },
+    { "name": "FastAPI", "category": "framework" },
+    { "name": "Docker", "category": "tool" },
+    { "name": "MCP SDK", "category": "framework" },
+    { "name": "vLLM", "category": "framework" },
+    { "name": "Prometheus", "category": "tool" },
+    { "name": "Qdrant", "category": "database" },
+    { "name": "Tailscale", "category": "tool" }
+  ],
+  "links": [
+    {
+      "type": "github",
+      "url": "https://github.com/jptrsn/contengine",
+      "label": "View Source",
+      "isAvailable": true
+    }
+  ],
+  "status": {
+    "current": "active",
+    "deploymentStatus": "local-only",
+    "maintenanceLevel": "maintained"
+  },
+  "metadata": {
+    "difficulty": "advanced",
+    "teamSize": 1,
+    "duration": "Ongoing",
+    "role": "Author & Sole Developer"
+  },
+  "challenges": "Custom FastAPI gateway to intercept `tool_use` messages from vLLM and resolve tools to MCP containers — iterative tool→observe→tool loop that standard proxies (like LiteLLM) don't support. Asymmetric resilience design: external users must retain access to their data layer when WAN drops, requiring careful separation of auth/routing (VPS) from inference (LAN DGX Spark). Multi-user isolation via dynamic Docker Compose provisioning without shared containers. Distributed debugging across two hosts connected via Tailscale. JWT auth, rate limiting, and observability (Prometheus/Grafana) across the full stack.",
+  "learnings": "Custom FastAPI gateway middleware for LLM tool interception and MCP container routing. Docker dynamic compose provisioning per-user with isolation. Asymmetric resilience patterns for WAN drop scenarios. MCP protocol deep understanding beyond surface tool registration. Prometheus metrics collection and Grafana dashboards for real-time system observability. Tailscale network topology for secure two-host communication. Sentence-transformers embeddings in Qdrant for vector-based context resolution.",
+  "hasCustomHardware": false,
+  "requiresSpecialSetup": true,
+  "isOpenSource": true,
+  "featured": false,
+  "keywords": [
+    "mcp",
+    "llm",
+    "fastapi",
+    "docker",
+    "vllm",
+    "prometheus",
+    "qdrant",
+    "tailscale",
+    "distributed-systems",
+    "tool-use",
+    "async",
+    "jwt",
+    "rate-limiting",
+    "multi-user"
+  ]
+}
