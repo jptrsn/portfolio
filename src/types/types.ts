@@ -22,17 +22,6 @@ export interface TechnicalUnderstanding {
   description: string;
 }
 
-export interface FeaturedProject {
-  title: string;
-  cover?: string;
-  description: string;
-  tech: string[];
-  link: string;
-  github?: string;
-  codeberg?: string;
-  liveUrl?: string;
-}
-
 export interface ProjectTag {
   name: string;
   category: 'language' | 'framework' | 'database' | 'tool' | 'platform' | 'hardware' | 'other';

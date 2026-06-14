@@ -7,8 +7,8 @@ vi.mock('@/components/Navigation', () => ({
   default: () => <nav data-testid="navigation">Navigation</nav>
 }))
 
-vi.mock('@/components/ProjectsSection', () => ({
-  ProjectsSection: ({ projects }: { projects: unknown[] }) => (
+vi.mock('@/components/FeaturedProjectsGrid', () => ({
+  default: ({ projects }: { projects: unknown[] }) => (
     <section data-testid="projects-section">Projects: {projects.length}</section>
   )
 }))
@@ -43,10 +43,10 @@ vi.mock('@/data/contactInfo', () => ({
   ]
 }))
 
-vi.mock('@/data/projectInfo', () => ({
-  sideProjects: [
-    { title: 'Project 1' },
-    { title: 'Project 2' }
+vi.mock('@/lib/projects', () => ({
+  getFeaturedProjects: () => [
+    { id: '1', title: 'Project 1', slug: 'project-1' },
+    { id: '2', title: 'Project 2', slug: 'project-2' }
   ]
 }))
 

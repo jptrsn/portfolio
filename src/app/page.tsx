@@ -1,11 +1,11 @@
 import Navigation from '@/components/Navigation';
-import { ProjectsSection } from '@/components/ProjectsSection';
+import FeaturedProjectsGrid from '@/components/FeaturedProjectsGrid';
 import ScrollToTop from '@/components/ScrollToTop';
 import { SkillsSection } from '@/components/SkillSection';
 import { Typewriter } from '@/components/Typewriter';
 import { contactInfo } from '@/data/contactInfo';
-import { sideProjects } from '@/data/projectInfo';
 import { generateExtendedMetadata } from '@/lib/metadata';
+import { getFeaturedProjects } from '@/lib/projects';
 import { getSkillsData } from '@/lib/skill';
 import { ChevronDown, Code } from 'lucide-react';
 import Link from 'next/link';
@@ -13,8 +13,8 @@ import Link from 'next/link';
 export const metadata = generateExtendedMetadata({});
 
 export default function HomePage() {
-
   const skills = getSkillsData();
+  const featuredProjects = getFeaturedProjects();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -63,7 +63,7 @@ export default function HomePage() {
 
       <SkillsSection skills={skills} />
 
-      <ProjectsSection projects={sideProjects} />
+      <FeaturedProjectsGrid projects={featuredProjects} />
 
       <section id="connect" className="py-20 px-6">
         <div className="container mx-auto max-w-4xl text-center">
