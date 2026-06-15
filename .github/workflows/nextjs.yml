@@ -61,7 +61,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright/
-          key: playwright-${{ runner.os }}-${{ hashFiles('**/playwright.config.ts') }}
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/playwright.config.ts', '**/package-lock.json') }}
 
       - name: Install Playwright Browsers
         run: npx playwright install chromium firefox webkit
