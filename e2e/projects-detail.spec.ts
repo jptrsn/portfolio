@@ -31,13 +31,14 @@ test.describe('Project Detail Page', () => {
 
     if (projectCount > 0) {
       const firstProject = projectLinks.first()
+      const yearText = await firstProject.locator('span.text-sm.flex-shrink-0').textContent()
+
       await firstProject.click()
 
       // Check for title
       await expect(page.locator('h1')).toBeVisible()
 
-      // Check for year - extract from first project card and verify on detail page
-      const yearText = await firstProject.locator('span.text-sm.flex-shrink-0').textContent()
+      // Check for year on the detail page
       if (yearText) {
         await expect(page.getByText(yearText)).toBeVisible()
       }
