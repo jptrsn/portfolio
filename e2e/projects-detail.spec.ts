@@ -30,18 +30,17 @@ test.describe('Project Detail Page', () => {
     const projectCount = await projectLinks.count()
 
     if (projectCount > 0) {
-      await projectLinks.first().click()
+      const firstProject = projectLinks.first()
+      await firstProject.click()
 
       // Check for title
       await expect(page.locator('h1')).toBeVisible()
 
-      // Check for year
-      const year = 2025
-      const yearRange = Array.from({ length: 10 }, (_, i) => year - i)
-      const hasYear = await Promise.race(
-        yearRange.map(y => page.getByText(y.toString()).isVisible().catch(() => false))
-      )
-      expect(hasYear).toBeTruthy()
+      // Check for year - extract from first project card and verify on detail page
+      const yearText = await firstProject.locator('span.text-sm.flex-shrink-0').textContent()
+      if (yearText) {
+        await expect(page.getByText(yearText)).toBeVisible()
+      }
     }
   })
 
