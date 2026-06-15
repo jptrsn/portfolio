@@ -56,8 +56,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Cache Playwright browsers
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright/
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/playwright.config.ts') }}
+
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium firefox webkit
+        timeout-minutes: 10
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
 
       - name: Build site
         run: npm run build

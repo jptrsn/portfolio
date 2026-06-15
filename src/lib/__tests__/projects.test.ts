@@ -183,7 +183,7 @@ describe('getProjectsByStatus', () => {
   })
 
   it('returns empty array for non-existent status', () => {
-    const result = getProjectsByStatus('retired')
+    const result = getProjectsByStatus('retired' as never)
     expect(result).toEqual([])
   })
 })
@@ -335,7 +335,8 @@ describe('getProjectStats', () => {
   it('yearRange is not null', () => {
     const stats = getProjectStats()
     expect(stats.yearRange).not.toBeNull()
-    expect(stats.yearRange?.earliest).toBeLessThan(stats.yearRange?.latest)
+    const range = stats.yearRange!
+    expect(range.earliest).toBeLessThan(range.latest)
   })
 
   it('statusBreakdown sums to totalProjects', () => {
