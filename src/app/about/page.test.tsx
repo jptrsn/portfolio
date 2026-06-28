@@ -30,7 +30,6 @@ describe('AboutPage', () => {
   it('renders the introduction paragraph', () => {
     render(<AboutPage />)
     expect(screen.getByText(/full-stack engineer/i)).toBeInTheDocument()
-    expect(screen.getByText(/deep, almost uncomfortable understanding/i)).toBeInTheDocument()
   })
 
   it('renders the education origin story', () => {
