@@ -12,11 +12,6 @@ describe('AboutPage', () => {
     expect(screen.getByTestId('navigation')).toBeInTheDocument()
   })
 
-  it('renders the heading', () => {
-    render(<AboutPage />)
-    expect(screen.getByRole('heading', { name: "Hi, I'm James" })).toBeInTheDocument()
-  })
-
   it('renders the headshot image', () => {
     const { container } = render(<AboutPage />)
     const image = container.querySelector('img[alt="Headshot"]')
@@ -34,31 +29,32 @@ describe('AboutPage', () => {
 
   it('renders the introduction paragraph', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/full-stack software developer/i)).toBeInTheDocument()
-    expect(screen.getByText(/dozen years of development experience/i)).toBeInTheDocument()
+    expect(screen.getByText(/full-stack engineer/i)).toBeInTheDocument()
+    expect(screen.getByText(/deep, almost uncomfortable understanding/i)).toBeInTheDocument()
   })
 
-  it('renders the teacher influence', () => {
+  it('renders the education origin story', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/teaching/i)).toBeInTheDocument()
-    expect(screen.getByText(/technical excellence/i)).toBeInTheDocument()
+    expect(screen.getByText(/licensed to teach/i)).toBeInTheDocument()
+    expect(screen.getByText(/builder's mindset to software/i)).toBeInTheDocument()
   })
 
-  it('renders technical experience', () => {
+  it('renders the tinkerer identity', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/technical curiosity knows few boundaries/i)).toBeInTheDocument()
-    expect(screen.getByText(/passionate about open source/i)).toBeInTheDocument()
+    expect(screen.getByText(/tinkerer/i)).toBeInTheDocument()
+    expect(screen.getByText(/relentless curiosity/i)).toBeInTheDocument()
   })
 
-  it('renders the self-hosting paragraph', () => {
+  it('renders the values paragraph', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/self-hosted infrastructure/i)).toBeInTheDocument()
+    expect(screen.getByText(/deep end-to-end ownership/i)).toBeInTheDocument()
+    expect(screen.getByText(/open source/i)).toBeInTheDocument()
   })
 
-  it('renders the hobby paragraph', () => {
+  it('renders the forward-looking paragraph', () => {
     render(<AboutPage />)
-    expect(screen.getByText(/hobby electronics/i)).toBeInTheDocument()
-    expect(screen.getByText(/blinking lights/i)).toBeInTheDocument()
+    expect(screen.getByText(/learning is the point/i)).toBeInTheDocument()
+    expect(screen.getByText(/stretching beyond/i)).toBeInTheDocument()
   })
 
   it('has correct page structure with proper classes', () => {
@@ -74,7 +70,7 @@ describe('AboutPage', () => {
     expect(mainContainer).toHaveClass('container', 'mx-auto')
   })
 
-  it('renders all 5 content paragraphs', () => {
+  it('renders 5 content paragraphs', () => {
     const { container } = render(<AboutPage />)
     const paragraphs = container.querySelectorAll('.flex-col > p')
     expect(paragraphs.length).toBe(5)
@@ -101,11 +97,7 @@ describe('AboutPage', () => {
     expect(mainContainer).toBeInTheDocument()
     expect(mainContainer.tagName).toBe('DIV')
 
-    // Verify heading exists and is h2
-    const heading = screen.getByRole('heading', { name: "Hi, I'm James" })
-    expect(heading.tagName).toBe('H2')
-
-    // Verify image container exists
+    // Verify image container exists (heading removed)
     const imageContainer = container.querySelector('.flex.items-center.justify-center')
     expect(imageContainer).toBeInTheDocument()
 

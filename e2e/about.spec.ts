@@ -7,7 +7,6 @@ test.describe('About Page', () => {
 
   test('has correct page structure', async ({ page }) => {
     await expect(page.locator('nav')).toBeVisible()
-    await expect(page.getByRole('heading', { name: "Hi, I'm James" })).toBeVisible()
   })
 
   test('displays the headshot image', async ({ page }) => {
@@ -26,30 +25,6 @@ test.describe('About Page', () => {
     // Verify image loaded successfully
     const naturalWidth = await image.evaluate((img: HTMLImageElement) => img.naturalWidth)
     expect(naturalWidth).toBeGreaterThan(0)
-  })
-
-  test('displays introduction content', async ({ page }) => {
-    await expect(page.getByText(/full-stack software developer/i)).toBeVisible()
-    await expect(page.getByText(/dozen years of development experience/i)).toBeVisible()
-  })
-
-  test('displays teacher influence', async ({ page }) => {
-    await expect(page.getByText(/teaching:/i)).toBeVisible()
-    await expect(page.getByText(/technical excellence/i)).toBeVisible()
-  })
-
-  test('displays technical experience', async ({ page }) => {
-    await expect(page.getByText(/technical curiosity knows few boundaries/i)).toBeVisible()
-    await expect(page.getByText(/passionate about open source/i)).toBeVisible()
-  })
-
-  test('displays self-hosting', async ({ page }) => {
-    await expect(page.getByText(/self-hosted infrastructure/i)).toBeVisible()
-  })
-
-  test('displays hobby section', async ({ page }) => {
-    await expect(page.getByText(/hobby electronics/i)).toBeVisible()
-    await expect(page.getByText(/blinking lights/i)).toBeVisible()
   })
 
   test('navigation links work on desktop', async ({ page }) => {
@@ -100,22 +75,18 @@ test('navigation links work on mobile', async ({ page }) => {
   test('responsive on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
 
-    await expect(page.getByRole('heading', { name: "Hi, I'm James" })).toBeVisible()
     await expect(page.locator('img[alt="Headshot"]')).toBeVisible()
-    await expect(page.getByText(/full-stack software developer/i)).toBeVisible()
   })
 
   test('responsive on tablet', async ({ page }) => {
     await page.setViewportSize({ width: 768, height: 1024 })
 
-    await expect(page.getByRole('heading')).toBeVisible()
     await expect(page.locator('img[alt="Headshot"]')).toBeVisible()
   })
 
   test('responsive on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 1080 })
 
-    await expect(page.getByRole('heading')).toBeVisible()
     await expect(page.locator('img[alt="Headshot"]')).toBeVisible()
   })
 

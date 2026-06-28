@@ -39,13 +39,13 @@ const mdxComponents = {
   a: (props: any) => (
     <a className="text-blue-600 hover:text-blue-800 underline underline-offset-2 transition-colors" {...props} />
   ),
-  ul: (props: any) => (
-    <ul className="list-disc list-inside mb-4 space-y-2 text-gray-200" {...props} />
+  Ul: (props: any) => (
+    <ul className="list-disc list-inside mb-4 space-y-2 p-1 text-gray-900 bg-neutral-400 rounded-sm" {...props} />
   ),
-  ol: (props: any) => (
-    <ol className="list-decimal list-inside mb-4 space-y-2 text-gray-200" {...props} />
+  Ol: (props: any) => (
+    <ol className="list-decimal list-inside space-y-2 p-1 text-gray-900 bg-neutral-400 rounded-sm" {...props} />
   ),
-  li: (props: any) => (
+  Li: (props: any) => (
     <li className="leading-relaxed" {...props} />
   ),
   Blockquote: (props: any) => (
