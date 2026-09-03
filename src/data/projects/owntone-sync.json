@@ -67,30 +67,16 @@
   ],
   "links": [
     {
-      "type": "codeberg",
-      "url": "https://codeberg.org/edu_coder/owntone-sync",
+      "type": "github",
+      "url": "https://github.com/jptrsn/owntone-sync",
       "label": "Source Code",
       "isAvailable": true
     },
     {
       "type": "documentation",
-      "url": "https://edu_coder.codeberg.page/owntone-sync/",
+      "url": "https://jptrsn.github.io/owntone-sync/",
       "label": "Project Documentation",
       "isAvailable": true
-    },
-    {
-      "type": "demo",
-      "url": "",
-      "label": "Live Demo",
-      "isAvailable": false,
-      "note": "Requires local OwnTone server hardware setup"
-    },
-    {
-      "type": "download",
-      "url": "",
-      "label": "Google Play Store",
-      "isAvailable": false,
-      "note": "Not yet published to Play Store"
     }
   ],
   "status": {
