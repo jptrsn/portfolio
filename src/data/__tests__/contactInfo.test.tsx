@@ -28,15 +28,15 @@ describe('contactInfo', () => {
     expect(mastodon?.href).toBe('https://mastodon.online/@educoder')
   })
 
-  it('contains Codeberg contact info', () => {
-    const codeberg = contactInfo.find(info => info.label === 'Codeberg')
-    expect(codeberg).toBeDefined()
-    expect(codeberg?.value).toBe('codeberg.org/Edu_Coder')
-    expect(codeberg?.href).toBe('https://codeberg.org/Edu_Coder')
-  })
+  // it('contains Codeberg contact info', () => {
+  //   const codeberg = contactInfo.find(info => info.label === 'Codeberg')
+  //   expect(codeberg).toBeDefined()
+  //   expect(codeberg?.value).toBe('codeberg.org/Edu_Coder')
+  //   expect(codeberg?.href).toBe('https://codeberg.org/Edu_Coder')
+  // })
 
-  it('has exactly 4 contact methods', () => {
-    expect(contactInfo).toHaveLength(4)
+  it('has exactly 3 contact methods', () => {
+    expect(contactInfo).toHaveLength(3)
   })
 
   it('all contact info items have required properties', () => {

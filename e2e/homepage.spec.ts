@@ -6,7 +6,9 @@ test.describe('Homepage', () => {
 
     // Fix: Match the actual title from your metadata
     await expect(page).toHaveTitle(/EduCoder/i)
-    await expect(page.getByRole('heading', { name: /Software Engineer & Educator/i })).toBeVisible()
+    // The h1 is a typewriter animation (~3.3s to type out); allow extra
+    // time when the machine is loaded with parallel browser workers.
+    await expect(page.getByRole('heading', { name: /Software Engineer & Educator/i })).toBeVisible({ timeout: 15000 })
   })
 
   test('has working navigation links', async ({ page }) => {
@@ -73,16 +75,19 @@ test.describe('Homepage', () => {
     const scrollButton = page.getByRole('button', { name: 'Scroll to top' })
     await expect(scrollButton).not.toBeVisible()
 
-    // Scroll down past threshold (300px by default)
-    await page.evaluate(() => window.scrollTo(0, 1000))
+    // Scroll down past the threshold in steps. A single scrollTo can fire
+    // its scroll event before React hydration attaches the listener, so
+    // keep scrolling until an event lands after hydration.
+    for (let i = 0; i < 10; i++) {
+      await page.evaluate(() => window.scrollBy(0, 100))
+      await page.waitForTimeout(150)
+    }
 
     // Button should appear
-    await expect(scrollButton).toBeVisible({ timeout: 2000 })
+    await expect(scrollButton).toBeVisible({ timeout: 5000 })
 
-    // Optional: Test that it actually scrolls to top
+    // Test that it actually scrolls to top
     await scrollButton.click()
-    await page.waitForTimeout(1000) // Wait for smooth scroll animation
-    const scrollY = await page.evaluate(() => window.scrollY)
-    expect(scrollY).toBeLessThan(100)
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(100)
   })
 })

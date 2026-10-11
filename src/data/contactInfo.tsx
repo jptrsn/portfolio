@@ -20,10 +20,10 @@ export const contactInfo: ContactInfo[] = [
       value: '@educoder@mastodon.online',
       href: 'https://mastodon.online/@educoder'
     },
-    {
-      icon: <BrandIcon name='codeberg' className="w-6 h-6 hover:text-primary" />,
-      label: 'Codeberg',
-      value: 'codeberg.org/Edu_Coder',
-      href: 'https://codeberg.org/Edu_Coder'
-    }
+    // {
+    //   icon: <BrandIcon name='codeberg' className="w-6 h-6 hover:text-primary" />,
+    //   label: 'Codeberg',
+    //   value: 'codeberg.org/Edu_Coder',
+    //   href: 'https://codeberg.org/Edu_Coder'
+    // }
   ];

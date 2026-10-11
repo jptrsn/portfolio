@@ -40,10 +40,13 @@ test.describe('Root Layout', () => {
 
   test('fonts are loaded correctly', async ({ page }) => {
     const body = page.locator('body')
-    const className = await body.getAttribute('class')
-
-    // Check that font variable classes are present
-    expect(className).toMatch(/ibm_plex_sans/)
+    // Check the font is actually applied. (next/font hashes its variable
+    // class names in production builds, so matching the class name only
+    // works in dev.)
+    const fontFamily = await body.evaluate(
+      (el) => getComputedStyle(el).fontFamily
+    )
+    expect(fontFamily).toMatch(/IBM Plex Sans/i)
   })
 
   test('layout persists across page navigation', async ({ page }) => {

@@ -32,8 +32,13 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: process.env.CI ? 'npx serve out -l 3000' : 'npm run dev',
+    // Test against the production static export (same as CI), not the dev
+    // server. Turbopack dev flakily aborts client-navigation RSC fetches
+    // under parallel load, causing intermittent "link click doesn't
+    // navigate" failures.
+    command: process.env.CI ? 'npx serve out -l 3000' : 'next build && npx serve out -l 3000',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
+    timeout: 180_000,
   },
 })

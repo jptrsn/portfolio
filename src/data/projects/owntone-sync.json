@@ -2,8 +2,8 @@
   "id": "owntone-sync",
   "title": "OwnTone Sync",
   "slug": "owntone-sync",
-  "shortDescription": "A mobile app that recreates the iTunes/iPod sync experience by synchronizing your music collection from an OwnTone server to your Android device for offline playback.",
-  "longDescription": "OwnTone Sync brings back the classic music ownership experience of iTunes and iPod for the modern era. This Flutter-based Android application connects to a self-hosted OwnTone server on your local network, allowing you to synchronize your entire music collection to your mobile device for offline listening. The app handles complex background synchronization, file streaming, and playback tracking while maintaining the simplicity of the original iPod sync workflow. Built as a learning project to transfer full-stack web development skills to mobile development, it demonstrates advanced mobile architecture patterns including Flutter-Kotlin interoperability, background execution, and efficient media file management.",
+  "shortDescription": "An offline-first Android music player for self-hosted OwnTone servers. Syncs playlists, files, and album artwork to the device for playback with no network, then sends plays, skips, and ratings back to the server on the next sync.",
+  "longDescription": "OwnTone Sync is an offline-first music player for self-hosted OwnTone servers. It syncs the playlists you choose — audio files, M3U playlists, and album artwork — into a folder you grant on your Android device, and everything works with no network: the files, the artwork, and the player all live on the device. The synced files are ordinary audio files, so any other music player can read them; only playback inside the app feeds statistics back to the server.\n\nPlayback is the point of the app. Tapping a track plays it in context — the rest of the list becomes the queue — with shuffle, repeat, and a queue you can reorder by dragging. Playback continues in the background and responds to lock-screen, notification, and Bluetooth controls. Because the app owns the playback, it measures listening directly: a track counts as played at 90% of its length or four minutes of actual listening, whichever comes first, and only a deliberate move on counts as a skip. Those events, plus five-star ratings (if a rating changed on the server since the last sync, the server's value wins), are queued on the device and uploaded on the next sync, keeping the server's play and skip counts — and the smart playlists built on them — accurate.\n\nThe app is Flutter with a Kotlin native layer: background sync and the schedule run on WorkManager, file I/O goes through the Storage Access Framework, and playback runs on just_audio behind audio_service. Sync is deliberately demoted from the front of the app to a background capability — a schedule, a progress indicator, and a history log.",
   "startDate": "2025-12-01",
   "endDate": null,
   "images": [
@@ -53,15 +53,15 @@
       "category": "platform"
     },
     {
+      "name": "SQLite",
+      "category": "database"
+    },
+    {
       "name": "REST API",
       "category": "other"
     },
     {
-      "name": "Background Processing",
-      "category": "other"
-    },
-    {
-      "name": "Media Streaming",
+      "name": "Music Player",
       "category": "other"
     }
   ],
@@ -81,7 +81,7 @@
   ],
   "status": {
     "current": "active",
-    "deploymentStatus": "requires-hardware",
+    "deploymentStatus": "local-only",
     "maintenanceLevel": "maintained"
   },
   "metadata": {
@@ -90,9 +90,9 @@
     "duration": "Ongoing",
     "role": "Solo Developer"
   },
-  "challenges": "The project required solving several complex mobile development challenges: implementing reliable background execution for long-running sync operations, building an efficient ETL pipeline to transform and store music metadata, streaming file downloads directly to device storage without excessive memory usage, and tracking playback state and skip events across the Flutter-Kotlin boundary. The handoff between Flutter's UI layer and Kotlin's native Android capabilities required careful architecture to maintain performance and reliability.",
-  "learnings": "This project served as a practical bridge from full-stack web development to mobile development. Key learnings included understanding mobile-specific constraints like battery optimization and background execution limits, working with platform channels to integrate native Android code with Flutter, managing file I/O and storage efficiently on mobile devices, and designing offline-first architectures that gracefully handle network availability. The experience highlighted both the similarities (REST APIs, state management) and differences (lifecycle management, platform-specific APIs) between web and mobile development.",
-  "futureImprovements": "Future enhancements could include iOS support to make it truly cross-platform, implementing intelligent sync strategies (delta syncing, priority queuing), adding support for playlist management and smart playlists, implementing a more sophisticated caching strategy for album artwork, and potentially adding peer-to-peer sync capabilities for scenarios without a central server.",
+  "challenges": "The original design kept the queue as a Dart list while the native player was handed a single item, so the player had no concept of \"next\" — auto-advance, notification controls, shuffle, and repeat were all silently broken by that one mistake. Rebuilding playback so the player owns the queue fixed them all at once. Playing files from a user-granted folder required tree-scoped document URIs under the Storage Access Framework; a bare document URI is refused by Android's permission model with an opaque SecurityException. The app's core purpose — accurate play and skip counts — required replacing notification-scraping, which guessed at other players' activity and was never reliable, with direct measurement: a listening-time clock from the player's position stream, an explicit user-intent signal so a track finishing naturally is never recorded as a skip, and a 90%-or-four-minute play threshold. Finally, the SQLite schema had diverged between fresh installs and the migration chain, silently breaking sync history for fresh installs until the two paths were aligned to produce identical DDL.",
+  "learnings": "Own each piece of state exactly once: when the queue lives in the player and every screen is a projection of its streams, an entire class of desync bugs disappears. Measuring directly beats inferring — listening time accumulated from the position stream is exact where scraping notifications was approximate. Android's permission model authorises the shape of a URI, not just the location it points at. Two code paths that must agree — the fresh-install schema and the migration chain — will drift apart without something forcing them to match. And background work on modern Android is a state machine to design, not a call to make: a WorkManager job that is expedited cannot also be delayed, one failed scheduled sync used to kill the self-chaining schedule permanently, and the OS will silently postpone anything that looks like it could save battery.",
+  "futureImprovements": "iOS support (the sync and UI layers are Flutter, the native layer is Kotlin), and deeper playlist behaviour — OwnTone's smart playlists are only as good as the statistics this app feeds them. Two defects remain open from real-device use of v0.2.0: a mislabelled progress counter during the artwork pass, and playback that started on its own after a long sync, which is not yet attributable to app code. Three playback checks — Bluetooth controls, headphone-unplug pause, and extended background/Doze survival — are deferred to real hardware because the emulator cannot honestly exercise them.",
   "keywords": [
     "flutter",
     "dart",
@@ -102,14 +102,15 @@
     "rest api",
     "background processing",
     "media player",
-    "file streaming",
-    "etl",
+    "sqlite",
+    "workmanager",
+    "storage access framework",
     "platform channels",
     "self-hosted",
     "offline-first"
   ],
   "featured": true,
-  "hasCustomHardware": true,
+  "hasCustomHardware": false,
   "requiresSpecialSetup": true,
   "isOpenSource": true
 }
