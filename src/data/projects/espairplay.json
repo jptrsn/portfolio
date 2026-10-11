@@ -19,8 +19,8 @@
   "links": [
     {
       "type": "source",
-      "url": "https://codeberg.org/Edu_Coder/espairsync",
-      "label": "Source Code (Codeberg)",
+      "url": "https://github.com/jptrsn/esp-airsync",
+      "label": "Source Code",
       "active": true
     }
   ],
